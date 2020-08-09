@@ -11,6 +11,12 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Arrays;
+// import com.facebook.react.shell.MainReactPackage;
+import com.facebook.react.shell.MainReactPackage;
+
+import com.BV.LinearGradient.LinearGradientPackage; // <--- This!
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -35,6 +41,23 @@ public class MainApplication extends Application implements ReactApplication {
           return "index";
         }
       };
+
+// @override
+// protected List getPackages() {
+// return Arrays.asList(
+// new MainReactPackage(),
+// new LinearGradientPackage() // <---- and This!
+// );
+// }
+
+// @Override
+// protected List<ReactPackage> getPackages() {
+//   return Arrays.<ReactPackage>asList(
+//     new MainReactPackage(),
+//     new LinearGradientPackage() // <---- and This!
+//   );
+// }
+      
 
   @Override
   public ReactNativeHost getReactNativeHost() {

@@ -75,6 +75,9 @@ const styles = StyleSheet.create({
         width: '60%',
         borderRadius:5,
         textAlign:'center',
+        justifyContent:'center',
+        alignItems:'center',
+        marginTop:20
        
 
     },
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'column',
         paddingVertical:8,
-        backgroundColor:'red',
+        backgroundColor:'rgb(44,209,158)',
         borderRadius:3
     },
 

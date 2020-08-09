@@ -1,8 +1,9 @@
-import { SET_USER_PRODUCTS, SET_ACTIVE_PRODUCTS } from '../actions/product';
+import { SET_USER_PRODUCTS, SET_ACTIVE_PRODUCTS, SET_ACTIVE_PROVIDER } from '../actions/product';
 
 const initialState = {
   products:[],
-  activeProduct:[]
+  activeProduct:[],
+  activeProvider:{}
  
 };
 
@@ -17,6 +18,11 @@ export default (state = initialState, action) => {
           ...state,
           activeProduct:action.activeProducts
         }
+        case SET_ACTIVE_PROVIDER:
+          return {
+            ...state,
+            activeProvider:action.activeProvider
+          }
     default:
       return state;
   }

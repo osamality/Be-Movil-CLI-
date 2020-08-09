@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {map} from 'lodash'
 import {isEmpty} from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { color } from 'react-native-reanimated';
 
 const renderText = (data)=>{
     const [index,setIndex]=useState("SS");
@@ -46,8 +47,8 @@ const renderText = (data)=>{
              onPress={()=>setStatus(v,d)}
 
             >
-                <Text  style={styles.Text}> {v=="SS"? "recargas ": v=="ST"? "Mi Caja" :"Mi Ahorro"} </Text>
-                <Text  style={styles.Text}> {v==index? 'active':d} </Text>
+                <Text  style={v==index? styles.Textbold:styles.Text}> {v=="SS"? "Recargas ": v=="ST"? "Mi Caja" :"Mi Ahorro"} </Text>
+                <Text  style={v==index?styles.activeText:styles.normalText}> {v==index? 'Active':d} </Text>
             </TouchableOpacity >
 
         )
@@ -61,7 +62,7 @@ const  CustomTapsBalance = ({activeBalance,balance})=> {
             {!isEmpty(balance)&&renderText(balance)}
         </View> 
       <View style={styles.TextContent}>
-            <Text style={{textAlign:'center',marginTop:7}}>
+            <Text style={{textAlign:'center',marginTop:7,...styles.Text}}>
                 Balance
              </Text>
            <Text style={{fontWeight:'bold',textAlign:'center',marginTop:7}}>
@@ -105,14 +106,32 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         paddingVertical:8,
         borderBottomWidth :2,
-        borderBottomColor: 'red'   
+        borderBottomColor: 'rgb(235,6,42)'   
         // backgroundColor:'red',
 
     },
     Text:{
-       fontSize:10,
-       textAlign:'center'
+       fontSize:12,
+       textAlign:'center',
+       color:'rgb(145,145,145)'
+    },
+    Textbold:{
+        fontSize:12,
+       textAlign:'center',
+       color:'black',
+       fontWeight:'bold'
 
+    },
+    activeText:{
+        fontSize:12,
+        fontWeight:'bold',
+        textAlign:'center',
+        color:'rgb(235,6,42)'
+    },
+    normalText:{
+        fontSize:12,
+        textAlign:'center',
+        color:'rgb(145,145,145)'
     },
 
     TextContent:{
@@ -125,6 +144,7 @@ const styles = StyleSheet.create({
         padding:10,
         flexDirection: 'row',
         justifyContent: 'space-around',
+        alignItems:'center',
         width: '90%',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,

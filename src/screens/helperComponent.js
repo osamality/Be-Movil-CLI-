@@ -13,7 +13,7 @@ import Colors from '../constants/Colors';
 import * as authActions from '../store/actions/auth';
 import img1 from '../assets/Images/logo.png'
 import img from '../assets/Images/logo2.png'
-const StartupScreen = props => {
+const HelperComponent = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,14 +35,12 @@ const StartupScreen = props => {
       dispatch(authActions.authenticate(token));
     };
 
-    tryLogin();
-  }, [dispatch]);
+    // tryLogin();
+  }, []);
 
   return (
     <View style={styles.screen}>
-      {/* <ActivityIndicator size="large" color={Colors.primary} /> */}
-           <Image   source={img}/>
-           <Image  source={img1} />
+      {console.log("help")}
     </View>
   );
 };
@@ -56,4 +54,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default StartupScreen;
+export default HelperComponent;

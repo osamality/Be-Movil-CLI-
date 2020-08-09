@@ -10,7 +10,14 @@ import img4 from '../../assets/Images/002-insurance.png'
 import img5 from '../../assets/Images/006-online-game-1.png'
 import img6 from '../../assets/Images/meter.png'
 
-import testicon from '../../assets/Images/Group5395.png';
+import claroIcon from '../../assets/Images/claro3.png';
+import avetalIcon from '../../assets/Images/avetal3.png'
+import ExitoIcon from '../../assets/Images/Exito3.png'
+import EtbIcon from '../../assets/Images/etb3.png'
+import VirginIcon from '../../assets/Images/Virgin3.png'
+import flashIcon from '../../assets/Images/flash3.png'
+import MovistarIcon from '../../assets/Images/Movistar3.png'
+import tigoIcon from '../../assets/Images/tigo3.png'
 
 
 export const paymetData =[
@@ -106,45 +113,51 @@ export const recargasType=[
 export const productsDiscription = {
     "Recargas":[
         {
-            name:'Avantel',
-            id:'1',
-            icon:testicon
-        },
-        {
             name:'Claro',
             id:'2',
-            icon:testicon
-        },
-        {
-            name:'ETP',
-            id:'4',
-            icon:testicon
-        },
-        {
-            name:'Exito',
-            id:'5',
-            icon:testicon
-        },
-        {
-            name:'Movistar',
-            id:'6',
-            icon:testicon
+            icon:claroIcon
         },
         {
             name:'Tigo',
             id:'7',
-            icon:testicon
+            icon:tigoIcon
         },
         {
-            name:'Virgin',
-            id:'10',
-            icon:testicon
+            name:'Movistar',
+            id:'6',
+            icon:MovistarIcon
         },
         {
             name:'Flash',
             id:'16',
-            icon:testicon
+            icon:flashIcon
         },
+        {
+            name:'Virgin',
+            id:'10',
+            icon:VirginIcon
+        },
+        {
+            name:'ETP',
+            id:'4',
+            icon:EtbIcon
+        },
+         
+        {
+            name:'Éxito',
+            id:'5',
+            icon:ExitoIcon
+        },
+        {
+            name:'Avantel',
+            id:'1',
+            icon:avetalIcon
+        },
+       
+       
+      
+       
+      
 
     ],
     "Recargas_Packages":[

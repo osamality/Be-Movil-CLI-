@@ -33,9 +33,12 @@ const AppNavigator= ()=> {
     />
     <Stack.Screen name="Recargas" component={RecargasScreen}
      options={{
-      headerTitle: props => <HeaderComponent  />,
-      headerTitleAlign:'center'
-   
+       headerTitleAlign:'center',
+       title: 'Recargas Móviles',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
    }}
     />
   </Stack.Navigator>

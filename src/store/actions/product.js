@@ -4,6 +4,7 @@ import axios from 'axios'
 
 export const SET_USER_PRODUCTS = 'SET_USER_PRODUCTS';
 export const SET_ACTIVE_PRODUCTS= 'SET_ACTIVE_PRODUCTS';
+export const SET_ACTIVE_PROVIDER = 'SET_ACTIVE_PROVIDER';
 
 export const saveProducts = (products,) => {
   return dispatch => {
@@ -14,6 +15,12 @@ export const saveProducts = (products,) => {
 export const saveActiveProducts = (activeProducts)=>{
   return dispatch =>{
     dispatch ({type:SET_ACTIVE_PRODUCTS,activeProducts:activeProducts})
+  }
+}
+
+export const setActiveProvider = (activeProvider)=>{
+  return dispatch =>{
+    dispatch ({type:SET_ACTIVE_PROVIDER,activeProvider:activeProvider})
   }
 }
 
