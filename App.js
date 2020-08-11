@@ -8,12 +8,13 @@ import logger from "redux-logger";
 import authReducer from './src/store/reducers/auth';
 import productReducer from './src/store/reducers/product';
 import balanceReducer from './src/store/reducers/balance';
-
+import recargasReducer from './src/store/reducers/recargas'
 import AppNavigator from './src/navigation'
 const rootReducer = combineReducers({
   auth:authReducer,
   product:productReducer,
-  balance:balanceReducer
+  balance:balanceReducer,
+  recargas:recargasReducer
 
 });
 const middlewares = [logger, ReduxThunk];

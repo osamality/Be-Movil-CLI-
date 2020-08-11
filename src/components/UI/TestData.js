@@ -102,10 +102,12 @@ export const singelProduct =[
 
 export const recargasType=[
     {
-        name:'Movil'
+        name:'Movil',
+        redux: 'Recargas'
     },
     {
-        name:'Packages'
+        name:'Packages',
+        redux:"Recargas_Packages"
 
     }
 ]
@@ -115,43 +117,53 @@ export const productsDiscription = {
         {
             name:'Claro',
             id:'2',
-            icon:claroIcon
+            icon:claroIcon,
+            Package:'paqueclaro'
         },
         {
             name:'Tigo',
             id:'7',
-            icon:tigoIcon
+            icon:tigoIcon,
+            Package:'paquetigo'
         },
         {
             name:'Movistar',
             id:'6',
-            icon:MovistarIcon
+            icon:MovistarIcon,
+            Package:'paquemovistar'
+
         },
         {
             name:'Flash',
             id:'16',
-            icon:flashIcon
+            icon:flashIcon,
+            Package:null
+
         },
         {
             name:'Virgin',
             id:'10',
-            icon:VirginIcon
+            icon:VirginIcon,
+            Package:'paquevirgin'
         },
         {
             name:'ETP',
             id:'4',
-            icon:EtbIcon
+            icon:EtbIcon,
+            Package:'paqueetb'
         },
          
         {
             name:'Éxito',
             id:'5',
-            icon:ExitoIcon
+            icon:ExitoIcon,
+            Package:null
         },
         {
             name:'Avantel',
             id:'1',
-            icon:avetalIcon
+            icon:avetalIcon,
+            Package:'paqueavantel'
         },
        
        

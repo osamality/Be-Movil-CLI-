@@ -11,6 +11,7 @@ import TransfersScreen from '../screens/Home/transfersScreen';
 import ClientScreen from '../screens/Home/clientScreen';
 import RecargasScreen from '../screens/Recargas/Recargas';
 import HeaderComponent from '../screens/layout/headerHome';
+import Packages from '../screens/Recargas/Packages'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -37,6 +38,16 @@ const AppNavigator= ()=> {
        title: 'Recargas Móviles',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
+    <Stack.Screen name="Package" component={Packages}
+     options={{
+       headerTitleAlign:'center',
+       title: 'Paquetes Claro',
+          headerStyle: {
+            backgroundColor: 'black',
           },
           headerTintColor: '#fff',
    }}

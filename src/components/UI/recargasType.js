@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { View, StyleSheet,Text, TouchableOpacity , } from 'react-native';
 import {recargasType} from './TestData'
-import * as balanceActions from '../../store/actions/balance';
+import * as RecargasActions from '../../store/actions/recargas';
 import { useDispatch } from 'react-redux';
 import {connect} from 'react-redux';
 import {map} from 'lodash'
@@ -27,8 +27,8 @@ const renderText = ()=>{
             
     // }, []);
 
-    const setStatus = async(index,balance)=>{
-        const action = balanceActions.saveActiveBalance(balance)
+    const setStatus = async(index,data)=>{
+        const action = RecargasActions.saveActiveRecargas(data.redux)
         setIndex(index);
         try{
             await dispatch(action)
@@ -39,11 +39,11 @@ const renderText = ()=>{
     }
 
     return map(recargasType,(d,v)=>{
-        console.log(v,index)
+        console.log(d,index)
         return (
             <TouchableOpacity  key={v} 
              style={index==v? styles.contentActive:styles.content}
-             onPress={()=> setIndex(v)}
+             onPress={()=> setStatus(v,d)}
 
             >
                 <Text  style={styles.Text}> {d.name} </Text>
