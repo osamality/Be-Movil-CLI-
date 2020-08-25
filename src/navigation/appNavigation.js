@@ -11,12 +11,13 @@ import TransfersScreen from '../screens/Home/transfersScreen';
 import ClientScreen from '../screens/Home/clientScreen';
 import RecargasScreen from '../screens/Recargas/Recargas';
 import HeaderComponent from '../screens/layout/headerHome';
-import Packages from '../screens/Recargas/Packages'
+import Packages from '../screens/Recargas/Packages';
+import {connect} from 'react-redux'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-const AppNavigator= ()=> {
+const AppNavigator= ({activeProvider})=> {
 
 
   return (
@@ -45,7 +46,7 @@ const AppNavigator= ()=> {
     <Stack.Screen name="Package" component={Packages}
      options={{
        headerTitleAlign:'center',
-       title: 'Paquetes Claro',
+       title: `Paquetes ${activeProvider.name}`,
           headerStyle: {
             backgroundColor: 'black',
           },
@@ -108,6 +109,11 @@ const HomeTabs = ()=> {
   );
 }
 
+const mapStateToProps = ({product,}) => ({
+  activeProvider : product.activeProvider,
+    
+})
 
-export default AppNavigator;
+
+export default connect(mapStateToProps,null)(AppNavigator);
 

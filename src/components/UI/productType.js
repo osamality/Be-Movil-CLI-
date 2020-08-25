@@ -43,6 +43,10 @@ const renderItems = ()=>{
           
             <Image  source={d.icon} style={v==index?styles.imgactive:styles.ima}/> 
           </TouchableOpacity>
+            <View style={v==index?{marginTop:4}:{}}>
+
+            </View>
+          <Text style={styles.nameText}>{d.name}</Text>
           </View>
       )
 
@@ -126,6 +130,13 @@ const styles = StyleSheet.create({
     scrollView: {
         marginHorizontal: 5,
       },
+
+      nameText:{
+        color:'rgb(145,145,145)',
+        fontSize:10,
+        marginTop:3
+      },
+     
   
 })
 

@@ -82,7 +82,7 @@ const Products = ({navigation }) => {
                  numColumns={3}
                  data={singelProduct}
                  renderItem={({item,index}) => (
-                 <TouchableOpacity  key={index} style={styles.content} onPress={handelPress}>
+                 <TouchableOpacity  key={index} style={styles.content} onPress={() => navigation.navigate('Recargas')}>
                    <View style={styles.ItemContent}>
                       <Text  style={styles.Text}> {item.name} </Text>
                       <Image    source={item.icon} style={styles.icon}/>           

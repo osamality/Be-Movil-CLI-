@@ -4,6 +4,7 @@ import { Container, Header, Left, Body, Right,Content,Button } from 'native-base
 import Logo1 from '../../assets/Images/Group5134.png'
 import { useDispatch } from 'react-redux';
 import * as BalanceActions from '../../store/actions/balance';
+import * as RecargasActions from '../../store/actions/recargas'
 import axios from 'axios';
 import {SERVER_URL} from '../../config/config';
 import { AsyncStorage } from 'react-native';
@@ -41,10 +42,9 @@ const CategoriesScreen = ({activeBalance, navigation }) =>  {
 
       })
     }
-   
-
-
 }
+
+
 fetchBalance();
     
   }, []);

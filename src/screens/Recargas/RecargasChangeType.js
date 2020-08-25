@@ -48,6 +48,7 @@ const activeImageInputs =(initialValues,activeProvider,type)=>{
 
 
     return(
+      
     <Form style={{marginTop:5}}>
     <TextInput style={defaultStyle.InputText1Style}
       label="Phone number"
@@ -124,6 +125,39 @@ const renderInputsPackage =(InitialValesPackage,setInitialValesPackage,activePro
       )
 }
 
+const renderPackage = (activePackage,navigation,activeProvider) =>{
+
+  if(isEmpty(activePackage)){
+return(
+  <TouchableOpacity
+  style={activeProvider.name? styles.packages:styles.notactivePackages} 
+  onPress={()=>navigation.navigate('Package')}
+  disabled={activeProvider.name?false:true}
+ >
+     <View style={styles.DownloadIcon}>
+         <Image source={arrowImage} style={styles.Image}/>
+     </View>
+ <Text style={{color:'#ffff'}}>
+ Selecciona tu Paquete
+ </Text>
+ <Icon name="chevron-down" size={15} color="#ffff" />
+ </TouchableOpacity>
+)
+}
+  else{
+    return(
+      <View>
+        <Text>{activePackage.name}</Text>
+        <Text>{activePackage.price}</Text>
+        <Text>{activePackage.description}</Text>
+
+      </View>
+    )
+
+  }
+}
+
+
 const handelType =(RecargasActiveType, 
     initialValues, 
     setInitialVales,
@@ -131,7 +165,8 @@ const handelType =(RecargasActiveType,
     refRBSheet,
     InitialValesPackage,
     setInitialValesPackage,
-    navigation
+    navigation,
+    activePackage
     )=>{
     const [index,setindex]=useState(0)
 
@@ -245,6 +280,9 @@ const handelType =(RecargasActiveType,
     <Text  style={{color:'rgb(158,159,159)'}}>Cancel</Text>
     </Button>
     </View>
+    <View style={{marginTop:5}}>
+
+    </View>
     </View>
     </ScrollView>
     </RBSheet>
@@ -266,19 +304,8 @@ const handelType =(RecargasActiveType,
            </View>
            <View style={{borderBottomWidth:1,borderBottomColor:'black',width:'90%', marginBottom:15,marginTop:10 }}>
            </View>
-           <TouchableOpacity
-            style={activeProvider.name? styles.packages:styles.notactivePackages} 
-            onPress={()=>navigation.navigate('Package')}
-            disabled={activeProvider.name?false:true}
-           >
-               <View style={styles.DownloadIcon}>
-                   <Image source={arrowImage} style={styles.Image}/>
-               </View>
-           <Text style={{color:'#ffff'}}>
-           Selecciona tu Paquete
-           </Text>
-           <Icon name="chevron-down" size={15} color="#ffff" />
-           </TouchableOpacity>
+           {renderPackage(activePackage,navigation,activeProvider)}
+          
            {renderInputsPackage(InitialValesPackage,setInitialValesPackage,activeProvider,refRBSheet)}
 
 
@@ -288,7 +315,7 @@ const handelType =(RecargasActiveType,
         )
     }
 }
-const RecargasChange = ({RecargasActiveType,activeProvider,navigation}) =>  {
+const RecargasChange = ({RecargasActiveType,activeProvider,navigation,activePackage}) =>  {
     const refRBSheet = useRef();
 
     const [initialValues,setInitialVales]=useState({
@@ -310,7 +337,8 @@ const RecargasChange = ({RecargasActiveType,activeProvider,navigation}) =>  {
         refRBSheet,
         initialValuesPackage,
         setInitialValesPackage,
-        navigation
+        navigation,
+        activePackage
 
         )}
      </>
@@ -473,7 +501,8 @@ const defaultStyle = StyleSheet.create({
 const mapStateToProps = ({balance,product,recargas}) => ({
     activeBalance:balance.activeBalance,
     activeProvider : product.activeProvider,
-    RecargasActiveType : recargas.activeType
+    RecargasActiveType : recargas.activeType,
+    activePackage :recargas.activePackage
       
   })
   

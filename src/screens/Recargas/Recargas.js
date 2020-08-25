@@ -2,28 +2,22 @@ import React,{useState,useEffect,useRef } from 'react';
 import { StyleSheet,
     Text,
     View,
-    ScrollView,
-    KeyboardAvoidingView,
     TouchableWithoutFeedback,
     Keyboard ,
     Image
   } from 'react-native';
 import { Container,Content,Form,Button } from 'native-base';
 import { useDispatch } from 'react-redux';
-import * as BalanceActions from '../../store/actions/balance';
-import axios from 'axios';
-import {SERVER_URL} from '../../config/config';
-import { AsyncStorage } from 'react-native';
+import * as RecargasActions from '../../store/actions/recargas';
+import * as ProductActions from '../../store/actions/product';
+
 import CustomTapsBalance from '../../components/UI/customTapsBalance';
 import {connect} from 'react-redux';
 import RecargasType from '../../components/UI/recargasType'
 import ProductType from '../../components/UI/productType'
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import {TextInput} from 'react-native-paper'
 import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import {isEmpty} from 'lodash'
-import RBSheet from "react-native-raw-bottom-sheet";
 import RecargasChangeType from './RecargasChangeType'
 
 
@@ -35,33 +29,23 @@ const CategoriesScreen = ({ activeProvider,navigation }) =>  {
 
   useEffect(() => {
 
-   const fetchProduct= async ()=>{
+    const resetTypes = ()=>{
 
-     const userData = await AsyncStorage.getItem('token');
-     if(userData){
-       const transferData=JSON.parse(userData)
-       const {token}= transferData
-       const acctualToken =`Token ${token}`
+      const action = RecargasActions.saveActiveRecargas('Recargas')
+      dispatch(action);
 
-     axios.get(
-      `${SERVER_URL}/api/reportes/saldo/`,
-      { headers: {authorization :acctualToken }})
-      .then((response)=>{
-       const action = BalanceActions.saveBalance(response.data);
-       dispatch(action)
-
-      })
-      .catch((err)=>{
-        console.log(err,'err')
-
-      })
+    };
+    const resetProduct = ()=>{
+      const action = ProductActions.setActiveProvider({})
+      dispatch(action);
     }
-   
-
-
-}
-fetchProduct();
-    
+    const resetPackage = () =>{
+      const action = RecargasActions.saveActivePackage({})
+      dispatch(action)
+    }
+    resetTypes();
+    resetProduct();
+    resetPackage();
   }, []);
 
   const activeImage =()=>{
@@ -77,9 +61,7 @@ fetchProduct();
 
 
   return (
-    <KeyboardAvoidingView
-     behavior={Platform.OS == "ios" ? "padding" : "height"}
-    style={styles.container}>
+
       
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
@@ -118,7 +100,6 @@ fetchProduct();
     </Content>
   </Container>
   </TouchableWithoutFeedback>
-  </KeyboardAvoidingView>
 
   );
 }

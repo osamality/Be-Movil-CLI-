@@ -3,16 +3,18 @@ import { StyleSheet, Text, View, ScrollView,SafeAreaView,TouchableOpacity,FlatLi
 import {packgesTaps} from './pachageData'
 import {connect} from 'react-redux'
 import {packgesData} from './pachageData'
-import {get, filter} from 'lodash'
+import {get, filter, isEmpty} from 'lodash'
 import {Button} from 'native-base'
+import * as RecargasActions from '../../store/actions/recargas'
+import { useDispatch } from 'react-redux';
 
-
-const renderItems =()=>{
+const RenderItems =({setType})=>{
     
     const [index,setIndex]=useState(0);
     
     const handelPress=(index,data)=>{
-        setIndex(index)
+        setIndex(index);
+        setType(data.name)
 
     }
 
@@ -30,11 +32,28 @@ const renderItems =()=>{
 }
 const Packages = ({activeProvider,navigation}) =>  {
 
+  const [type,setType]=useState('Combos')
+  const dispatch = useDispatch();
+
+  const handelPress = async (data)=>{
+    const action= RecargasActions.saveActivePackage(data);
+    try {
+      await dispatch(action)
+      navigation.navigate('Recargas')
+    }
+    catch {
+      console.log("ERROR")
+
+    }
     
-const dataType = get(packgesData,'paqueclaro','')
+  }
+
+
+    
+const dataType = get(packgesData,activeProvider.package,'')
 // console.log(dataType[0].items)
 
-const data = filter(dataType[0].items, (item) =>{ return item.type== "Internet"; })
+const data = filter(dataType[0].items, (item) =>{ return item.type== type; })
 console.log(data)
  
   return (
@@ -45,35 +64,58 @@ console.log(data)
          horizontal={true}
          showsHorizontalScrollIndicator={false}
           >
-          {renderItems()}
+            <RenderItems setType={setType}/>
+          {/* {renderItems(setType)} */}
         </ScrollView>
       </SafeAreaView>
       <View style={{flex:1,justifyContent:'center', width:'100%'}}>
-      <FlatList
+      {!isEmpty(data)?<FlatList
                  horizontal={false}
                  numColumns={1}
                  data={data}
                  renderItem={({item,index}) => (
-                 <TouchableOpacity  key={index} style={styles.item}
-                 onPress={()=>navigation.navigate('Recargas')}
-                 >
-                   <View style={{width:'70%'
-                   ,marginRight:10,
+                   <TouchableOpacity  key={index} style={styles.item}
+                   onPress={()=>handelPress(item)}
+                   >
+                   <View style={{width:'70%',
+                   marginRight:10,
                    justifyContent:'center',
                    alignItems:'center',
 
                    }} >
-                      <Text style={{justifyContent:'center',
-                      alignItems:'center',
-                      textAlign:'center',
-                      marginBottom:5,
-                      fontWeight:'bold',
+                     <View style={{
+                      width:'100%',
                       backgroundColor:'rgb(244,244,244)',
                       borderWidth:1,
-                      borderColor:'rgb(244,244,244)'
+                      borderColor:'rgb(244,244,244)',
+                      marginBottom:3,
+                      flex:1
+                     }}>
 
+                      <Text style={{
+                      fontWeight:'bold',
+                      textAlign:'left',
+                      lineHeight: 20,
+                     
                       }}> {item.name} </Text>
-                      <Text style={{justifyContent:'center',alignItems:'center',textAlign:'center'}}> {item.description} </Text>
+                     </View>
+                     <View style={{
+                       width:'100%',
+                       flex:1,
+                     
+                     }}>
+                      <Text 
+                      style={{
+                        lineHeight: 20,
+                        textAlign:'left',
+                    
+                      }}
+                      numberOfLines={2} 
+                      ellipsizeMode='middle'
+                      > {item.description} </Text>
+
+                     </View>
+                     
                     </View>
                     <View style={{width:'30%',marginLeft:10,
                  justifyContent:'center',
@@ -97,6 +139,10 @@ console.log(data)
               </TouchableOpacity > 
                  )}
             />
+            : <View style={styles.EmptyContetnt}>
+              <Text style={styles.EmptyMessage}>Not Avalibale Packages</Text>
+            </View>
+          }
       </View>
       </View>
 
@@ -177,6 +223,16 @@ const styles = StyleSheet.create({
     height:35
 
   },
+  EmptyContetnt:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  EmptyMessage:{
+    color:'red',
+    fontSize:18,
+    fontWeight:'bold'
+  }
 });
 
 const mapStateToProps = ({balance,product,recargas}) => ({

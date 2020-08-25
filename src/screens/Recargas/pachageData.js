@@ -12,13 +12,22 @@ export const packgesTaps = [
         name:'Bolsa'
     },
     {
-        name:'Min + SMS'
+        name:'APP'
     },
     {
-        name:'Min + SMS'
+        name:'LDI'
     },
     {
-        name:'Min + SMS'
+        name:'Todo Incluido'
+    },
+    {
+        name:'Internet Inalambrico'
+    },
+    {
+        name:'Reventa'
+    },
+    {
+        name:'Antiplanes'
     }
 
 ]

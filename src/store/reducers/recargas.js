@@ -1,7 +1,8 @@
-import { SET_RECARGAS_TYPE } from '../actions/recargas';
+import { SET_RECARGAS_TYPE, SET_ACTIVE_PACKAGE } from '../actions/recargas';
 
 const initialState = {
-    activeType:'Recargas'
+    activeType:'Recargas',
+    activePackage:{}
  
 };
 
@@ -12,6 +13,11 @@ export default (state = initialState, action) => {
         ...state,
         activeType: action.activeType,
       };
+      case SET_ACTIVE_PACKAGE :
+        return {
+          ...state,
+          activePackage:action.activePackage
+        }
       
     default:
       return state;

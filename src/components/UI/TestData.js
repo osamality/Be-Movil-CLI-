@@ -118,52 +118,52 @@ export const productsDiscription = {
             name:'Claro',
             id:'2',
             icon:claroIcon,
-            Package:'paqueclaro'
+            package:'paqueclaro'
         },
         {
             name:'Tigo',
             id:'7',
             icon:tigoIcon,
-            Package:'paquetigo'
+            package:'paquetigo'
         },
         {
             name:'Movistar',
             id:'6',
             icon:MovistarIcon,
-            Package:'paquemovistar'
+            package:'paquemovistar'
 
         },
         {
             name:'Flash',
             id:'16',
             icon:flashIcon,
-            Package:null
+            package:null
 
         },
         {
             name:'Virgin',
             id:'10',
             icon:VirginIcon,
-            Package:'paquevirgin'
+            package:'paquevirgin'
         },
         {
             name:'ETP',
             id:'4',
             icon:EtbIcon,
-            Package:'paqueetb'
+            package:'paqueetb'
         },
          
         {
             name:'Éxito',
             id:'5',
             icon:ExitoIcon,
-            Package:null
+            package:null
         },
         {
             name:'Avantel',
             id:'1',
             icon:avetalIcon,
-            Package:'paqueavantel'
+            package:'paqueavantel'
         },
        
        
