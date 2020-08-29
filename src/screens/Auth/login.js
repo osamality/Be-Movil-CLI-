@@ -100,14 +100,17 @@ const SignIn = ({navigation}) =>  {
           <Form>
             <TextInput
               label="Email"
+              placeholder="I'm crop and can scroll verticaly 🙁"
+
               value={initialValues.email}
-               style={defaultStyle.InputText1Style}
+              style={defaultStyle.InputText1Style}
               mode='outlined'
               onChangeText={text => setEmail(text)}
               underlineColor='transparent'
               underlineColorAndroid={'rgba(0,0,0,0)'}
               text='white'
               direction='rtl'
+              dense={true}
               theme={{ colors: { primary: 'gray',underlineColor:'transparent',background : '#003489'}}}
 
             />
@@ -241,9 +244,11 @@ const defaultStyle = StyleSheet.create({
       shadowOpacity: 0.4,
       elevation: 2,
       // position: 'relative',
-      height:39,
+      height:60,
+      fontSize:15,
       width:345,
-      marginBottom:20
+      marginBottom:20,
+      
       // marginLeft:5
   }
 })

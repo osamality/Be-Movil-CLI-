@@ -112,13 +112,15 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         elevation: 5,
         backgroundColor: 'white',
-        borderRadius:15,
+        borderRadius:8,
         padding:15,        
         flex:1,
         maxWidth: Dimensions.get('window').width / 3 - 10, // Width / 3 - (marginLeft and marginRight for the components)
         justifyContent: 'center',
         alignItems:'center',    
-        margin:8
+        margin:8,
+        height:100,
+        maxHeight:Dimensions.get('window').width / 3 - 10,
         
     },
     ItemContent:{
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
     Text:{
         textAlign:'center',
         width:'100%',
-        fontSize:12,
+        fontSize:8,
         marginTop:7,
         flex:1,
         flexWrap:'nowrap',

@@ -187,7 +187,7 @@ const handelType =(RecargasActiveType,
     ref={refRBSheet}
     closeOnDragDown={true}
     closeOnPressMask={false}
-    height={450}
+    height={500}
     customStyles={{
     wrapper: {
       backgroundColor: "transparent",

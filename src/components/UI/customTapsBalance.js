@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { View, StyleSheet,Text, TouchableOpacity , } from 'react-native';
+import {Button} from 'native-base'
 // import {data} from './TestData'
 import * as balanceActions from '../../store/actions/balance';
 import { useDispatch } from 'react-redux';
@@ -7,9 +8,8 @@ import {connect} from 'react-redux';
 import {map} from 'lodash'
 import {isEmpty} from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { color } from 'react-native-reanimated';
 
-const renderText = (data)=>{
+const RenderText = ({data,resetCount})=>{
     const [index,setIndex]=useState("SS");
     const dispatch = useDispatch();
 
@@ -30,6 +30,7 @@ const renderText = (data)=>{
     }, []);
 
     const setStatus = async(index,balance)=>{
+        resetCount();
         const action = balanceActions.saveActiveBalance(balance)
         setIndex(index);
         try{
@@ -55,26 +56,64 @@ const renderText = (data)=>{
     })
 
 }
-const  CustomTapsBalance = ({activeBalance,balance})=> {
-    return (
-       <>
-       <View style={styles.Contentcontainer}>
-            {!isEmpty(balance)&&renderText(balance)}
-        </View> 
-      <View style={styles.TextContent}>
-            <Text style={{textAlign:'center',marginTop:7,...styles.Text}}>
-                Balance
-             </Text>
-           <Text style={{fontWeight:'bold',textAlign:'center',marginTop:7}}>
-             {activeBalance} COP
-            </Text>
-         <TouchableOpacity onPress={()=>console.log('icon')}>
-            <Icon name="external-link-alt" size={15} color="black" />
-         </TouchableOpacity>
-      </View>
-       </>
-    )
+
+class CustomTapsBalance extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          count:0 // An integer from father component
+        }
+    }
+    
+      componentDidMount () {
+        this.timer()
+        
+       
+     }
+     
+      timer = () => {
+        this.interval = setInterval(() => {
+          this.setState(prevState => ({
+            count: prevState.count + 1,
+          }), () => {
+            if (this.state.count === 100) {
+                clearInterval(this.interval);
+            }
+          });
+        },60)
+      }
+      resetCount = ()=>{
+          this.setState({
+              count:0
+          })
+          this.timer()
+      }
+
+    render(){
+        const {activeBalance,balance}=this.props;
+        return(
+            <>
+            <View style={styles.Contentcontainer}>
+                 {!isEmpty(balance)&&<RenderText data ={balance} resetCount={this.resetCount}/>}
+             </View> 
+           <View style={styles.TextContent}>
+                 <Text style={{textAlign:'center',marginTop:7,...styles.Text}}>
+                     Balance
+                  </Text>
+                <Text style={{fontWeight:'bold',textAlign:'center',marginTop:7}}>
+                  {this.state.count} COP
+                 </Text>
+              <TouchableOpacity onPress={()=>console.log('icon')}>
+                 <Icon name="external-link-alt" size={15} color="black" />
+              </TouchableOpacity>
+             
+           </View>
+            </>
+
+        );
+    }
 }
+
 const styles = StyleSheet.create({
 
     Contentcontainer:{
