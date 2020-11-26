@@ -8,12 +8,13 @@ import * as RecargasActions from '../../store/actions/recargas'
 import axios from 'axios';
 import {SERVER_URL} from '../../config/config';
 import { AsyncStorage } from 'react-native';
-import CustomTaps from '../../components/UI/customTaps';
+import CustomTaps from '../../components/UI/globle/customTaps';
 import {connect} from 'react-redux';
 import PaymentType from '../../components/UI/paymentType';
 import Products from '../../components/UI/Products'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import CustomTapsBalance from '../../components/UI/customTapsBalance'
+import CustomTapsBalance from '../../components/UI/globle/customTapsBalance'
+import LinearGradient from 'react-native-linear-gradient';
 
 const CategoriesScreen = ({activeBalance, navigation }) =>  {
   const [storageData,setStorageData]=useState({})
@@ -56,19 +57,7 @@ fetchBalance();
    
       <View style={styles.Contentcontainer}>
         <CustomTapsBalance/>
-        {/* <CustomTaps/>
- 
-        <View style={styles.TextContent}>
-          <Text style={{textAlign:'center',marginTop:7}}>
-             Balance
-          </Text>
-          <Text style={{fontWeight:'bold',textAlign:'center',marginTop:7}}>
-           {activeBalance} COP
-          </Text>
-          <TouchableOpacity onPress={()=>console.log('icon')}>
-          <Icon name="external-link-alt" size={15} color="black" />
-          </TouchableOpacity>
-          </View> */}
+
 
         <View style={styles.paymentContent}>
           <Text style={styles.paymentText}>
@@ -76,11 +65,22 @@ fetchBalance();
           </Text>
         </View>
         <PaymentType/>
-        <View style={styles.paymentContent}>
+        <View style={styles.adds}>
+          <Text style={styles.textAdds}>
+          Banner Ads
+          </Text>
+          <Text style={styles.textAdds}>
+          Banner Ads
+          </Text>
+        </View>
+        <LinearGradient colors={['rgb(235,6,42)', 'rgb(232,6,42)','rgb(209,28,57)']}style={styles.productContent} >
+
+        {/* <View style={styles.productContent}> */}
           <Text style={styles.paymentText}>
             Products
           </Text>
-        </View>
+        {/* </View> */}
+        </LinearGradient>
         <Products navigation={navigation}/>
 
         {/* <View style={styles.paymentIcons}>
@@ -94,6 +94,23 @@ fetchBalance();
 }
 
 const styles = StyleSheet.create({
+  adds:{
+    flex:1,
+    padding:30,
+    shadowColor: 'black',
+    shadowOpacity: 5.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 5,
+    backgroundColor: 'white',
+    width:'100%',
+    justifyContent:'space-around',
+    alignItems:'center',
+    flexDirection:'row'
+  },
+  textAdds :{
+    color:'rgb(209,209,209)'
+  },
 
   test:{
     backgroundColor: 'rgb(216,216, 216)',
@@ -129,11 +146,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: "100%",
     justifyContent:'flex-start',
-    padding:20,
-    
+    padding:7,
+    backgroundColor:'black',
+    marginTop:10,    
+  },
+  productContent:{
+    flexDirection: 'row',
+    width: "100%",
+    justifyContent:'flex-start',
+    padding:8,
+    backgroundColor:'red',
+    marginTop:10,  
+
   },
   paymentText:{
     fontWeight:"bold",
+    color:'#ffff',
+    marginLeft:10,
+    marginBottom:0
+
   },
   // paymentIcons:{
   //   flexDirection:'row'

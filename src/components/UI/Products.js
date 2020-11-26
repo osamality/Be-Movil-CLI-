@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet,Text, TouchableOpacity ,Image, FlatList, Dimensions,AsyncStorage } from 'react-native';
-import {productsData} from './TestData'
-import {singelProduct} from './TestData'
-import {productsDiscription} from './TestData'
+import {productsData} from './staticData'
+import {singelProduct} from './staticData'
+import {productsDiscription} from './staticData'
 import {get} from 'lodash'
 
 
@@ -63,7 +63,7 @@ const Products = ({navigation }) => {
                  numColumns={3}
                  data={productsData}
                  renderItem={({item,index}) => (
-                 <TouchableOpacity  key={index} style={styles.content} onPress={() => navigation.navigate('Recargas')}>
+                 <TouchableOpacity  key={index} style={styles.content} onPress={() => navigation.navigate(item.route)}>
                    <View style={styles.ItemContent}>
                       <Image    source={item.icon} style={styles.icon}/>           
                       <Text  style={styles.Text}> {item.name} </Text>
@@ -101,40 +101,44 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'center',
-        width:'80%'
+        width:'90%'
 
     },
     content:{
+    
+        flex:1,
         flexDirection:'row',
+        justifyContent: 'center',
+        alignItems:'center',    
         shadowColor: 'black',
         shadowOpacity: 5.26,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 8,
         elevation: 5,
         backgroundColor: 'white',
-        borderRadius:8,
-        padding:15,        
-        flex:1,
-        maxWidth: Dimensions.get('window').width / 3 - 10, // Width / 3 - (marginLeft and marginRight for the components)
-        justifyContent: 'center',
-        alignItems:'center',    
+        borderRadius:5,
+        padding:20,        
+        // maxWidth: Dimensions.get('window').width / 3 - 10, // Width / 3 - (marginLeft and marginRight for the components)
         margin:8,
-        height:100,
-        maxHeight:Dimensions.get('window').width / 3 - 10,
+        // height:100,
+        // maxHeight:Dimensions.get('window').width / 3 - 10,
         
     },
     ItemContent:{
+        // width:50,
         flex:1,
         flexDirection:'column',
-        justifyContent:'center',
-        alignItems:'center'
+        justifyContent:'space-around',
+        alignItems:'center',
+        width:'100%'
+        // backgroundColor:'red'
        
 
     },
     Text:{
         textAlign:'center',
-        width:'100%',
-        fontSize:8,
+        width:50,
+        fontSize:11,
         marginTop:7,
         flex:1,
         flexWrap:'nowrap',

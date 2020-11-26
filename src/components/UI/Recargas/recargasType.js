@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { View, StyleSheet,Text, TouchableOpacity , } from 'react-native';
-import {recargasType} from './TestData'
-import * as RecargasActions from '../../store/actions/recargas';
+import {recargasType} from '../staticData'
+import * as RecargasActions from '../../../store/actions/recargas';
 import { useDispatch } from 'react-redux';
 import {connect} from 'react-redux';
 import {map} from 'lodash'

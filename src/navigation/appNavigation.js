@@ -10,6 +10,7 @@ import ReportScreen from '../screens/Home/reportScreen';
 import TransfersScreen from '../screens/Home/transfersScreen';
 import ClientScreen from '../screens/Home/clientScreen';
 import RecargasScreen from '../screens/Recargas/Recargas';
+import BeCompanies from '../screens/betCompanies/Recargas'
 import HeaderComponent from '../screens/layout/headerHome';
 import Packages from '../screens/Recargas/Packages';
 import {connect} from 'react-redux'
@@ -49,6 +50,16 @@ const AppNavigator= ({activeProvider})=> {
        title: `Paquetes ${activeProvider.name}`,
           headerStyle: {
             backgroundColor: 'black',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
+      <Stack.Screen name="Apuestas" component={BeCompanies}
+     options={{
+       headerTitleAlign:'center',
+       title: 'Apuestas Deportivas',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
    }}

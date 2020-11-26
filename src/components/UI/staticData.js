@@ -18,6 +18,14 @@ import VirginIcon from '../../assets/Images/Virgin3.png'
 import flashIcon from '../../assets/Images/flash3.png'
 import MovistarIcon from '../../assets/Images/Movistar3.png'
 import tigoIcon from '../../assets/Images/tigo3.png'
+import WPLAY from "../../assets/Images/WPLAY3.png"
+import Rush from "../../assets/Images/Rush3.png"
+import Rivalo from "../../assets/Images/Rivalo3.png"
+import Ya from "../../assets/Images/Ya3.png"
+import Aqui from "../../assets/Images/Aqui3.png"
+import Sportium from "../../assets/Images/Sportium3.png"
+import Jugada from "../../assets/Images/Jugada3.png"
+
 
 
 export const paymetData =[
@@ -28,6 +36,11 @@ export const paymetData =[
     },
     {
         name:"Tarjeta",
+        icon:icon2
+
+    },
+    {
+        name:"Deposito",
         icon:icon2
 
     },
@@ -47,12 +60,15 @@ export const paymetData =[
 export const productsData =[
     {
         name:"Recargas",
-        icon:img1
+        icon:img1,
+        route:"Recargas"
 
     },
     {
         name:"Apuestas",
-        icon:img2
+        icon:img2,
+        route :"Apuestas"
+        
 
     },
     {
@@ -204,5 +220,43 @@ export const productsDiscription = {
             icon:''
         },
 
+    ],
+    "bet_companies":[
+        {
+            name:'WPLAY',
+            id:'26',
+            icon:WPLAY,
+        },
+        {
+            name:'Rush Bet',
+            id:'63',
+            icon:Rush,
+        },
+        {
+            name:'Rivalo',
+            id:'47',
+            icon:Rivalo,
+        },
+        {
+            name:'Ya Juego',
+            id:'47', //need update
+            icon:Ya,
+        },
+      
+        {
+            name:'Aqui Juego',
+            id:'48', 
+            icon:Aqui,
+        },
+        {
+            name:'Sportium',
+            id:'53', 
+            icon:Sportium,
+        },
+        {
+            name:'Mi Jugada',
+            id:'46', 
+            icon:Jugada,
+        },
     ]
 }

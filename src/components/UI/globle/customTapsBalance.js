@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { View, StyleSheet,Text, TouchableOpacity , } from 'react-native';
 import {Button} from 'native-base'
 // import {data} from './TestData'
-import * as balanceActions from '../../store/actions/balance';
+import * as balanceActions from '../../../store/actions/balance';
 import { useDispatch } from 'react-redux';
 import {connect} from 'react-redux';
 import {map} from 'lodash'

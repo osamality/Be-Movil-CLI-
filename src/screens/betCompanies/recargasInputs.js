@@ -49,9 +49,9 @@ const activeImageInputs =(initialValues,activeProvider,type)=>{
 
     return(
       
-    <Form style={{marginTop:5}}>
+    <Form style={{marginTop:1}}>
     <TextInput style={defaultStyle.InputText1Style}
-      label="Phone number"
+      label="Numero de Documento*"
       value={initialValues.phone}
       mode='outlined'
       keyboardType="numeric"
@@ -65,7 +65,7 @@ const activeImageInputs =(initialValues,activeProvider,type)=>{
     />
 
       <TextInput
-      label="Amount"
+      label="Monto a Recargar *"
       value={initialValues.amount}
       style={defaultStyle.InputText1Style}
       mode='outlined'
@@ -177,7 +177,7 @@ const handelType =(RecargasActiveType,
         <View style={styles.paymentContent}>
             {activeImageInputs(initialValues,activeProvider,"movil")}
            <Text style={{...styles.paymentText,marginRight:4,fontWeight:'bold'}}>
-               Escoje tu Operador:   
+           Información de tu Cuenta :    
             </Text>
         </View>
          <View style={{borderBottomWidth:1,borderBottomColor:'black',width:'90%', marginBottom:15,marginTop:10 }}>
@@ -525,10 +525,10 @@ const defaultStyle = StyleSheet.create({
   
   })
 
-const mapStateToProps = ({balance,product,recargas}) => ({
+const mapStateToProps = ({balance,betCompanies,recargas}) => ({
     activeBalance:balance.activeBalance,
     allBalance :balance.balance,
-    activeProvider : product.activeProvider,
+    activeProvider : betCompanies.activeProvider,
     RecargasActiveType : recargas.activeType,
     activePackage :recargas.activePackage
       

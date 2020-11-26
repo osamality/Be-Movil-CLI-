@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet,Text, TouchableOpacity ,Image, ScrollView, Dimensions,SafeAreaView } from 'react-native';
 
-import {productsDiscription} from './TestData'
+import {productsDiscription} from '../staticData'
 import {get} from 'lodash'
-import * as productActions from '../../store/actions/product';
+import * as betCompaniesActions from '../../../store/actions/betCompanies';
 import { useDispatch } from 'react-redux';
 
 
@@ -14,19 +14,14 @@ const renderItems = ()=>{
     const [index,setIndex]=useState();
 
     const handelClick = async(index,data)=>{
+        console.log("here",data)
       setIndex(index)
 
-     const action = productActions.setActiveProvider(data);
+     dispatch(betCompaniesActions.setActiveProvider(data))
 
-      try {
-        await dispatch(action);
-      }
-       catch (err) {
-         console.log(err)
-      }
     }
 
-  const data=get(productsDiscription,'Recargas',[]);
+  const data=get(productsDiscription,'bet_companies',[]);
   return data.map((d,v)=>{
       return(
         <View style={styles.outer} key={v}>
@@ -129,6 +124,7 @@ const styles = StyleSheet.create({
   
     scrollView: {
         marginHorizontal: 5,
+        width:385
       },
 
       nameText:{

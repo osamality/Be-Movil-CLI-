@@ -13,15 +13,15 @@ import * as ProductActions from '../../store/actions/product';
 
 import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 import {connect} from 'react-redux';
-import RecargasType from '../../components/UI/Recargas/recargasType'
-import ProductType from '../../components/UI/Recargas/productType'
+import BetCompaniesRenderOption from '../../components/UI/BetCompanies/betRenderType'
+import ProductType from '../../components/UI/BetCompanies/provider'
 import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import {isEmpty} from 'lodash'
-import RecargasChangeType from './RecargasChangeType'
+import RecargasChangeType from './recargasInputs'
 
 
-const CategoriesScreen = ({ activeProvider,navigation }) =>  {
+const BetCompanies = ({ activeProvider,navigation }) =>  {
  
   const dispatch = useDispatch();
   const refRBSheet = useRef();
@@ -33,7 +33,6 @@ const CategoriesScreen = ({ activeProvider,navigation }) =>  {
 
       const action = RecargasActions.saveActiveRecargas('Recargas')
       dispatch(action);
-
 
     };
     const resetProduct = ()=>{
@@ -74,14 +73,14 @@ const CategoriesScreen = ({ activeProvider,navigation }) =>  {
         <CustomTapsBalance/>
   
        
-        <RecargasType/>
+        <BetCompaniesRenderOption/>
         <View style={styles.paymentContent}>
           {activeImage()}
           <Text style={{...styles.paymentText,marginRight:4,fontWeight:'bold'}}>
-          Choose Provider:   
+          Recarga casa apuestas :     
           </Text>
           {
-            activeProvider.name && <Text style={{color:'rgb(44,209,158)',fontWeight:'bold'}}>
+            activeProvider?.name && <Text style={{color:'rgb(44,209,158)',fontWeight:'bold'}}>
             {activeProvider.name}
            </Text>
           }
@@ -162,12 +161,14 @@ const styles = StyleSheet.create({
 
 
 
-const mapStateToProps = ({balance,product,recargas}) => ({
+const mapStateToProps = ({balance,betCompanies,recargas}) => ({
   activeBalance:balance.activeBalance,
-  activeProvider : product.activeProvider,
+  activeProvider : betCompanies.activeProvider,
   RecargasActiveType : recargas.activeType
     
 })
 
 
-export default connect(mapStateToProps,null)(CategoriesScreen);
+export default connect(mapStateToProps,null)(BetCompanies);
+
+

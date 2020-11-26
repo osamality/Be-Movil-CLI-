@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.viewpager.RNCViewPagerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -17,6 +18,7 @@ import java.util.Arrays;
 import com.facebook.react.shell.MainReactPackage;
 
 import com.BV.LinearGradient.LinearGradientPackage; // <--- This!
+import com.facebook.react.modules.i18nmanager.I18nUtil;
 
 
 public class MainApplication extends Application implements ReactApplication {
@@ -47,6 +49,7 @@ public class MainApplication extends Application implements ReactApplication {
 // protected List getPackages() {
 // return Arrays.asList(
 // new MainReactPackage(),
+            // new LinearGradientPackage(),
             // new RNCViewPagerPackage(),
 // new LinearGradientPackage() // <---- and This!
 // );
@@ -59,6 +62,8 @@ public class MainApplication extends Application implements ReactApplication {
 //     new LinearGradientPackage() // <---- and This!
 //   );
 // }
+
+
       
 
   @Override
@@ -71,6 +76,8 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
+    sharedI18nUtilInstance.allowRTL(getApplicationContext(), false);
   }
 
   /**
