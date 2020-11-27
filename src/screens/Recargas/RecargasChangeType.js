@@ -322,6 +322,126 @@ const handelType =(RecargasActiveType,
            {renderPackage(activePackage,navigation,activeProvider)}
           
            {renderInputsPackage(InitialValesPackage,setInitialValesPackage,activeProvider,refRBSheet)}
+    <View>
+           <RBSheet
+    ref={refRBSheet}
+    closeOnDragDown={true}
+    closeOnPressMask={false}
+    height={500}
+    customStyles={{
+    wrapper: {
+      backgroundColor: "transparent",
+      borderRadius:50,
+      justifyContent:'center',
+      alignItems:'center',
+      flex:1
+    },
+    container:{
+      borderRadius:50,
+      justifyContent:'center',
+      // flex:1,
+      alignItems:'center'
+    
+    },
+    draggableIcon: {
+      backgroundColor: "#000"
+    }
+    }}
+    >
+    <ScrollView  showsHorizontalScrollIndicator={false}
+    >
+    <View style={{alignItems:'center',flex:1}}>
+    <Text  style={{fontWeight:'bold',fontSize:25}}>
+    Confirmar Compra
+    </Text>
+    <Text  >
+    Estas apunto de Recargar la Linea
+    </Text> 
+    {/* <Text style={{color:'rgb(235,6,42)'}}>
+    Todo Incluido 30 Dias 
+    
+    </Text> */}
+    
+    <View style={defaultStyle.container}>
+    <View 
+    style={defaultStyle.textTable}>
+    <Text>Operador:</Text>
+    </View>
+    <View style={defaultStyle.textTable1}>
+    <Text >{activeProvider.name}</Text>
+    </View>
+    </View>
+    <View style={defaultStyle.container}>
+    <View 
+    style={defaultStyle.textTable}>
+    <Text>Linea:</Text>
+    </View>
+    <View style={defaultStyle.textTable1}>
+    <Text >{initialValues.phone}</Text>
+    </View>
+    </View>
+    <View style={defaultStyle.container}>
+    <View 
+    style={defaultStyle.textTable}>
+    <Text>Valor:</Text>
+    </View>
+    <View style={defaultStyle.textTable1}>
+    <Text >{initialValues.amount}</Text>
+    </View>
+    </View>
+    
+    <Text  style={{fontWeight:'bold',fontSize:25, marginTop:10}}  >
+    Realizar compra desde:       
+    </Text>
+    <View style={{justifyContent:'space-around',flexDirection:'row'}}>
+
+    <Button 
+    style={index==0?defaultStyle.button1active :defaultStyle.button1}
+    onPress={()=>setindex(0)}
+    >
+    <Text style={index==0? styles.btnTextActive:styles.btnText}>Recargas</Text>
+    <Text style={index==0? styles.btnTextActive:styles.btnText}>{allBalance.SS}</Text>
+
+    </Button>
+      
+    <Button 
+    style={index==1?defaultStyle.button1active :defaultStyle.button1}
+    onPress={()=>setindex(1)}
+    >
+    <Text style={index==1? styles.btnTextActive:styles.btnText}>Mi Ahorro</Text>
+    <Text style={index==1? styles.btnTextActive:styles.btnText}>{allBalance.SP}</Text>
+
+    </Button>
+    <Button
+    onPress={()=>setindex(2)}
+    style={index==2 ? defaultStyle.button1active : defaultStyle.button1}>
+    <Text style={index==2? styles.btnTextActive:styles.btnText}>Mi Caja</Text>
+    <Text style={index==2? styles.btnTextActive:styles.btnText}>{allBalance.ST}</Text>
+
+    </Button>
+    </View>
+    <View style={{justifyContent:'space-around',flexDirection:'row'}}>
+    
+    <Button 
+    style={defaultStyle.accecptBtn}>
+    <Text  style={{color:'#ffff'}}>Aceptar</Text>
+    </Button>
+    </View>
+    <View style={{justifyContent:'space-around',flexDirection:'row'}}>
+    
+    <Button 
+    style={defaultStyle.cancelBtn}>
+    <Text  style={{color:'rgb(158,159,159)'}}>Cancel</Text>
+    </Button>
+    </View>
+    <View style={{marginTop:2}}>
+
+    </View>
+    </View>
+    </ScrollView>
+    </RBSheet>
+    
+    </View>
 
 
 

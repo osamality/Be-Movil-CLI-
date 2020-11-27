@@ -2,26 +2,26 @@ import React, { useState, useEffect } from 'react'
 import { View, StyleSheet,Text, TouchableOpacity ,Image, ScrollView, Dimensions,SafeAreaView } from 'react-native';
 
 import {productsDiscription} from '../staticData'
-import {get} from 'lodash'
+import {get, isEmpty} from 'lodash'
 import * as betCompaniesActions from '../../../store/actions/betCompanies';
 import { useDispatch } from 'react-redux';
 
+import {connect} from 'react-redux';
 
 
-const renderItems = ()=>{
+const renderItems = (ActiveType)=>{
   const dispatch = useDispatch();
 
     const [index,setIndex]=useState();
 
     const handelClick = async(index,data)=>{
-        console.log("here",data)
+        console.log("drop",data)
       setIndex(index)
-
      dispatch(betCompaniesActions.setActiveProvider(data))
 
     }
 
-  const data=get(productsDiscription,'bet_companies',[]);
+  const data=get(productsDiscription,ActiveType,[]);
   return data.map((d,v)=>{
       return(
         <View style={styles.outer} key={v}>
@@ -30,15 +30,14 @@ const renderItems = ()=>{
             </View>
           <TouchableOpacity 
           key={v} 
-          style={v==index?styles.ItemContentActive:styles.ItemContent}
-          // style={styles.ItemContent}
+          style={(v==index && !isEmpty(ActiveType)) ?styles.ItemContentActive:styles.ItemContent}
           onPress={()=>handelClick(v,d)}
           >
            
           
-            <Image  source={d.icon} style={v==index?styles.imgactive:styles.ima}/> 
+            <Image  source={d.icon} style={(v==index  && !isEmpty(ActiveType))?styles.imgactive:styles.ima}/> 
           </TouchableOpacity>
-            <View style={v==index?{marginTop:4}:{}}>
+            <View style={(v==index  && !isEmpty(ActiveType))?{marginTop:4}:{}}>
 
             </View>
           <Text style={styles.nameText}>{d.name}</Text>
@@ -49,7 +48,8 @@ const renderItems = ()=>{
    
 }
 
-const ProductType = ({ }) => {
+const ProductType = ({ ActiveType}) => {
+    
 
     return (
         <SafeAreaView style={styles.Contentcontainer}>
@@ -58,7 +58,7 @@ const ProductType = ({ }) => {
          horizontal={true}
          showsHorizontalScrollIndicator={false}
           >
-          {renderItems()}
+          {renderItems(ActiveType)}
         </ScrollView>
       </SafeAreaView>
         )
@@ -135,5 +135,10 @@ const styles = StyleSheet.create({
      
   
 })
+const mapStateToProps = ({betCompanies}) => ({
+    ActiveType : betCompanies.activeType
+   
+      
+  })
+  export default connect(mapStateToProps,null)(ProductType);
 
-export default ProductType

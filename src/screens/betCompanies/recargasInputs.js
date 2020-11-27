@@ -10,6 +10,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import arrowImage from '../../assets/Images/arrowBottm3.png';
 import notactiveImage from '../../assets/Images/notactive.png';
 import {isEmpty} from 'lodash';
+import * as BetCompanies from '../../store/actions/betCompanies';
+import { useDispatch } from 'react-redux';
 
 const activeImageInputs =(initialValues,activeProvider,type)=>{
 
@@ -18,44 +20,33 @@ const activeImageInputs =(initialValues,activeProvider,type)=>{
 
     }
     else{
-        if(type=="movil"){
-
-            if(initialValues.phone == '' || initialValues.amount == ''){
+       
+            if(initialValues.numeroDocumento == '' || initialValues.Monto == ''){
                 return <Image source={beImg}/>
-              }
+            }
               else {
                 return <Image source={beactiveImg}/> 
           
-              }
-        }
-        else {
-            if(initialValues.phone == '' || initialValues.amount == ''){
-                return <Image source={beImg}/>
-              }
-              else {
-                return <Image source={beactiveImg}/> 
-          
-              }
-
-        }
-
+            }
+    
     }
     
   }
 
 
-  const renderInputs = (initialValues,setInitialVales,activeProvider, refRBSheet)=>{
+  const renderInputs = (initialValues,activeProvider, refRBSheet)=>{
 
+    const dispatch=useDispatch()
 
     return(
       
     <Form style={{marginTop:1}}>
     <TextInput style={defaultStyle.InputText1Style}
       label="Numero de Documento*"
-      value={initialValues.phone}
+      value={initialValues.numeroDocumento}
       mode='outlined'
       keyboardType="numeric"
-      onChangeText={text => setInitialVales({...initialValues,phone:text})}
+      onChangeText={text => dispatch(BetCompanies.setIninalValues({...initialValues,"numeroDocumento":text}))}
       underlineColor='transparent'
       underlineColorAndroid={'rgba(0,0,0,0)'}
       text='white'
@@ -66,11 +57,11 @@ const activeImageInputs =(initialValues,activeProvider,type)=>{
 
       <TextInput
       label="Monto a Recargar *"
-      value={initialValues.amount}
+      value={initialValues.Monto}
       style={defaultStyle.InputText1Style}
       mode='outlined'
       keyboardType="numeric"
-      onChangeText={text => setInitialVales({...initialValues,amount:text})}
+      onChangeText={text =>  dispatch(BetCompanies.setIninalValues({...initialValues,"Monto":text}))}
       underlineColor='transparent'
       underlineColorAndroid={'rgba(0,0,0,0)'}
       text='white'
@@ -83,9 +74,9 @@ const activeImageInputs =(initialValues,activeProvider,type)=>{
    
    <View style={{justifyContent:'space-around',flexDirection:'row'}}>
     
-      <Button disabled={initialValues.phone!=='' && initialValues.amount!==''?false:true}
+      <Button disabled={initialValues.numeroDocumento!=='' && initialValues.Monto!==''?false:true}
       onPress={() => refRBSheet.current.open()}
-      style={initialValues.phone!=='' && initialValues.amount!=='' && activeProvider.name?defaultStyle.buttonactive:defaultStyle.btn}>
+      style={initialValues.numeroDocumento!=='' && initialValues.Monto!=='' && activeProvider.name?defaultStyle.buttonactive:defaultStyle.btn}>
          <Text  style={{color:'#ffff'}}>Recargas</Text>
          </Button>
     </View>
@@ -95,100 +86,28 @@ const activeImageInputs =(initialValues,activeProvider,type)=>{
   
 }
 
-const renderInputsPackage =(InitialValesPackage,setInitialValesPackage,activeProvider, refRBSheet)=>{
-    return(
-        <Form style={{marginTop:5}}>
-        <TextInput style={defaultStyle.InputText1Style}
-          label="Phone number"
-          value={InitialValesPackage.phone}
-          mode='outlined'
-          keyboardType="numeric"
-          onChangeText={text => setInitialValesPackage({...InitialValesPackage,phone:text})}
-          underlineColor='transparent'
-          underlineColorAndroid={'rgba(0,0,0,0)'}
-          text='white'
-          direction='rtl'
-          theme={{ colors: { primary: 'gray',underlineColor:'transparent',background : '#003489'}}}
-          editable={activeProvider.name?true:false}
-        />
-    
-       <View style={{justifyContent:'space-around',flexDirection:'row'}}>
-        
-          <Button disabled={InitialValesPackage.phone!==''?false:true}
-          onPress={() => refRBSheet.current.open()}
-          style={InitialValesPackage.phone!==''  && activeProvider.name?defaultStyle.buttonactive:defaultStyle.btn}>
-             <Text  style={{color:'#ffff'}}>Recargas</Text>
-             </Button>
-        </View>
-    
-    </Form>
-      )
-}
 
-const renderPackage = (activePackage,navigation,activeProvider) =>{
-
-  if(isEmpty(activePackage)){
-return(
-  <TouchableOpacity
-  style={activeProvider.name? styles.packages:styles.notactivePackages} 
-  onPress={()=>navigation.navigate('Package')}
-  disabled={activeProvider.name?false:true}
- >
-     <View style={styles.DownloadIcon}>
-         <Image source={arrowImage} style={styles.Image}/>
-     </View>
- <Text style={{color:'#ffff'}}>
- Selecciona tu Paquete
- </Text>
- <Icon name="chevron-down" size={15} color="#ffff" />
- </TouchableOpacity>
-)
-}
-  else{
-    return(
-      <View>
-        <Text>{activePackage.name}</Text>
-        <Text>{activePackage.price}</Text>
-        <Text>{activePackage.description}</Text>
-
-      </View>
-    )
-
-  }
-}
-
-
-const handelType =(RecargasActiveType, 
-    initialValues, 
-    setInitialVales,
-    activeProvider,
-    refRBSheet,
-    InitialValesPackage,
-    setInitialValesPackage,
-    navigation,
-    activePackage,
-    allBalance
-    )=>{
+const RecargasChange = ({initialValues,activeProvider,navigation,activePackage,allBalance}) =>  {
+    const refRBSheet = useRef();
     const [index,setindex]=useState(0)
 
-    if (RecargasActiveType=="Recargas"){
-        return (
-            <>
-        <View style={styles.paymentContent}>
-            {activeImageInputs(initialValues,activeProvider,"movil")}
+  return (
+      <>
+      <View style={styles.paymentContent}>
+            {activeImageInputs(initialValues,activeProvider,"bet_companies_Recargas")}
            <Text style={{...styles.paymentText,marginRight:4,fontWeight:'bold'}}>
            Información de tu Cuenta :    
             </Text>
         </View>
          <View style={{borderBottomWidth:1,borderBottomColor:'black',width:'90%', marginBottom:15,marginTop:10 }}>
          </View>
-         {renderInputs(initialValues,setInitialVales,activeProvider,refRBSheet)}
+         {renderInputs(initialValues,activeProvider,refRBSheet)}
          <View>
     <RBSheet
     ref={refRBSheet}
     closeOnDragDown={true}
     closeOnPressMask={false}
-    height={500}
+    height={450}
     customStyles={{
     wrapper: {
       backgroundColor: "transparent",
@@ -216,7 +135,7 @@ const handelType =(RecargasActiveType,
     Confirmar Compra
     </Text>
     <Text  >
-    Estas apunto de Recargar la Linea
+    Estas apunto de Recargar tu cuenta
     </Text> 
     {/* <Text style={{color:'rgb(235,6,42)'}}>
     Todo Incluido 30 Dias 
@@ -238,7 +157,7 @@ const handelType =(RecargasActiveType,
     <Text>Linea:</Text>
     </View>
     <View style={defaultStyle.textTable1}>
-    <Text >{initialValues.phone}</Text>
+    <Text >{initialValues.numeroDocumento}</Text>
     </View>
     </View>
     <View style={defaultStyle.container}>
@@ -247,7 +166,7 @@ const handelType =(RecargasActiveType,
     <Text>Valor:</Text>
     </View>
     <View style={defaultStyle.textTable1}>
-    <Text >{initialValues.amount}</Text>
+    <Text >{initialValues.Monto}</Text>
     </View>
     </View>
     
@@ -303,60 +222,6 @@ const handelType =(RecargasActiveType,
     </RBSheet>
     
     </View>
-
-       
-         </>
-        )
-    }
-    else {
-        return (
-           <>
-              <View style={styles.paymentContent}>
-            {activeImageInputs(initialValues,activeProvider,"package")}
-           <Text style={{...styles.paymentText,marginRight:4,fontWeight:'bold'}}>
-               Escoje tu Operador:   
-            </Text>
-           </View>
-           <View style={{borderBottomWidth:1,borderBottomColor:'black',width:'90%', marginBottom:15,marginTop:10 }}>
-           </View>
-           {renderPackage(activePackage,navigation,activeProvider)}
-          
-           {renderInputsPackage(InitialValesPackage,setInitialValesPackage,activeProvider,refRBSheet)}
-
-
-
-           </>
-            
-        )
-    }
-}
-const RecargasChange = ({RecargasActiveType,activeProvider,navigation,activePackage,allBalance}) =>  {
-    const refRBSheet = useRef();
-
-    const [initialValues,setInitialVales]=useState({
-        phone:'',
-        amount:''
-      })
-
-      const [initialValuesPackage,setInitialValesPackage]=useState({
-        phone:'',
-      })
-
-   
-  return (
-      <>
-     {handelType(RecargasActiveType,
-        initialValues,
-        setInitialVales,
-        activeProvider,
-        refRBSheet,
-        initialValuesPackage,
-        setInitialValesPackage,
-        navigation,
-        activePackage,
-        allBalance
-
-        )}
      </>
   );
 }
@@ -529,7 +394,7 @@ const mapStateToProps = ({balance,betCompanies,recargas}) => ({
     activeBalance:balance.activeBalance,
     allBalance :balance.balance,
     activeProvider : betCompanies.activeProvider,
-    RecargasActiveType : recargas.activeType,
+    initialValues : betCompanies.initialValues,
     activePackage :recargas.activePackage
       
   })

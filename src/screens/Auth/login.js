@@ -38,7 +38,6 @@ const SignIn = ({navigation}) =>  {
 
   
   const authHandler = async () => {
-    console.log("click")
     let action;
   
       action = authActions.login("ahmed","Ahmed2hamdi");

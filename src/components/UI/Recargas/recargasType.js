@@ -39,7 +39,6 @@ const renderText = ()=>{
     }
 
     return map(recargasType,(d,v)=>{
-        console.log(d,index)
         return (
             <TouchableOpacity  key={v} 
              style={index==v? styles.contentActive:styles.content}

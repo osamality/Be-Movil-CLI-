@@ -13,7 +13,14 @@ const renderText = ()=>{
 
 
     const setStatus = async(index,data)=>{
+        console.log(data)
        dispatch(BetCompanies.saveActiveRecargas(data.redux))
+       dispatch(BetCompanies.setActiveProvider({}))
+       dispatch(BetCompanies.setIninalValues({
+           "numeroDocumento":"",
+           "Monto":""
+       }))
+
         setIndex(index);
         // try{
         //     await dispatch(action)
@@ -24,7 +31,6 @@ const renderText = ()=>{
     }
 
     return map(betRenderType,(d,v)=>{
-        console.log(d,index)
         return (
             <TouchableOpacity  key={v} 
              style={index==v? styles.contentActive:styles.content}

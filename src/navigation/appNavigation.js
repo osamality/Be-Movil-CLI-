@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View, Image, StyleSheet } from 'react-native';
 
 import HomeScreen from '../screens/Home/homeScreen';
 import ProfileScreen from '../screens/Home/porfileScreen';
@@ -13,6 +14,16 @@ import RecargasScreen from '../screens/Recargas/Recargas';
 import BeCompanies from '../screens/betCompanies/Recargas'
 import HeaderComponent from '../screens/layout/headerHome';
 import Packages from '../screens/Recargas/Packages';
+import Digital from '../screens/Digital';
+import homeLogo from '../assets/Images/be3.png'
+import arrows from '../assets/Images/arrow.png'
+import repartos from '../assets/Images/repartos.png'
+import perfil from '../assets/Images/perfil.png'
+import clientes from '../assets/Images/clientes.png'
+
+
+
+
 import {connect} from 'react-redux'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,10 +38,10 @@ const AppNavigator= ({activeProvider})=> {
     <Stack.Screen 
     name="Home" 
     component={HomeTabs}
+    
     options={{
        headerTitle: props => <HeaderComponent  />,
-       headerTitleAlign:'center'
-    
+       headerTitleAlign:'center',
     }}
 
     />
@@ -64,6 +75,17 @@ const AppNavigator= ({activeProvider})=> {
           headerTintColor: '#fff',
    }}
     />
+
+   <Stack.Screen name="Digitales" component={Digital}
+     options={{
+       headerTitleAlign:'center',
+       title: 'Pines Digitales',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
   </Stack.Navigator>
   );
 }
@@ -75,21 +97,21 @@ const HomeTabs = ()=> {
         let iconName;
     
         if (route.name === 'Home') {
-          iconName = 'home';
-          showLabel=false
+          iconName = homeLogo;
+         
         }
         else if (route.name === 'Porfile') {
-          iconName ='user';
+          iconName =perfil;
         }
         else if (route.name === 'Clients') {
-          iconName ='users';
+          iconName =clientes;
         }
         else if (route.name === 'Transfers') {
-          iconName ='exchange-alt';
+          iconName =repartos;
         }
 
         else if (route.name === 'Reports') {
-          iconName ='chart-bar';
+          iconName =arrows;
         }
 
       
@@ -99,14 +121,15 @@ const HomeTabs = ()=> {
         // You can return any component that you like here!
         // return <Ionicons name="github" size={size} color={color}/>
 
-         return  <Icon name={iconName} size={15} color="black"/>
+         return  <Image source={iconName}  color="black"/>
         
       },
     })}
     initialRouteName ="Home"
     tabBarOptions={{
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
+     showLabel :false,
+     style:{height:55}
+     
 
     }}
     

@@ -10,6 +10,8 @@ import productReducer from './src/store/reducers/product';
 import balanceReducer from './src/store/reducers/balance';
 import recargasReducer from './src/store/reducers/recargas'
 import betCompanies from './src/store/reducers/betCompanies'
+import digitales from './src/store/reducers/digitales'
+
 
 import AppNavigator from './src/navigation'
 const rootReducer = combineReducers({
@@ -17,7 +19,8 @@ const rootReducer = combineReducers({
   product:productReducer,
   balance:balanceReducer,
   recargas:recargasReducer,
-  betCompanies:betCompanies
+  betCompanies:betCompanies,
+  digital : digitales
 
 });
 const middlewares = [logger, ReduxThunk];

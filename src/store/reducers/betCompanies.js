@@ -1,9 +1,12 @@
-import  {SET_BET_COMPANIES_RENDER_TYPE, SET_ACTIVE_PROVIDER_TO_BET_COMPOANIES} from '../actions/betCompanies'
+import  {SET_BET_COMPANIES_RENDER_TYPE, SET_ACTIVE_PROVIDER_TO_BET_COMPOANIES,SET_INIT_VALUES,CLEAN_CASHING} from '../actions/betCompanies'
 
 const initialState = {
-    activeType:'Recargas',
-    activePackage:{},
-    activeProvider:{}
+    activeType:'bet_companies_Recargas',
+    activeProvider:{},
+    initialValues :{
+        numeroDocumento :'',
+        Monto:''
+    }
  
 };
 
@@ -19,6 +22,18 @@ export default (state = initialState, action) => {
      return {
         ...state,
         activeProvider:action.payload
+    }
+    case SET_INIT_VALUES :{
+        return {
+            ...state,
+            initialValues : action.payload
+        }
+    }
+
+    case CLEAN_CASHING :{
+        return {
+            ...initialState
+        }
     }
      
       

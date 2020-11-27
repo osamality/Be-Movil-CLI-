@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet,Text, TouchableOpacity ,Image, FlatList, Dimensions,AsyncStorage } from 'react-native';
+import { View, StyleSheet,Text, TouchableOpacity ,Image, FlatList, Dimensions } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {productsData} from './staticData'
 import {singelProduct} from './staticData'
 import {productsDiscription} from './staticData'
@@ -22,7 +24,6 @@ const Products = ({navigation }) => {
             })
 
         .catch((err)=>{
-            console.log(err)
         })
         
   }
@@ -33,7 +34,6 @@ const Products = ({navigation }) => {
     
 
     const handelPress =()=>{
-        // console.log("heeeeee")
         const data =[{"product_id":1},{"product_id":20}];
         const test =get(productsDiscription,"Recargas",{})
         const result=[];
@@ -42,12 +42,10 @@ const Products = ({navigation }) => {
                 if(d.product_id==a.id){
                     result.push(a)
                 }
-                // console.log("out",d,v)
-                // console.log("inner",a,b)
+               
     
             })
         })
-        console.log(result)
     
     
     

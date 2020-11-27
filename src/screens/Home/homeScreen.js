@@ -7,7 +7,7 @@ import * as BalanceActions from '../../store/actions/balance';
 import * as RecargasActions from '../../store/actions/recargas'
 import axios from 'axios';
 import {SERVER_URL} from '../../config/config';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomTaps from '../../components/UI/globle/customTaps';
 import {connect} from 'react-redux';
 import PaymentType from '../../components/UI/paymentType';
@@ -61,7 +61,7 @@ fetchBalance();
 
         <View style={styles.paymentContent}>
           <Text style={styles.paymentText}>
-            Payment Methods
+          Métodos de Pago
           </Text>
         </View>
         <PaymentType/>
@@ -77,7 +77,7 @@ fetchBalance();
 
         {/* <View style={styles.productContent}> */}
           <Text style={styles.paymentText}>
-            Products
+          Multiproductos
           </Text>
         {/* </View> */}
         </LinearGradient>

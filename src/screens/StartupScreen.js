@@ -3,11 +3,12 @@ import {
   View,
   ActivityIndicator,
   StyleSheet,
-  AsyncStorage,
+  
   Image
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Colors from '../constants/Colors';
 import * as authActions from '../store/actions/auth';

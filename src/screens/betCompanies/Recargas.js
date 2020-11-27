@@ -8,7 +8,7 @@ import { StyleSheet,
   } from 'react-native';
 import { Container,Content,Form,Button } from 'native-base';
 import { useDispatch } from 'react-redux';
-import * as RecargasActions from '../../store/actions/recargas';
+import * as BitCompaniesActions from '../../store/actions/betCompanies';
 import * as ProductActions from '../../store/actions/product';
 
 import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
@@ -29,27 +29,25 @@ const BetCompanies = ({ activeProvider,navigation }) =>  {
 
   useEffect(() => {
 
-    const resetTypes = ()=>{
 
-      const action = RecargasActions.saveActiveRecargas('Recargas')
-      dispatch(action);
+    //   const action = RecargasActions.saveActiveRecargas('bet_companies_Recargas')
+    //   dispatch(action);
 
-    };
-    const resetProduct = ()=>{
-      const action = ProductActions.setActiveProvider({})
-      dispatch(action);
-    }
-    const resetPackage = () =>{
-      const action = RecargasActions.saveActivePackage({})
-      dispatch(action)
-    }
-    resetTypes();
-    resetProduct();
-    resetPackage();
+    // };
+    // const resetProduct = ()=>{
+    //   const action = ProductActions.setActiveProvider({})
+    //   dispatch(action);
+    // }
+ 
+    // resetTypes();
+    // resetProduct();
+    // resetPackage();
+    return  ()=> {
+       dispatch(BitCompaniesActions.clearCash())
+      }
   }, []);
 
   const activeImage =()=>{
-    console.log(activeProvider)
     if(!isEmpty(activeProvider)){
       return <Image source={beactiveImg}/> 
     }

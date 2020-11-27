@@ -26,6 +26,18 @@ import Aqui from "../../assets/Images/Aqui3.png"
 import Sportium from "../../assets/Images/Sportium3.png"
 import Jugada from "../../assets/Images/Jugada3.png"
 
+import Netflix from "../../assets/Images/Netflix3.png"
+import PlayStation from "../../assets/Images/PlayStation3.png"
+import Spotify from "../../assets/Images/Spotify3.png"
+import Xbox from "../../assets/Images/Xbox3.png"
+import Office from "../../assets/Images/Office3.png"
+import Minecraft from "../../assets/Images/Minecraft3.png"
+import IMVU from "../../assets/Images/IMVU3.png"
+import Rixty from "../../assets/Images/Rixty3.png"
+
+
+
+
 
 
 export const paymetData =[
@@ -72,8 +84,9 @@ export const productsData =[
 
     },
     {
-        name:"Hogar",
-        icon:img3
+        name:"Pines Digitales",
+        icon:img3,
+        route:"Digitales"
 
     },
     {
@@ -221,7 +234,7 @@ export const productsDiscription = {
         },
 
     ],
-    "bet_companies":[
+    "bet_companies_Recargas":[
         {
             name:'WPLAY',
             id:'26',
@@ -258,5 +271,60 @@ export const productsDiscription = {
             id:'46', 
             icon:Jugada,
         },
+    ],
+    "bet_companies_Pago_premio":[
+        {
+            name:'WPLAY',
+            id:'26',
+            icon:WPLAY,
+        },
+        {
+            name:'Ya Juego',
+            id:'47', //need update
+            icon:Ya,
+        },
+    ],
+    "Digitales":[
+        {
+            name:'Netflix',
+            id:'56', 
+            icon:Netflix,
+        },
+        {
+            name:'Play Station',
+            id:'39', 
+            icon:PlayStation,
+        },
+        {
+            name:'Spotify',
+            id:'41', 
+            icon:Spotify,
+        },
+        {
+            name:'Xbox',
+            id:'36', 
+            icon:Xbox,
+        },
+        {
+            name:'Office',
+            id:'38', 
+            icon:Office,
+        },
+        {
+            name:'Minecraft',
+            id:'40', 
+            icon:Minecraft,
+        },
+        {
+            name:'IMVU',
+            id:'37', 
+            icon:IMVU,
+        },
+        {
+            name:'Rixty',
+            id:'42', 
+            icon:Rixty,
+        },
+        
     ]
 }

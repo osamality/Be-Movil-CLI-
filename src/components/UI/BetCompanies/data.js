@@ -1,11 +1,11 @@
 export const betRenderType=[
     {
         name:'Recargas',
-        redux: 'Recargas'
+        redux: 'bet_companies_Recargas'
     },
     {
         name:'Pago premio',
-        redux:"Recargas_Packages"
+        redux:"bet_companies_Pago_premio"
 
     }
 ]

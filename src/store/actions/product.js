@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {SERVER_URL} from '../../config/config'
 import axios from 'axios'
 

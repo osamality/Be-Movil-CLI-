@@ -1,6 +1,7 @@
-import { AsyncStorage } from 'react-native';
+// import { AsyncStorage } from 'react-native';
 import {SERVER_URL} from '../../config/config'
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const SET_DID_TRY_AL = 'SET_DID_TRY_AL';
@@ -27,7 +28,6 @@ export const login = (username, password) => {
         password: "Ahmed2hamdi",
       }
     );
-    console.log("test",response)
 
     if (response.status==1) {
       throw new Error('Invalid Credentials');

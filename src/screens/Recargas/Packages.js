@@ -51,10 +51,8 @@ const Packages = ({activeProvider,navigation}) =>  {
 
     
 const dataType = get(packgesData,activeProvider.package,'')
-// console.log(dataType[0].items)
 
 const data = filter(dataType[0].items, (item) =>{ return item.type== type; })
-console.log(data)
  
   return (
       <View style={styles.container}>
