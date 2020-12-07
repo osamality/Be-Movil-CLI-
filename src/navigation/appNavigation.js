@@ -20,16 +20,16 @@ import arrows from '../assets/Images/arrow.png'
 import repartos from '../assets/Images/repartos.png'
 import perfil from '../assets/Images/perfil.png'
 import clientes from '../assets/Images/clientes.png'
-
-
-
-
+import BilleterasScreen from '../screens/Billeteras'
+import Certificados from '../screens/Certificados'
+import Internacional from '../screens/Internacional'
+import TvScreen from "../screens/tv"
 import {connect} from 'react-redux'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-const AppNavigator= ({activeProvider})=> {
+const AppNavigator= ({activeProvider, titleHeader})=> {
 
 
   return (
@@ -86,6 +86,48 @@ const AppNavigator= ({activeProvider})=> {
           headerTintColor: '#fff',
    }}
     />
+  <Stack.Screen name="Billeteras" component={BilleterasScreen}
+     options={{
+       headerTitleAlign:'center',
+       title: titleHeader,
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
+    <Stack.Screen name="Certificados" component={Certificados}
+     options={{
+       headerTitleAlign:'center',
+       title: "Certificados",
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
+    <Stack.Screen name="Internacional" component={Internacional}
+     options={{
+       headerTitleAlign:'center',
+       title: "Internacional",
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
+
+ <Stack.Screen name="Tv" component={TvScreen}
+     options={{
+       headerTitleAlign:'center',
+       title: "TV",
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
+    
   </Stack.Navigator>
   );
 }
@@ -143,8 +185,9 @@ const HomeTabs = ()=> {
   );
 }
 
-const mapStateToProps = ({product,}) => ({
+const mapStateToProps = ({product,billeteras}) => ({
   activeProvider : product.activeProvider,
+  titleHeader : billeteras.title
     
 })
 

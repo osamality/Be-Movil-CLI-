@@ -34,6 +34,8 @@ import Office from "../../assets/Images/Office3.png"
 import Minecraft from "../../assets/Images/Minecraft3.png"
 import IMVU from "../../assets/Images/IMVU3.png"
 import Rixty from "../../assets/Images/Rixty3.png"
+import snr from "../../assets/Images/snr3.png"
+import runt from "../../assets/Images/runt3.png"
 
 
 
@@ -90,8 +92,9 @@ export const productsData =[
 
     },
     {
-        name:"Seguros",
-        icon:img4
+        name:"Billeteras",
+        icon:img4,
+        route:"Billeteras"
 
     },
     {
@@ -104,17 +107,21 @@ export const productsData =[
 
     },
     {
-        name:"Nequi",
-        icon:img4
+        name:"Certificados",
+        icon:img4,
+        route : 'Certificados'
 
     },
     {
-        name:"Goovi",
-        icon:img5
+        name:"Internacional",
+        icon:img5,
+        route : 'Internacional'
 
-    },{
-        name:"SNR",
-        icon:img6
+    },
+    {
+        name:"Tv",
+        icon:img6,
+        route : 'Tv'
 
     },
     
@@ -326,5 +333,80 @@ export const productsDiscription = {
             icon:Rixty,
         },
         
+    ],
+    "Deposito":[
+        {
+            name:"Nequi",
+            id : '58',
+            icon:Rixty,
+        }
+    ],
+    "Retiros":[
+        {
+            name:"Nequi",
+            id : '59',
+            icon:Rixty,
+        }
+    ],
+    "certificados" : [
+        {
+            name :"Runt",
+            id : '00', //need to update
+            icon: runt,
+            title : "Certificado"
+        },
+        {
+            name :"SNR",
+            id : '35',
+            icon: snr,
+            title : "SOAT"
+        },
+
+    ],
+    "Venezuela":[
+        {
+            name : "Movilnet",
+            id :'66',
+            icon : snr //need to update
+        },
+        {
+            name : "Movistar",
+            id : '67',
+            icon : snr
+        },
+        {
+            name : "Movistar TV",
+            id : '70',
+            icon : snr
+        }
+    ],
+    "Ecuador": [
+        {
+            name : "Movilnet",
+            id :'66',
+            icon : snr //need to update
+        },
+        {
+            name : "Movistar",
+            id : '67',
+            icon : snr
+        },
+        {
+            name : "Movistar TV",
+            id : '70',
+            icon : snr
+        }
+    ],
+    "Directv" : [
+        {
+            name : "Directv",
+            id: "3",
+        
+        },
+        {
+            name : "Kit Directv",
+            id : "60",
+            
+        }
     ]
 }

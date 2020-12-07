@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet,Text, TouchableOpacity ,Image, ScrollView, Dimensions,SafeAreaView } from 'react-native';
-
 import {productsDiscription} from '../staticData'
 import {get, isEmpty} from 'lodash'
-import * as DigitalActions from '../../../store/actions/digitales';
+import * as TVActions from '../../../store/actions/Tv';
 import { useDispatch } from 'react-redux';
 
 import {connect} from 'react-redux';
 
 
-const renderItems = (ActiveType ,ActiveProvider)=>{
+const renderItems = (ActiveType , ActiveProvider)=>{
   const dispatch = useDispatch();
 
     const [index,setIndex]=useState();
@@ -17,7 +16,9 @@ const renderItems = (ActiveType ,ActiveProvider)=>{
     const handelClick = async(index,data)=>{
         console.log("drop",data)
       setIndex(index)
-     dispatch(DigitalActions.setActiveProvider(data))
+     dispatch(TVActions.setActiveProvider(data))
+     dispatch(TVActions.resetInintalValues())
+
 
     }
 
@@ -36,6 +37,8 @@ const renderItems = (ActiveType ,ActiveProvider)=>{
          
         
           <Image  source={d.icon} style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?styles.imgactive:styles.ima}/> 
+          {/* <View style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?styles.imgactive:styles.ima}>
+          </View> */}
         </TouchableOpacity>
           <View style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?{marginTop:4}:{}}>
 
@@ -104,7 +107,9 @@ const styles = StyleSheet.create({
     imgactive:{
       height:46,
       width:46,
-      borderRadius:46/2,
+      borderRadius:50/2,
+      backgroundColor :"rgb(219,219,219)",
+    //   padding : 20
     },
     test:{
       borderWidth:2,
@@ -116,8 +121,11 @@ const styles = StyleSheet.create({
 
     },
     ima:{
-      height:46,
-      width:46
+        height:46,
+        width:46,
+        borderRadius:50/2,
+        backgroundColor :"rgb(219,219,219)",
+        // padding : 20
 
     },
 
@@ -135,9 +143,9 @@ const styles = StyleSheet.create({
      
   
 })
-const mapStateToProps = ({digital}) => ({
-    ActiveType : digital.activeType,
-    ActiveProvider : digital.activeProvider
+const mapStateToProps = ({TvReducer}) => ({
+    ActiveType : TvReducer.activeType,
+    ActiveProvider : TvReducer.activeProvider
    
       
   })

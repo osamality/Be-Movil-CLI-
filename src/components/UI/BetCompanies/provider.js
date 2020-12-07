@@ -9,15 +9,18 @@ import { useDispatch } from 'react-redux';
 import {connect} from 'react-redux';
 
 
-const renderItems = (ActiveType)=>{
+const renderItems = (ActiveType, ActiveProvider)=>{
   const dispatch = useDispatch();
 
     const [index,setIndex]=useState();
 
     const handelClick = async(index,data)=>{
-        console.log("drop",data)
       setIndex(index)
      dispatch(betCompaniesActions.setActiveProvider(data))
+     dispatch(betCompaniesActions.setIninalValues({
+      "numeroDocumento":"",
+      "Monto":""
+  }))
 
     }
 
@@ -26,18 +29,18 @@ const renderItems = (ActiveType)=>{
       return(
         <View style={styles.outer} key={v}>
           {/* {v==index&& <Text style={{color:'red',width:10,height:2}}>{'\u2B24'}</Text>} */}
-          <View style={index==v&&styles.test}> 
+          <View style={index==v&&  !isEmpty(ActiveProvider) && styles.test}> 
             </View>
           <TouchableOpacity 
           key={v} 
-          style={(v==index && !isEmpty(ActiveType)) ?styles.ItemContentActive:styles.ItemContent}
+          style={(v==index && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))  ?styles.ItemContentActive:styles.ItemContent}
           onPress={()=>handelClick(v,d)}
           >
            
           
-            <Image  source={d.icon} style={(v==index  && !isEmpty(ActiveType))?styles.imgactive:styles.ima}/> 
+            <Image  source={d.icon} style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?styles.imgactive:styles.ima}/> 
           </TouchableOpacity>
-            <View style={(v==index  && !isEmpty(ActiveType))?{marginTop:4}:{}}>
+            <View style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?{marginTop:4}:{}}>
 
             </View>
           <Text style={styles.nameText}>{d.name}</Text>
@@ -48,7 +51,7 @@ const renderItems = (ActiveType)=>{
    
 }
 
-const ProductType = ({ ActiveType}) => {
+const ProductType = ({ ActiveType, ActiveProvider}) => {
     
 
     return (
@@ -58,7 +61,7 @@ const ProductType = ({ ActiveType}) => {
          horizontal={true}
          showsHorizontalScrollIndicator={false}
           >
-          {renderItems(ActiveType)}
+          {renderItems(ActiveType, ActiveProvider)}
         </ScrollView>
       </SafeAreaView>
         )
@@ -136,7 +139,8 @@ const styles = StyleSheet.create({
   
 })
 const mapStateToProps = ({betCompanies}) => ({
-    ActiveType : betCompanies.activeType
+    ActiveType : betCompanies.activeType,
+    ActiveProvider : betCompanies.activeProvider
    
       
   })

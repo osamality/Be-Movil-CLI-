@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { View, StyleSheet,Text, TouchableOpacity , } from 'react-native';
-import {betRenderType} from './data'
-import * as BetCompanies from '../../../store/actions/betCompanies';
+import {billeterasTypes} from './data'
+import * as BilleterasActions from '../../../store/actions/billeteras';
 import { useDispatch } from 'react-redux';
 import {connect} from 'react-redux';
 import {map} from 'lodash'
@@ -14,17 +14,20 @@ const renderText = ()=>{
 
     const setStatus = async(index,data)=>{
         console.log(data)
-       dispatch(BetCompanies.saveActiveRecargas(data.redux))
-       dispatch(BetCompanies.setActiveProvider({}))
-       dispatch(BetCompanies.setIninalValues({
-           "numeroDocumento":"",
-           "Monto":""
-       }))
+       dispatch(BilleterasActions.setActiveTab(data.redux))
+       dispatch(BilleterasActions.setActiveProvider({}))
+       dispatch(BilleterasActions.handleChangeTitle(data.title))
+       dispatch(BilleterasActions.resetInintalValues())
+
+    //    dispatch(BetCompanies.setIninalValues({
+    //        "numeroDocumento":"",
+    //        "Monto":""
+    //    }))
 
         setIndex(index);
     }
 
-    return map(betRenderType,(d,v)=>{
+    return map(billeterasTypes,(d,v)=>{
         return (
             <TouchableOpacity  key={v} 
              style={index==v? styles.contentActive:styles.content}

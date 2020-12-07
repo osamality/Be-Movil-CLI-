@@ -51,7 +51,7 @@ fetchBalance();
   }, []);
 
   return (
-    <Container >
+    <Container style={{backgroundColor : "rgb(252,254,255)"}} >
  
     <Content style={{flex:1}}>
    

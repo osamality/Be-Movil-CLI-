@@ -135,12 +135,13 @@ const styles = StyleSheet.create({
     },
     Text:{
         textAlign:'center',
-        width:50,
+        width:100,
         fontSize:11,
         marginTop:7,
         flex:1,
         flexWrap:'nowrap',
         color: 'black',
+        lineHeight:17
 
         
     }

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet,Text, TouchableOpacity ,Image, ScrollView, Dimensions,SafeAreaView } from 'react-native';
-
 import {productsDiscription} from '../staticData'
 import {get, isEmpty} from 'lodash'
-import * as DigitalActions from '../../../store/actions/digitales';
+import * as BilleterasActions from '../../../store/actions/billeteras';
 import { useDispatch } from 'react-redux';
 
 import {connect} from 'react-redux';
 
 
-const renderItems = (ActiveType ,ActiveProvider)=>{
+const renderItems = (ActiveType , ActiveProvider)=>{
   const dispatch = useDispatch();
 
     const [index,setIndex]=useState();
@@ -17,7 +16,9 @@ const renderItems = (ActiveType ,ActiveProvider)=>{
     const handelClick = async(index,data)=>{
         console.log("drop",data)
       setIndex(index)
-     dispatch(DigitalActions.setActiveProvider(data))
+     dispatch(BilleterasActions.setActiveProvider(data))
+     dispatch(BilleterasActions.resetInintalValues())
+
 
     }
 
@@ -135,9 +136,9 @@ const styles = StyleSheet.create({
      
   
 })
-const mapStateToProps = ({digital}) => ({
-    ActiveType : digital.activeType,
-    ActiveProvider : digital.activeProvider
+const mapStateToProps = ({billeteras}) => ({
+    ActiveType : billeteras.activeType,
+    ActiveProvider : billeteras.activeProvider
    
       
   })

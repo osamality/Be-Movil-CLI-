@@ -28,8 +28,11 @@ export const login = (username, password) => {
         password: "Ahmed2hamdi",
       }
     );
+    console.log(response)
 
     if (response.status==1) {
+      console.log(response,"res")
+
       throw new Error('Invalid Credentials');
     }
 

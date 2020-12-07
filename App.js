@@ -11,16 +11,22 @@ import balanceReducer from './src/store/reducers/balance';
 import recargasReducer from './src/store/reducers/recargas'
 import betCompanies from './src/store/reducers/betCompanies'
 import digitales from './src/store/reducers/digitales'
-
-
+import billeteras from './src/store/reducers/billeteras'
+import certificados from './src/store/reducers/certificados'
 import AppNavigator from './src/navigation'
+import Internacional from "./src/store/reducers/Internacional"
+import TvReducer from "./src/store/reducers/Tv"
 const rootReducer = combineReducers({
   auth:authReducer,
   product:productReducer,
   balance:balanceReducer,
   recargas:recargasReducer,
   betCompanies:betCompanies,
-  digital : digitales
+  digital : digitales,
+  billeteras : billeteras,
+  certificados : certificados,
+  Internacional : Internacional,
+  TvReducer : TvReducer
 
 });
 const middlewares = [logger, ReduxThunk];

@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet,Text, TouchableOpacity ,Image, ScrollView, Dimensions,SafeAreaView } from 'react-native';
-
 import {productsDiscription} from '../staticData'
 import {get, isEmpty} from 'lodash'
-import * as DigitalActions from '../../../store/actions/digitales';
+import * as InternacionalActions from '../../../store/actions/Internacional';
 import { useDispatch } from 'react-redux';
 
 import {connect} from 'react-redux';
 
 
-const renderItems = (ActiveType ,ActiveProvider)=>{
+const renderItems = (ActiveType, ActiveProvider)=>{
   const dispatch = useDispatch();
 
     const [index,setIndex]=useState();
 
     const handelClick = async(index,data)=>{
-        console.log("drop",data)
-      setIndex(index)
-     dispatch(DigitalActions.setActiveProvider(data))
+     setIndex(index)
+     dispatch(InternacionalActions.setActiveProvider(data))
+     dispatch(InternacionalActions.resetInintalValues())
+
 
     }
 
@@ -25,30 +25,30 @@ const renderItems = (ActiveType ,ActiveProvider)=>{
   return data.map((d,v)=>{
       return(
         <View style={styles.outer} key={v}>
-        {/* {v==index&& <Text style={{color:'red',width:10,height:2}}>{'\u2B24'}</Text>} */}
-        <View style={index==v&&  !isEmpty(ActiveProvider) && styles.test}> 
-          </View>
-        <TouchableOpacity 
-        key={v} 
-        style={(v==index && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))  ?styles.ItemContentActive:styles.ItemContent}
-        onPress={()=>handelClick(v,d)}
-        >
-         
-        
-          <Image  source={d.icon} style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?styles.imgactive:styles.ima}/> 
-        </TouchableOpacity>
-          <View style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?{marginTop:4}:{}}>
+          {/* {v==index&& <Text style={{color:'red',width:10,height:2}}>{'\u2B24'}</Text>} */}
+          <View style={index==v&&  !isEmpty(ActiveProvider) && styles.test}> 
+            </View>
+          <TouchableOpacity 
+          key={v} 
+          style={(v==index && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))  ?styles.ItemContentActive:styles.ItemContent}
+          onPress={()=>handelClick(v,d)}
+          >
+           
+          
+            <Image  source={d.icon} style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?styles.imgactive:styles.ima}/> 
+          </TouchableOpacity>
+            <View style={(v==index  && !isEmpty(ActiveType)  && !isEmpty(ActiveProvider))?{marginTop:4}:{}}>
 
+            </View>
+          <Text style={styles.nameText}>{d.name}</Text>
           </View>
-        <Text style={styles.nameText}>{d.name}</Text>
-        </View>
       )
 
   })
    
 }
 
-const ProductType = ({ ActiveType ,ActiveProvider}) => {
+const ProductType = ({ ActiveType , ActiveProvider}) => {
     
 
     return (
@@ -135,9 +135,9 @@ const styles = StyleSheet.create({
      
   
 })
-const mapStateToProps = ({digital}) => ({
-    ActiveType : digital.activeType,
-    ActiveProvider : digital.activeProvider
+const mapStateToProps = ({Internacional}) => ({
+    ActiveType : Internacional.activeType,
+    ActiveProvider : Internacional.activeProvider
    
       
   })

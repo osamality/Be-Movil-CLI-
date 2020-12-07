@@ -12,8 +12,8 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const MainNavigator = props => {
-  const isAuth = useSelector(state => !!state.auth.token);
-  const didTryAutoLogin = useSelector(state => state.auth.didTryAutoLogin);
+  const isAuth = useSelector(state => !!state.auth?.token);
+  const didTryAutoLogin = useSelector(state => state.auth?.didTryAutoLogin);
 
   return (
     <NavigationContainer>

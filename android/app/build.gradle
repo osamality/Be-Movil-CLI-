@@ -182,6 +182,7 @@ android {
 
 dependencies {
     implementation project(':react-native-linear-gradient')
+    implementation project(path: ':@react-native-picker_picker')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
