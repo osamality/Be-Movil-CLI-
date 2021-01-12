@@ -180,15 +180,9 @@ const RuntInputs = ({initialValues,activeBalance,allBalance,activeProvider}) => 
 const defaultStyle = StyleSheet.create({
     InputText1Style: {
         backgroundColor: '#fff',
-        // paddingBottom:20,
-        shadowColor: '#000',
-        shadowOpacity: 0.4,
-        elevation: 2,
-        // position: 'relative',
-        height:39,
+        height:50,
         width:375,
         marginBottom:20
-        // marginLeft:5
     },
     container: {
       flexDirection: 'row',

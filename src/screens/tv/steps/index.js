@@ -3,7 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import {connect} from 'react-redux';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import RenderFieldStep1 from "./firstStep"
-const StepsTv = ({activeStep}) =>  {
+import RenderFieldStep2 from "./secondStep"
+import RenderFieldStep3 from "./thirdStep"
+
+
+const StepsTv = ({activeStep,navigation}) =>  {
   return (
     <View style={{flex: 1, margin : 0}}>
     <ProgressSteps
@@ -26,15 +30,13 @@ const StepsTv = ({activeStep}) =>  {
                <RenderFieldStep1/>
             </View>
         </ProgressStep>
-        <ProgressStep label="Be Movil" >
+        <ProgressStep label="Be Movil" nextBtnStyle={{display : "none"}} previousBtnStyle={{display : "none"}} >
             <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 2!</Text>
+               <RenderFieldStep2/>
             </View>
         </ProgressStep>
         <ProgressStep label="Kit"  nextBtnStyle={{display : "none"}} previousBtnStyle={{display : "none"}}>
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 3!</Text>
-            </View>
+            <RenderFieldStep3 navigation={navigation}/>
         </ProgressStep>
     </ProgressSteps>
 </View>

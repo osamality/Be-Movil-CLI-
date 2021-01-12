@@ -8,21 +8,21 @@ import {
   ActivityIndicator,
   Alert,
   Image,
-  Button,
   TouchableWithoutFeedback,
   Keyboard  
 } from 'react-native';
 // import SegmentedControlTab from "react-native-segmented-control-tab";
 import { Formik } from 'formik';
 
-import { Container,Form, Content,Text} from 'native-base';
+import { Container,Form, Content,Text, Button} from 'native-base';
 import {TextInput} from 'react-native-paper'
+import { useNavigation } from "@react-navigation/native";
 
 import * as authActions from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import Colors from '../../constants/Colors';
-import Logo1 from '../../assets/Images/Group5216.png'
-import Logo2 from '../../assets/Images/Group5032.png'
+import Logo1 from '../../assets/Images/mainLogo.png'
+import Logo2 from '../../assets/Images/mainMaster.png'
 
 const ResetPass = props =>  {
   const [error, setError] = useState();
@@ -32,22 +32,9 @@ const ResetPass = props =>  {
 
   const dispatch = useDispatch();
 
-  
+  const Navigation =useNavigation()
   const authHandler = async () => {
-    let action;
-  
-      action = authActions.login("ahmed","Ahmed2hamdi");
-      setError(null);
-      setIsLoading(true);
-      
-  
-    try {
-      await dispatch(action);
-    }
-     catch (err) {
-      setError('Invalid Credentials')
-      setIsLoading(false);
-    }
+    Navigation.navigate("OTP")
   };
 
   useEffect(() => {
@@ -84,16 +71,17 @@ const ResetPass = props =>  {
           <Form style={{flex:1,justifyContent:'center',alignItems:'center'}}>
         <View style={styles.inputContainerText}>
           <Text style={{fontWeight:'bold'}}>
-            Olvidaste tu Contraseña
+          ¿ Olvidaste tu Contraseña ?
           </Text>
         </View>
         <View style={styles.inputContainerTextSecond}>
           <Text style={{alignSelf:'center',textAlign:'center'}}>
-          Enviaremos un Link a tu Correo Electrónico para restablecer tu Contraseña
+          Enviaremos un Link a tu Correo Electrónico
+           para restablecer tu Contraseña
           </Text>
         </View>
             <TextInput
-              label="Email"
+              label="Usuario"
               value=''
                style={defaultStyle.InputText1Style}
               mode='outlined'
@@ -107,16 +95,16 @@ const ResetPass = props =>  {
             />
            
     
-    <View style={styles.buttonContainer}>
+           <View style={styles.buttonContainer}>
        {isLoading ? (
-         <ActivityIndicator size="small" color={Colors.primary} />
+         <ActivityIndicator size="small" color='rgb(235,6,42)' />
        ) : (
          <Button
-           color='rgb(103 ,103 ,103)'
            style={styles.btn}
-           title= 'Solicitar Contraseña'
           onPress={authHandler}
-         />
+         >
+         <Text  style={{color:'#ffff'}}>Solicitar Contraseña</Text>
+         </Button>
        )}
 
       </View>
@@ -155,7 +143,7 @@ const styles = StyleSheet.create({
     
   },
   Logo1:{
-    marginBottom:10,
+    marginBottom:25,
   },
   Logo2:{
     marginBottom:10
@@ -167,11 +155,19 @@ const styles = StyleSheet.create({
     marginBottom:40
   },
   buttonContainer: {
-    backgroundColor:'red',
+  
     marginTop: 30,
-    width:'80%',
+    width:'90%',
     alignSelf: 'center',
-
+  },
+  btn:{
+    
+    backgroundColor:'rgb(44,209,158)',
+      borderRadius:5,
+      width: '100%',
+      justifyContent:'center',
+      alignItems:'center',
+      marginBottom:2
   },
 
  
@@ -197,11 +193,11 @@ const defaultStyle = StyleSheet.create({
   InputText1Style: {
       backgroundColor: '#fff',
       // paddingBottom:20,
-      shadowColor: '#000',
-      shadowOpacity: 0.4,
-      elevation: 2,
+      // shadowColor: '#000',
+      // shadowOpacity: 0.4,
+      // elevation: 2,
       // position: 'relative',
-      height:39,
+      height:50,
       width:345,
     //   marginBottom:20
       // marginLeft:5

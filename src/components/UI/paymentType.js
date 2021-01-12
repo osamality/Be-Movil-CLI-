@@ -7,9 +7,9 @@ const renderPayment = ()=>{
 
     return paymetData.map((d,v)=>{
         return (
-        <LinearGradient key={v} colors={['rgb(43,43,43)', 'rgb(85,85,85)']} >
+        <LinearGradient key={v} colors={['rgb(43,43,43)', 'rgb(85,85,85)']} style={styles.content}>
             
-         <TouchableOpacity style={styles.content} >
+         <TouchableOpacity style={{justifyContent:'center',alignItems:'center'}} >
             <Image    source={d.icon} style={styles.icon}/>           
             <Text  style={styles.Text}> {d.name} </Text>
         </TouchableOpacity >
@@ -38,26 +38,25 @@ const styles = StyleSheet.create({
         padding:5,
         marginTop:-1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        width: '100%'
     },
     content:{
         flexDirection:'column',
-        width:100,
-        // height:80,
+        height:80,
         margin:5,
         flex:1,
-        shadowColor: 'black',
-        shadowOpacity: 5.26,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 8,
-        elevation: 5,
+        shadowOffset: { width: 0, height: 0 },
+        shadowColor: 'grey',
+        shadowOpacity: 25,
+        elevation: 8,
         padding:15,
         borderRadius:10,
         // marginHorizontal:12,
         textAlign:'center',
         justifyContent:'center',
         alignItems:'center',
-        maxWidth: Dimensions.get('window').width / 5.4 - 10, // Width / 3 - (marginLeft and marginRight for the components)
+        maxWidth: Dimensions.get('window').width / 4.4 - 10, // Width / 3 - (marginLeft and marginRight for the components)
 
     },
     icon:{

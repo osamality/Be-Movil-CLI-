@@ -66,7 +66,7 @@ const Products = ({navigation }) => {
                       <Image    source={item.icon} style={styles.icon}/>           
                       <Text  style={styles.Text}> {item.name} </Text>
                     </View>
-              </TouchableOpacity > 
+              </TouchableOpacity> 
                  )}
             />
             </View>
@@ -108,12 +108,18 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent: 'center',
         alignItems:'center',    
-        shadowColor: 'black',
-        shadowOpacity: 5.26,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 8,
-        elevation: 5,
-        backgroundColor: 'white',
+        // shadowColor: 'black',
+        // shadowOpacity: 5.26,
+        // shadowOffset: { width: 0, height: 2 },
+        // shadowRadius: 8,
+        // elevation: 5,
+        // backgroundColor: 'white',
+        shadowOffset: { width: 0, height: 0 },
+        shadowColor: 'grey',
+        shadowOpacity: 1,
+        elevation: 8,
+        // background color must be set
+        backgroundColor : "rgb(255,255,255)" ,
         borderRadius:5,
         padding:20,        
         // maxWidth: Dimensions.get('window').width / 3 - 10, // Width / 3 - (marginLeft and marginRight for the components)

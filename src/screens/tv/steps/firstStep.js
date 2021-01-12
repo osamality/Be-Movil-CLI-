@@ -1,7 +1,7 @@
 import React,{useState,useRef} from 'react';
 import { StyleSheet, Text, View, Platform ,SafeAreaView} from 'react-native';
-import {Form } from 'native-base';
-import {TextInput,Button} from 'react-native-paper'
+import {Form,Button } from 'native-base';
+import {TextInput,} from 'react-native-paper'
 import RBSheet from "react-native-raw-bottom-sheet";
 import { useDispatch } from 'react-redux';
 import * as TvActions from '../../../store/actions/Tv';
@@ -13,12 +13,11 @@ import {Picker} from '@react-native-picker/picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import ModalSelector from 'react-native-modal-selector'
-import {  Menu, Divider, Provider } from 'react-native-paper';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import SelectField from "./select"
-const RuntInputs = ({initialValues,activeBalance,allBalance,activeProvider,firstStepData}) =>  {
+const RuntInputs = ({activeProvider,firstStepData}) =>  {
     const dispatch = useDispatch()
-    const refRBSheet = useRef()
-    const [index,setindex]=useState(0)
+    const refRBSheet = useRef(null)
 
     const validationSchema= Yup.object({
         Nombre: Yup.string().required("Campo Requerido"),
@@ -35,25 +34,15 @@ const RuntInputs = ({initialValues,activeBalance,allBalance,activeProvider,first
           dispatch(TvActions.setFirstStepData(values))
           
       }
-      const handleDisable = ()=>{
-         if(initialValues.Documento == ''){
-             return true
-         }
-         else {
-             return false
-         }
-      }
 
-      let indexx = 0;
-      const data = [
-          { key: indexx++, section: true, label: 'Fruits' },
-          { key: indexx++, label: 'Red Apples' },
-          { key: indexx++, label: 'Cherries' },
-          { key: indexx++, label: 'Cranberries', accessibilityLabel: 'Tap here for cranberries' },
-          // etc...
-          // Can also add additional custom keys which are passed to the onChange callback
-          { key: indexx++, label: 'Vegetable', customKey: 'Not a fruit' }
-      ];
+
+    const  hideMenu = () => {
+      refRBSheet.current.hide();
+      };
+     
+     const showMenu = () => {
+      refRBSheet.current.show();
+      };
 
      
 
@@ -113,45 +102,41 @@ const RuntInputs = ({initialValues,activeBalance,allBalance,activeProvider,first
 
              <View style={{flex:1,justifyContent:'center',alignItems:'center',flexDirection:'row', width:'100%',}}>
 
-             {/* <View  style={{width:'48%' ,height:53 }}>
-              <View  style={defaultStyle.select}>
-               <RNPickerSelect
-               placeholder={{}}
-               onBlur={handleBlur("Documento")}
-               onValueChange={(value) =>setFieldValue("Documento",value)}
-              items={[
-                { label: 'Football', value: 'football' },
-                { label: 'Baseball', value: 'baseball' },
-                { label: 'Hockey', value: 'hockey' },
-              ]}
-               value={values.Documento}
-        />
-        </View>
-            </View> */}
-             {/* <View  style={{width:'48%' ,height:53 }}> */}
           
-     
-   
-                 {/* <ModalSelector
-                    data={data}
-                    style={defaultStyle.InputText1Style}
-                    initValue="Select something yummy!"
-                    supportedOrientations={['portrait']}
-                    accessible={true}
-                    scrollViewAccessibilityLabel={'Scrollable options'}
-                    cancelButtonAccessibilityLabel={'Cancel Button'}
-                    onChange={(option)=>setFieldValue("Documento",option.label)}>
- 
-                    <TextInput
-                        style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
-                        editable={false}
-                        placeholder="Select something yummy!"
-                        value={values.Documento} />
- 
-                </ModalSelector> */}
-                {/* </View> */}
                 <View style={{width:'48%'}}>
-                <SelectField/>
+                <Menu
+          ref={refRBSheet}
+        //   button={<Text onPress={this.showMenu}>Show menu</Text>}
+        button = {
+            <TextInput  style={defaultStyle.InputText1Style}
+            label="Documento"
+            value={values.Documento}
+            mode='outlined'
+            // onChangeText={text => setFieldValue("Apellido",text)}
+            underlineColor='transparent'
+            underlineColorAndroid={'rgba(0,0,0,0)'}
+            text='white'
+            direction='rtl'
+            theme={{ colors: { primary: 'gray',underlineColor:'transparent',background : '#003489'}}}
+            editable={false}
+            onTouchStart = {showMenu}
+            
+            right={<TextInput.Icon
+            style={{marginTop:10}}
+            color="grey"
+            onPress = {showMenu}
+                name="chevron-down"
+            />}
+            // onPress={this.showMenu}
+            // onBlur={handleBlur("Apellido")}
+          //   style={{marginBottom:2}}
+          />
+        }
+        >
+          <MenuItem onPress={()=>{setFieldValue("Documento","cc"),hideMenu()}} filter="test">CC</MenuItem>
+          <MenuItem onPress={()=>{setFieldValue("Documento","Pasaporte"),hideMenu()}}>Pasaporte</MenuItem>
+          <MenuDivider />
+        </Menu>
                 </View>
             <View style={{width:'48%'}}>
             <TextInput style={defaultStyle.InputText1Style}
@@ -220,8 +205,9 @@ const RuntInputs = ({initialValues,activeBalance,allBalance,activeProvider,first
             </View>
 
         
-           
-           <View style={{justifyContent:'space-around',flexDirection:'row'}}>
+            <View style={{flex:1,justifyContent:'center',alignItems:'center',flexDirection:'row', width:'100%',}}>
+
+           <View style={{justifyContent:'space-around',flexDirection:'row',width:'96%'}}>
             
               <Button disabled={values.Nombre !== '' 
               &&values.Apellido !== '' 
@@ -239,6 +225,7 @@ const RuntInputs = ({initialValues,activeBalance,allBalance,activeProvider,first
               && values.Correo !== '' ?defaultStyle.buttonactive:defaultStyle.btn}>
                  <Text  style={{color:'#ffff'}}>Continue</Text>
                  </Button>
+            </View>
             </View>
         
         </Form>
@@ -267,11 +254,12 @@ const defaultStyle = StyleSheet.create({
     InputText1Style: {
         backgroundColor: '#fff',
         // paddingBottom:20,
-        shadowColor: '#000',
-        shadowOpacity: 0.4,
-        elevation: 2,
+        // shadowColor: '#000',
+        // shadowOpacity: 0.4,
+        // elevation: 2,
         // position: 'relative',
-        height:45,
+        
+        height:50,
         // width:"100%",
         marginHorizontal:10,
         marginBottom:15
@@ -286,17 +274,17 @@ const defaultStyle = StyleSheet.create({
     btn: {
       backgroundColor:'rgb(103 ,103 ,103)',
       borderRadius:5,
-      // width: '80%',
-      width:375,
+      width: '95%',
+      // width:375,
       justifyContent:'center',
       alignItems:'center',
       marginBottom:2
     },
     buttonactive:{
       backgroundColor:'red',
-      width:375,
+      // width:375,
       borderRadius:5,
-      // width: '80%',
+      width: '95%',
       justifyContent:'center',
       alignItems:'center',
       marginBottom:2

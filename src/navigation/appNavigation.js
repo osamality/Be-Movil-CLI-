@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, Platform } from 'react-native';
 
 import HomeScreen from '../screens/Home/homeScreen';
 import ProfileScreen from '../screens/Home/porfileScreen';
@@ -23,7 +23,10 @@ import clientes from '../assets/Images/clientes.png'
 import BilleterasScreen from '../screens/Billeteras'
 import Certificados from '../screens/Certificados'
 import Internacional from '../screens/Internacional'
+import Settings from "../screens/Home/setting"
 import TvScreen from "../screens/tv"
+import Facturas from "../screens/Facturas"
+import Pego from "../screens/Facturas/pego"
 import {connect} from 'react-redux'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,15 +43,28 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
     component={HomeTabs}
     
     options={{
-       headerTitle: props => <HeaderComponent  />,
+       headerTitle: props => <HeaderComponent/>,
        headerTitleAlign:'center',
     }}
 
     />
     <Stack.Screen name="Recargas" component={RecargasScreen}
      options={{
+      headerBackTitleVisible:false,
        headerTitleAlign:'center',
        title: 'Recargas Móviles',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+    />
+
+<Stack.Screen name="Setting" component={Settings}
+     options={{
+      headerBackTitleVisible:false,
+       headerTitleAlign:'center',
+       title: 'Settings',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
@@ -58,6 +74,8 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
     <Stack.Screen name="Package" component={Packages}
      options={{
        headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
        title: `Paquetes ${activeProvider.name}`,
           headerStyle: {
             backgroundColor: 'black',
@@ -68,6 +86,8 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
       <Stack.Screen name="Apuestas" component={BeCompanies}
      options={{
        headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
        title: 'Apuestas Deportivas',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
@@ -79,6 +99,8 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
    <Stack.Screen name="Digitales" component={Digital}
      options={{
        headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
        title: 'Pines Digitales',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
@@ -89,6 +111,8 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
   <Stack.Screen name="Billeteras" component={BilleterasScreen}
      options={{
        headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
        title: titleHeader,
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
@@ -99,6 +123,8 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
     <Stack.Screen name="Certificados" component={Certificados}
      options={{
        headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
        title: "Certificados",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
@@ -109,6 +135,8 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
     <Stack.Screen name="Internacional" component={Internacional}
      options={{
        headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
        title: "Internacional",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
@@ -120,6 +148,8 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
  <Stack.Screen name="Tv" component={TvScreen}
      options={{
        headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
        title: "TV",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
@@ -127,12 +157,41 @@ const AppNavigator= ({activeProvider, titleHeader})=> {
           headerTintColor: '#fff',
    }}
     />
+
+<Stack.Screen name="Facturas" component={Facturas}
+     options={{
+       headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
+       title: "Facturas",
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+/>
+
+<Stack.Screen name="pego" component={Pego}
+     options={{
+       headerTitleAlign:'center',
+       headerBackTitleVisible:false,
+
+       title: "Servicios Públicos",
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+   }}
+/>
+
     
   </Stack.Navigator>
   );
 }
 
 const HomeTabs = ()=> {
+  let spicalHieght 
+  Platform.OS == "ios" ? spicalHieght = 85 : spicalHieght = 60
   return (
     <Tab.Navigator  screenOptions={({ route,  }) => ({
       tabBarIcon: ({ focused, color, size }) => {
@@ -170,7 +229,7 @@ const HomeTabs = ()=> {
     initialRouteName ="Home"
     tabBarOptions={{
      showLabel :false,
-     style:{height:55}
+     style:{height:spicalHieght}
      
 
     }}

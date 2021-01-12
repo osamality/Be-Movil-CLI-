@@ -1,4 +1,4 @@
-import { AUTHENTICATE,SET_DID_TRY_AL } from '../actions/auth';
+import { AUTHENTICATE,SET_DID_TRY_AL ,REMOVE_TOKEN} from '../actions/auth';
 
 const initialState = {
   token: null,
@@ -19,6 +19,11 @@ export default (state = initialState, action) => {
           ...state,
           didTryAutoLogin: true
     };
+    case REMOVE_TOKEN :
+      return {
+        ...state,
+        token : null
+      }
     default:
       return state;
   }

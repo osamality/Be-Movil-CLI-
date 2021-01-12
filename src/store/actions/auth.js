@@ -2,9 +2,11 @@
 import {SERVER_URL} from '../../config/config'
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwt from "jwt-decode";
 
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const SET_DID_TRY_AL = 'SET_DID_TRY_AL';
+export const REMOVE_TOKEN = 'REMOVE_TOKEN'
 
 
 export const setDidTryAL = () => {
@@ -28,7 +30,8 @@ export const login = (username, password) => {
         password: "Ahmed2hamdi",
       }
     );
-    console.log(response)
+    // const user = jwt(response?.data?.token);
+    // console.log(user)
 
     if (response.status==1) {
       console.log(response,"res")
@@ -56,3 +59,9 @@ const saveDataToStorage = (token,pos) => {
     })
   );
 };
+
+export const removeToken = ()=> dispatch=>{
+ dispatch({
+   type : REMOVE_TOKEN
+ })
+}

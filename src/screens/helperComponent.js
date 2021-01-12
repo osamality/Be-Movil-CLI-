@@ -18,10 +18,9 @@ const HelperComponent = props => {
 
   useEffect(() => {
     const tryLogin = async () => {
-      await AsyncStorage.clear()
+      // await AsyncStorage.clear()
       const userData = await AsyncStorage.getItem('token');
       if (!userData) {
-        // props.navigation.navigate('Auth');
         dispatch(authActions.setDidTryAL());
         return;
       }

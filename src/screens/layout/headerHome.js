@@ -1,16 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button,Image } from 'react-native';
+import { StyleSheet, Text, View, Button,Image,TouchableOpacity } from 'react-native';
 import { Container, Header, Left, Body, Right, Title } from 'native-base';
 import Logo1 from '../../assets/Images/Group5134.png'
+import menu from '../../assets/Images/menu.png'
+import homebe from '../../assets/Images/homebe.png'
+import { useNavigation } from "@react-navigation/native";
 
-const HeaderComponent = props =>  {
+        // props.navigation.navigate('Auth');
+
+
+
+const HeaderComponent = ({}) =>  {
+  const navigation =useNavigation()
   return (
     
-      // <View style={{flex:1}} >
-      <Image  style={styles.Logo1}
-              source={Logo1}
-            />
-      // </View>
+      <View style={{flex:1,justifyContent:'space-around',
+      width:'100%',
+      alignItems:'center',flexDirection:'row',}} >
+     <TouchableOpacity onPress={()=>navigation.navigate("Setting")}> 
+       <Image  source={homebe}/>
+       </TouchableOpacity>
+      <Image  style={styles.Logo1} source={Logo1}/>
+      <TouchableOpacity onPress={()=>navigation.navigate("Setting")}>
+        <Image  style={styles.Logo1} source={menu}/>
+        </TouchableOpacity>
+
+
+            
+       </View>
      
   );
 }

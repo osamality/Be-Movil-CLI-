@@ -4,10 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.viewpager.RNCViewPagerPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -52,6 +53,8 @@ public class MainApplication extends Application implements ReactApplication {
 // protected List getPackages() {
 // return Arrays.asList(
 // new MainReactPackage(),
+            new VectorIconsPackage(),
+            // new VectorIconsPackage(),
             // new AsyncStoragePackage(),
             // new LinearGradientPackage(),
             // new RNCViewPagerPackage(),

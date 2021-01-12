@@ -8,21 +8,20 @@ import {
   ActivityIndicator,
   Alert,
   Image,
-  Button,
   TouchableWithoutFeedback,
   Keyboard  
 } from 'react-native';
 // import SegmentedControlTab from "react-native-segmented-control-tab";
 import { Formik } from 'formik';
 
-import { Container,Form, Content,Text} from 'native-base';
+import { Container,Form, Content,Text, Button} from 'native-base';
 import {TextInput} from 'react-native-paper'
 
 import * as authActions from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import Colors from '../../constants/Colors';
-import Logo1 from '../../assets/Images/Group5216.png'
-import Logo2 from '../../assets/Images/Group5032.png'
+import Logo1 from '../../assets/Images/mainLogo.png'
+import Logo2 from '../../assets/Images/mainMaster.png'
 
 const SignIn = ({navigation}) =>  {
   const [error, setError] = useState();
@@ -98,7 +97,7 @@ const SignIn = ({navigation}) =>  {
         {/* <ScrollView> */}
           <Form>
             <TextInput
-              label="Email"
+              label="Usuario"
               value={initialValues.email}
                style={defaultStyle.InputText1Style}
               mode='outlined'
@@ -113,7 +112,7 @@ const SignIn = ({navigation}) =>  {
             />
            
             <TextInput style={defaultStyle.InputText1Style}
-              label="Password"
+              label="Contraseña"
               value={initialValues.password}
               mode='outlined'
               secureTextEntry={true}
@@ -133,14 +132,14 @@ const SignIn = ({navigation}) =>  {
         </View>
     <View style={styles.buttonContainer}>
        {isLoading ? (
-         <ActivityIndicator size="small" color={Colors.primary} />
+         <ActivityIndicator size="small" color='rgb(235,6,42)' />
        ) : (
          <Button
-           color='rgb(103 ,103 ,103)'
            style={styles.btn}
-           title= 'Login'
           onPress={authHandler}
-         />
+         >
+         <Text  style={{color:'#ffff'}}>Iniciar Sesión</Text>
+         </Button>
        )}
 
       </View>
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     
   },
   Logo1:{
-    marginBottom:10,
+    marginBottom:25,
   },
   Logo2:{
     marginBottom:20
@@ -194,31 +193,19 @@ const styles = StyleSheet.create({
     marginBottom:40
   },
   buttonContainer: {
-    // justifyContent:'center',
-    // alignItems:'center',
-    // flex:1,
-    backgroundColor:'red',
+  
     marginTop: 30,
-    width:'80%',
+    width:'100%',
     alignSelf: 'center',
-
-    // marginBottom:30,
-    // width:300,
-    // marginLeft:5
-    // flexDirection:'row',
-    // justifyContent:'center',
-    // alignItems:'center',
- 
-
   },
   btn:{
     
-    // width:300,
-    // justifyContent:'center',
-    // alignItems:'center',
-    // paddingHorizontal:30
-    // color:'rgb(103 ,103 ,103)',
-    // marginTop:20
+    backgroundColor:'rgb(235,6,42)',
+      borderRadius:5,
+      width: '100%',
+      justifyContent:'center',
+      alignItems:'center',
+      marginBottom:2
   },
  
   inputContainerText:{
@@ -236,15 +223,9 @@ const styles = StyleSheet.create({
 const defaultStyle = StyleSheet.create({
   InputText1Style: {
       backgroundColor: '#fff',
-      // paddingBottom:20,
-      shadowColor: '#000',
-      shadowOpacity: 0.4,
-      elevation: 2,
-      // position: 'relative',
-      height:39,
+      height:50,
       width:345,
       marginBottom:20
-      // marginLeft:5
   }
 })
 

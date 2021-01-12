@@ -16,6 +16,7 @@ import certificados from './src/store/reducers/certificados'
 import AppNavigator from './src/navigation'
 import Internacional from "./src/store/reducers/Internacional"
 import TvReducer from "./src/store/reducers/Tv"
+import Facturas from "./src/store/reducers/Facturas"
 const rootReducer = combineReducers({
   auth:authReducer,
   product:productReducer,
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   billeteras : billeteras,
   certificados : certificados,
   Internacional : Internacional,
-  TvReducer : TvReducer
+  TvReducer : TvReducer,
+  Facturas : Facturas
 
 });
 const middlewares = [logger, ReduxThunk];

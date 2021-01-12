@@ -28,7 +28,7 @@ const activeImageInputs =(initialValues,activeProvider, activeType)=>{
   }
 
 
-const InputsTv = ({activeProvider,initialValues,activeType,allBalance}) =>  {
+const InputsTv = ({activeProvider,initialValues,activeType,allBalance, navigation}) =>  {
   
         return (
             <>
@@ -40,7 +40,7 @@ const InputsTv = ({activeProvider,initialValues,activeType,allBalance}) =>  {
               </View>
                <View style={activeProvider.name == "Kit Directv" ? styles.borderText : { ...styles.borderText, marginBottom:20}}  >
                </View>
-              {activeProvider?.name == "Kit Directv" ? <Steps/>
+              {activeProvider?.name == "Kit Directv" ? <Steps navigation={navigation}/>
               :<InputFields/>}
            
           

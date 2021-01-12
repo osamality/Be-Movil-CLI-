@@ -20,6 +20,7 @@ const RenderItems =({setType})=>{
 
     return packgesTaps.map((d,v)=>{
         return (
+          
             <TouchableOpacity key={v}
              style={index==v?styles.tapactive:styles.tap}
              onPress={()=>handelPress(v,d)}
@@ -62,7 +63,9 @@ const data = filter(dataType[0].items, (item) =>{ return item.type== type; })
          horizontal={true}
          showsHorizontalScrollIndicator={false}
           >
+            <View style={{marginTop:20,flexDirection:'row'}}>
             <RenderItems setType={setType}/>
+            </View>
           {/* {renderItems(setType)} */}
         </ScrollView>
       </SafeAreaView>
@@ -169,7 +172,7 @@ const styles = StyleSheet.create({
       flex:1,
       borderWidth:1,
       borderColor:'#ffff',
-      height:30,
+      height:40,
       padding:10,
       marginHorizontal:5,
       borderRadius:5,
@@ -180,7 +183,7 @@ const styles = StyleSheet.create({
     flex:1,
     borderWidth:1,
     borderColor:'#ffff',
-    height:30,
+    height:40,
     padding:10,
     marginHorizontal:5,
     borderRadius:5,

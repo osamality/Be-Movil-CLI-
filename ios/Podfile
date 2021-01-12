@@ -8,13 +8,10 @@ target 'AwesomeProject' do
 
   use_react_native!(:path => config["reactNativePath"])
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
-  pod 'react-native-viewpager', :path => '../node_modules/@react-native-community/viewpager'
 
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
 
   target 'AwesomeProjectTests' do
     inherit! :complete

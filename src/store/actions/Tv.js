@@ -4,6 +4,8 @@ export const SET_INIT_VALUES_TV = "SET_INIT_VALUES_TV";
 export const SET_ACTIVE_TYPE_TV = "SET_ACTIVE_TYPE_TV";
 export const SET_ACTIVE_STEP_TV = "SET_ACTIVE_STEP_TV"
 export const SET_FIRST_STEP_DATA_TV ="SET_FIRST_STEP_DATA_TV"
+export const SET_SECOND_STEP_DATA_TV ="SET_SECOND_STEP_DATA_TV"
+export const SET_THIRD_STEP_DATA_TV ="SET_THIRD_STEP_DATA_TV"
 
 export const clearCash = ()=>dispatch=>{
     dispatch({
@@ -54,3 +56,18 @@ export const setFirstStepData = (data)=>dispatch=>{
         payload : data
     })
 }
+
+export const setSecondStepDataTv = (data)=>dispatch=>{
+    dispatch({
+        type : SET_SECOND_STEP_DATA_TV,
+        payload : data
+    })
+}
+
+export const setThirdStepDataTv = (data) => dispatch=>{
+    dispatch({
+        type :SET_THIRD_STEP_DATA_TV,
+        payload : data
+    })
+}
+

@@ -93,11 +93,11 @@ const defaultStyle = StyleSheet.create({
     InputText1Style: {
         backgroundColor: '#fff',
         // paddingBottom:20,
-        shadowColor: '#000',
-        shadowOpacity: 0.4,
-        elevation: 2,
+        // shadowColor: '#000',
+        // shadowOpacity: 0.4,
+        // elevation: 2,
         // position: 'relative',
-        height:45,
+        height:50,
         // width:"100%",
         marginHorizontal:10,
         marginBottom:15

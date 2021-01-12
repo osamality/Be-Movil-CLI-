@@ -2,13 +2,26 @@ import icon1 from '../../assets/Images/Group5155.png'
 import icon2 from '../../assets/Images/Iconmetro-credit-card.png'
 import icon3 from '../../assets/Images/Iconmetro-qrcode.png'
 import icon4 from '../../assets/Images/Iconawesome-bitcoin.png'
-import img1 from '../../assets/Images/004-mobile-shopping.png'
-import img2 from '../../assets/Images/001-money.png'
+import img1 from '../../assets/Images/recargas.png'
+import img2 from '../../assets/Images/bit.png'
 
-import img3 from '../../assets/Images/003-mortgage.png'
-import img4 from '../../assets/Images/002-insurance.png'
-import img5 from '../../assets/Images/006-online-game-1.png'
-import img6 from '../../assets/Images/meter.png'
+import img3 from '../../assets/Images/dig.png'
+import img4 from '../../assets/Images/bill.png'
+import img5 from '../../assets/Images/fac.png'
+import img6 from '../../assets/Images/sec.png'
+import img7 from '../../assets/Images/cre.png'
+import img8 from '../../assets/Images/intr.png'
+import img9 from '../../assets/Images/tv.png'
+import img10 from '../../assets/Images/tra.png'
+import essa from '../../assets/Images/essa3.png'
+import epm from '../../assets/Images/epm3.png'
+import pego from '../../assets/Images/pego.png'
+
+
+
+
+
+
 
 import claroIcon from '../../assets/Images/claro3.png';
 import avetalIcon from '../../assets/Images/avetal3.png'
@@ -98,32 +111,40 @@ export const productsData =[
 
     },
     {
-        name:"Pines Digitales",
-        icon:img5
+        name:"Facturas",
+        icon:img5,
+        route : "Facturas"
 
-    },{
-        name:"Contador",
+    },
+    {
+        name:"Seguros",
         icon:img6
 
     },
     {
         name:"Certificados",
-        icon:img4,
+        icon:img7,
         route : 'Certificados'
 
     },
     {
         name:"Internacional",
-        icon:img5,
+        icon:img8,
         route : 'Internacional'
 
     },
     {
         name:"Tv",
-        icon:img6,
+        icon:img9,
         route : 'Tv'
 
     },
+    // {
+    //     name:"Tv",
+    //     icon:img10,
+    //     route : 'Transporte'
+
+    // },
     
 ]
 
@@ -407,6 +428,23 @@ export const productsDiscription = {
             name : "Kit Directv",
             id : "60",
             
+        }
+    ],
+    "Facturas": [ 
+        {
+            name : "EPM",
+            icon : epm,
+            id:"43"
+        },
+        {
+            name : "ESSA",
+            icon : essa,
+            id:"62"
+        },
+        {
+            name:"Pago de Facturas",
+            icon : pego,
+            id:"" //need update
         }
     ]
 }

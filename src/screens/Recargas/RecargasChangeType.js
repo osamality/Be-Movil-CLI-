@@ -146,12 +146,25 @@ return(
 }
   else{
     return(
-      <View>
-        <Text>{activePackage.name}</Text>
-        <Text>{activePackage.price}</Text>
-        <Text>{activePackage.description}</Text>
+      <TouchableOpacity
+      style={ styles.packagesDone} 
+      onPress={()=>navigation.navigate('Package')}
+     >
+         {/* <View style={styles.DownloadIcon}>
+             <Image source={arrowImage} style={styles.Image}/>
+         </View> */}
+         <View style={{marginHorizontal:5}}>
+           <Text style={{color:'rgb(235,6,42)',fontSize:14, fontWeight:'bold',marginVertical:2}}>{activePackage.name}</Text>
+         <Text style={{textAlign:'left',fontWeight:'bold',fontSize:12,marginVertical:2}}>{activePackage.price} COP</Text>
+        <Text style={{textAlign:'left',fontSize:10,marginVertical:2}}>{activePackage.description}</Text>
+         </View>
+   
+     <Icon name="chevron-down" size={15} color="black" />
+     </TouchableOpacity>
+      // <View>
+  
 
-      </View>
+      // </View>
     )
 
   }
@@ -513,6 +526,26 @@ const styles = StyleSheet.create({
       backgroundColor:'black'
     //   marginTop:20
   },
+  packagesDone:{
+    flexDirection:'row',
+    width:'90%',
+    justifyContent:'space-between',
+    alignItems:'center',
+    borderWidth:2,
+    padding:10,
+
+    //   height:53,
+      shadowOffset: { width: 0, height: 0 },
+      shadowColor: 'grey',
+      shadowOpacity: 25,
+      elevation: 8,
+      borderRadius:8,
+        backgroundColor : "rgb(255,255,255)" ,
+        // borderRadius:10,
+        borderColor:'#ffff'    ,
+        textAlign:'center'  
+  //   marginTop:20
+},
   notactivePackages:{
     flexDirection:'row',
     width:'90%',
@@ -545,18 +578,18 @@ const styles = StyleSheet.create({
 });
 
 const defaultStyle = StyleSheet.create({
-    InputText1Style: {
-        backgroundColor: '#fff',
-        // paddingBottom:20,
-        shadowColor: '#000',
-        shadowOpacity: 0.4,
-        elevation: 2,
-        // position: 'relative',
-        height:39,
-        width:375,
-        marginBottom:20
-        // marginLeft:5
-    },
+  InputText1Style: {
+    backgroundColor: '#fff',
+    // paddingBottom:20,
+    // shadowColor: '#000',
+    // shadowOpacity: 0.4,
+    // elevation: 2,
+    // position: 'relative',
+    height:50,
+    width:375,
+    marginBottom:20
+    // marginLeft:5
+},
     container: {
       flexDirection: 'row',
       justifyContent: 'space-around',
