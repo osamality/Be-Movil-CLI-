@@ -53,7 +53,7 @@ public class MainApplication extends Application implements ReactApplication {
 // protected List getPackages() {
 // return Arrays.asList(
 // new MainReactPackage(),
-            new VectorIconsPackage(),
+            // new VectorIconsPackage(),
             // new VectorIconsPackage(),
             // new AsyncStoragePackage(),
             // new LinearGradientPackage(),

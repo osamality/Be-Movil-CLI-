@@ -215,13 +215,6 @@ const HomeTabs = ()=> {
           iconName =arrows;
         }
 
-      
-
-        
-    
-        // You can return any component that you like here!
-        // return <Ionicons name="github" size={size} color={color}/>
-
          return  <Image source={iconName}  color="black"/>
         
       },

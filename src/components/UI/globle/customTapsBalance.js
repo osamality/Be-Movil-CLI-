@@ -65,15 +65,18 @@ const CustomTapsBalance = ({activeBalance, balance})=>{
     const [second,setSecond] =useState(0)
 
     useEffect(()=> {
-     
-        if(second !== 100 || second == 0){
-            const interval = setInterval(() => {
-                setSecond(second => second + 1);
-              }, 100);
-            return () => {clearInterval(interval) ;
-          }
-      
-        } 
+     console.log(activeBalance)
+     if(activeBalance){
+
+         if(second !== activeBalance || second == 0){
+             const interval = setInterval(() => {
+                 setSecond(second => second + 1000);
+               }, 1);
+             return () => {clearInterval(interval) ;
+           }
+       
+         } 
+     }
       },[second,activeBalance]);
        
       const   setSelect = (value)=>{
