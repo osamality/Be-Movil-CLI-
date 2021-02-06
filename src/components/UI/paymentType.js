@@ -1,19 +1,19 @@
 import React from 'react'
-import { View, StyleSheet,Text, TouchableOpacity ,Image, Dimensions } from 'react-native';
-import {paymetData} from './staticData'
+import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { paymetData } from './staticData'
 import LinearGradient from 'react-native-linear-gradient';
 
-const renderPayment = ()=>{
+const renderPayment = () => {
 
-    return paymetData.map((d,v)=>{
+    return paymetData.map((d, v) => {
         return (
-        <LinearGradient key={v} colors={['rgb(43,43,43)', 'rgb(85,85,85)']} style={styles.content}>
-            
-         <TouchableOpacity style={{justifyContent:'center',alignItems:'center'}} >
-            <Image    source={d.icon} style={styles.icon}/>           
-            <Text  style={styles.Text}> {d.name} </Text>
-        </TouchableOpacity >
-        </LinearGradient>
+            <LinearGradient key={v} colors={['rgb(35,45,60)', 'rgb(57,72,93)']} style={styles.content}>
+
+                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} >
+                    <Image source={d.icon} style={styles.icon} />
+                    <Text style={styles.Text}> {d.name} </Text>
+                </TouchableOpacity >
+            </LinearGradient>
 
         )
     })
@@ -22,7 +22,7 @@ const renderPayment = ()=>{
 const PaymentType = () => {
     return (
         // <View style={styles.Contentcontainer}>
-        <LinearGradient colors={['rgb(43,43,43)', 'rgb(85,85,85)']} style={styles.Contentcontainer}>
+        <LinearGradient colors={['rgb(57,72,93)', 'rgb(35,45,60)']} style={styles.Contentcontainer}>
             {renderPayment()}
         </LinearGradient>
         //  </View>
@@ -30,50 +30,51 @@ const PaymentType = () => {
 }
 
 const styles = StyleSheet.create({
-   
-    Contentcontainer:{
-        flexDirection:'row',
-        flex:1,
-        width:'100%',
-        padding:5,
-        marginTop:-1,
-        justifyContent:'center',
-        alignItems:'center',
+
+    Contentcontainer: {
+        flexDirection: 'row',
+        flex: 1,
+        width: '100%',
+        padding: 5,
+        marginTop: -1,
+        justifyContent: 'center',
+        alignItems: 'center',
         width: '100%'
     },
-    content:{
-        flexDirection:'column',
-        height:80,
-        margin:5,
-        flex:1,
+    content: {
+        flexDirection: 'column',
+        height: 80,
+        margin: 5,
+        flex: 1,
         shadowOffset: { width: 0, height: 0 },
         shadowColor: 'grey',
         shadowOpacity: 25,
         elevation: 8,
-        padding:15,
-        borderRadius:10,
+        padding: 15,
+        borderRadius: 10,
         // marginHorizontal:12,
-        textAlign:'center',
-        justifyContent:'center',
-        alignItems:'center',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
         maxWidth: Dimensions.get('window').width / 4.4 - 10, // Width / 3 - (marginLeft and marginRight for the components)
 
     },
-    icon:{
-       marginTop:10
-
+    icon: {
+        marginTop: 8,
+        height: 18,
+        width: 20
     },
-    Text:{
-        textAlign:'center',
-        width:50,
-        fontSize:11,
-        marginTop:7,
-        flex:1,
-        flexWrap:'nowrap',
+    Text: {
+        textAlign: 'center',
+        width: 50,
+        fontSize: 13,
+        marginTop: 8,
+        flex: 1,
+        flexWrap: 'nowrap',
         color: '#ffff',
-        
 
-        
+
+
     }
 
 })

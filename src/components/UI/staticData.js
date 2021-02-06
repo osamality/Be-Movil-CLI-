@@ -1,10 +1,17 @@
 import icon1 from '../../assets/Images/Group5155.png'
 import icon2 from '../../assets/Images/Iconmetro-credit-card.png'
+import icon5 from '../../assets/Images/subtraction3.png'
 import icon3 from '../../assets/Images/Iconmetro-qrcode.png'
 import icon4 from '../../assets/Images/Iconawesome-bitcoin.png'
+
+import picon1 from '../../assets/Images/Products.png'
+import picon2 from '../../assets/Images/UserPlus.png'
+import picon3 from '../../assets/Images/Comision.png'
+import picon4 from '../../assets/Images/Whatsapp.png'
+import picon5 from '../../assets/Images/Messages.png'
+
 import img1 from '../../assets/Images/recargas.png'
 import img2 from '../../assets/Images/bit.png'
-
 import img3 from '../../assets/Images/dig.png'
 import img4 from '../../assets/Images/bill.png'
 import img5 from '../../assets/Images/fac.png'
@@ -54,6 +61,33 @@ import runt from "../../assets/Images/runt3.png"
 
 
 
+export const profilData =[
+    {
+        name:"Productos",
+        icon:picon1
+
+    },
+    {
+        name:"Perfiles",
+        icon:picon2
+
+    },
+    {
+        name:"Comision",
+        icon:picon3
+
+    },
+    {
+        name:"Soporte",
+        icon:picon4
+
+    },
+    {
+        name:"Mensajes",
+        icon:picon5
+    },
+    
+]
 
 export const paymetData =[
     {
@@ -68,7 +102,7 @@ export const paymetData =[
     },
     {
         name:"Deposito",
-        icon:icon2
+        icon:icon5
 
     },
     {

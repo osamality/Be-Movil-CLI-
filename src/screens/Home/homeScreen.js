@@ -1,137 +1,138 @@
-import React,{useState,useEffect} from 'react';
-import { StyleSheet, Text, View,TouchableOpacity, } from 'react-native';
-import { Container, Header, Left, Body, Right,Content,Button } from 'native-base';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, } from 'react-native';
+import { Container, Header, Left, Body, Right, Content, Button } from 'native-base';
 import Logo1 from '../../assets/Images/Group5134.png'
 import { useDispatch } from 'react-redux';
 import * as BalanceActions from '../../store/actions/balance';
 import * as RecargasActions from '../../store/actions/recargas'
 import axios from 'axios';
-import {SERVER_URL} from '../../config/config';
+import { SERVER_URL } from '../../config/config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomTaps from '../../components/UI/globle/customTaps';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PaymentType from '../../components/UI/paymentType';
 import Products from '../../components/UI/Products'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import CustomTapsBalance from '../../components/UI/globle/customTapsBalance'
 import LinearGradient from 'react-native-linear-gradient';
 
-const CategoriesScreen = ({activeBalance, navigation }) =>  {
-  const [storageData,setStorageData]=useState({})
+const CategoriesScreen = ({ activeBalance, navigation }) => {
+  const [storageData, setStorageData] = useState({})
   const dispatch = useDispatch();
 
   useEffect(() => {
 
-   const fetchBalance= async ()=>{
+    const fetchBalance = async () => {
 
-     const userData = await AsyncStorage.getItem('token');
-     if(userData){
-       const transferData=JSON.parse(userData)
-       const {token}= transferData
-       const acctualToken =`Token ${token}`
+      const userData = await AsyncStorage.getItem('token');
+      if (userData) {
+        const transferData = JSON.parse(userData)
+        const { token } = transferData
+        const acctualToken = `Token ${token}`
 
-     axios.get(
-      `${SERVER_URL}/api/reportes/saldo/`,
-      { headers: {authorization :acctualToken }})
-      .then((response)=>{
-       const action = BalanceActions.saveBalance(response.data);
-       dispatch(action)
+        axios.get(
+          `${SERVER_URL}/api/reportes/saldo/`,
+          { headers: { authorization: acctualToken } })
+          .then((response) => {
+            const action = BalanceActions.saveBalance(response.data);
+            dispatch(action)
 
-      })
-      .catch((err)=>{
-        console.log(err,'err')
+          })
+          .catch((err) => {
+            console.log(err, 'err')
 
-      })
+          })
+      }
     }
-}
 
 
-fetchBalance();
-    
+    fetchBalance();
+
   }, []);
 
   return (
-    <Container style={{backgroundColor : "rgb(252,254,255)"}} >
- 
-    <Content style={{flex:1}}>
-   
-      <View style={styles.Contentcontainer}>
-        <CustomTapsBalance/>
+    <Container style={{ backgroundColor: "rgb(252,254,255)" }} >
+
+      <Content style={{ flex: 1 }}>
+
+        <View style={styles.Contentcontainer}>
+          <View style={styles.adds}>
+            <Text style={styles.textAdds}>
+              Banner Ads
+            </Text>
+            <Text style={styles.textAdds}>
+              Banner Ads
+            </Text>
+          </View>
+          <CustomTapsBalance />
 
 
-        <View style={styles.paymentContent}>
-          <Text style={styles.paymentText}>
-          Métodos de Pago
-          </Text>
+          <View style={styles.paymentContent}>
+            <Text style={styles.paymentText}>
+              Métodos de Pago
+            </Text>
+          </View>
+          <PaymentType />
+
+          <LinearGradient colors={['rgb(235,6,42)', 'rgb(232,6,42)', 'rgb(209,28,57)']} style={styles.productContent} >
+
+            {/* <View style={styles.productContent}> */}
+            <Text style={styles.paymentText}>
+              Multiproductos
+            </Text>
+            {/* </View> */}
+          </LinearGradient>
+          <Products navigation={navigation} />
+
+          {/* <View style={styles.paymentIcons}>
+          <PaymentType/>
+         </View> */}
+
         </View>
-        <PaymentType/>
-        <View style={styles.adds}>
-          <Text style={styles.textAdds}>
-          Banner Ads
-          </Text>
-          <Text style={styles.textAdds}>
-          Banner Ads
-          </Text>
-        </View>
-        <LinearGradient colors={['rgb(235,6,42)', 'rgb(232,6,42)','rgb(209,28,57)']}style={styles.productContent} >
-
-        {/* <View style={styles.productContent}> */}
-          <Text style={styles.paymentText}>
-          Multiproductos
-          </Text>
-        {/* </View> */}
-        </LinearGradient>
-        <Products navigation={navigation}/>
-
-        {/* <View style={styles.paymentIcons}>
-        <PaymentType/>
-        </View> */}
-
-        </View>
-    </Content>
-  </Container>
+      </Content>
+    </Container>
   );
 }
 
 const styles = StyleSheet.create({
-  adds:{
-    flex:1,
-    padding:30,
-    shadowColor: 'black',
-    shadowOpacity: 5.26,
+  adds: {
+    flex: 1,
+    padding: 25,
+    shadowColor: 'grey',
+    shadowOpacity: 3.26,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 5,
+    shadowRadius: 4,
+    elevation: 3,
     backgroundColor: 'white',
-    width:'100%',
-    justifyContent:'space-around',
-    alignItems:'center',
-    flexDirection:'row'
+    width: '100%',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection: 'row'
   },
-  textAdds :{
-    color:'rgb(209,209,209)'
+  textAdds: {
+    color: 'rgb(209,209,209)'
   },
 
-  test:{
+  test: {
     backgroundColor: 'rgb(216,216, 216)',
-    
+
   },
- 
+
   Contentcontainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop:10
+    marginTop: 10
   },
 
-  TextContent:{
+  TextContent: {
     shadowColor: 'black',
     shadowOpacity: 5.26,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
     elevation: 5,
     backgroundColor: 'white',
-    padding:10,
+    padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '90%',
@@ -139,31 +140,31 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     borderTopLeftRadius: 1,
     borderTopRightRadius: 1,
-    textAlign:'center'
+    textAlign: 'center'
 
   },
-  paymentContent:{
+  paymentContent: {
     flexDirection: 'row',
     width: "100%",
-    justifyContent:'flex-start',
-    padding:7,
-    backgroundColor:'black',
-    marginTop:10,    
+    justifyContent: 'flex-start',
+    padding: 7,
+    backgroundColor: 'black',
+    marginTop: 10,
   },
-  productContent:{
+  productContent: {
     flexDirection: 'row',
     width: "100%",
-    justifyContent:'flex-start',
-    padding:8,
-    backgroundColor:'red',
-    marginTop:10,  
+    justifyContent: 'flex-start',
+    padding: 8,
+    backgroundColor: 'red',
+    marginTop: 10,
 
   },
-  paymentText:{
-    fontWeight:"bold",
-    color:'#ffff',
-    marginLeft:10,
-    marginBottom:0
+  paymentText: {
+    fontWeight: "bold",
+    color: '#ffff',
+    marginLeft: 10,
+    marginBottom: 0
 
   },
   // paymentIcons:{
@@ -171,10 +172,10 @@ const styles = StyleSheet.create({
   // }
 });
 
-const mapStateToProps = ({balance}) => ({
-  activeBalance:balance.activeBalance
-    
+const mapStateToProps = ({ balance }) => ({
+  activeBalance: balance.activeBalance
+
 })
 
 
-export default connect(mapStateToProps,null)(CategoriesScreen);
+export default connect(mapStateToProps, null)(CategoriesScreen);

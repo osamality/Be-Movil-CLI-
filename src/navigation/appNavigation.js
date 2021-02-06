@@ -20,6 +20,7 @@ import arrows from '../assets/Images/arrow.png'
 import repartos from '../assets/Images/repartos.png'
 import perfil from '../assets/Images/perfil.png'
 import clientes from '../assets/Images/clientes.png'
+import iconAwesomeUser from '../assets/Images/iconAwesomeUser.png'
 import BilleterasScreen from '../screens/Billeteras'
 import Certificados from '../screens/Certificados'
 import Internacional from '../screens/Internacional'
@@ -27,222 +28,224 @@ import Settings from "../screens/Home/setting"
 import TvScreen from "../screens/tv"
 import Facturas from "../screens/Facturas"
 import Pego from "../screens/Facturas/pego"
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-const AppNavigator= ({activeProvider, titleHeader})=> {
+const AppNavigator = ({ activeProvider, titleHeader }) => {
 
 
   return (
 
-  <Stack.Navigator >
-    <Stack.Screen 
-    name="Home" 
-    component={HomeTabs}
-    
-    options={{
-       headerTitle: props => <HeaderComponent/>,
-       headerTitleAlign:'center',
-    }}
+    <Stack.Navigator >
+      <Stack.Screen
+        name="Home"
+        component={HomeTabs}
 
-    />
-    <Stack.Screen name="Recargas" component={RecargasScreen}
-     options={{
-      headerBackTitleVisible:false,
-       headerTitleAlign:'center',
-       title: 'Recargas Móviles',
+        options={{
+          headerTitle: props => <HeaderComponent />,
+          headerTitleAlign: 'center',
+        }}
+
+      />
+      <Stack.Screen name="Recargas" component={RecargasScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          title: 'Recargas Móviles',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
+        }}
+      />
 
-<Stack.Screen name="Setting" component={Settings}
-     options={{
-      headerBackTitleVisible:false,
-       headerTitleAlign:'center',
-       title: 'Settings',
+      <Stack.Screen name="Setting" component={Settings}
+        options={{
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          title: 'Settings',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
-    <Stack.Screen name="Package" component={Packages}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+        }}
+      />
+      <Stack.Screen name="Package" component={Packages}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: `Paquetes ${activeProvider.name}`,
+          title: `Paquetes ${activeProvider.name}`,
           headerStyle: {
             backgroundColor: 'black',
           },
           headerTintColor: '#fff',
-   }}
-    />
+        }}
+      />
       <Stack.Screen name="Apuestas" component={BeCompanies}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: 'Apuestas Deportivas',
+          title: 'Apuestas Deportivas',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
+        }}
+      />
 
-   <Stack.Screen name="Digitales" component={Digital}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+      <Stack.Screen name="Digitales" component={Digital}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: 'Pines Digitales',
+          title: 'Pines Digitales',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
-  <Stack.Screen name="Billeteras" component={BilleterasScreen}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+        }}
+      />
+      <Stack.Screen name="Billeteras" component={BilleterasScreen}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: titleHeader,
+          title: titleHeader,
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
-    <Stack.Screen name="Certificados" component={Certificados}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+        }}
+      />
+      <Stack.Screen name="Certificados" component={Certificados}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: "Certificados",
+          title: "Certificados",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
-    <Stack.Screen name="Internacional" component={Internacional}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+        }}
+      />
+      <Stack.Screen name="Internacional" component={Internacional}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: "Internacional",
+          title: "Internacional",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
+        }}
+      />
 
- <Stack.Screen name="Tv" component={TvScreen}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+      <Stack.Screen name="Tv" component={TvScreen}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: "TV",
+          title: "TV",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-    />
+        }}
+      />
 
-<Stack.Screen name="Facturas" component={Facturas}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+      <Stack.Screen name="Facturas" component={Facturas}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: "Facturas",
+          title: "Facturas",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-/>
+        }}
+      />
 
-<Stack.Screen name="pego" component={Pego}
-     options={{
-       headerTitleAlign:'center',
-       headerBackTitleVisible:false,
+      <Stack.Screen name="pego" component={Pego}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
 
-       title: "Servicios Públicos",
+          title: "Servicios Públicos",
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },
           headerTintColor: '#fff',
-   }}
-/>
+        }}
+      />
 
-    
-  </Stack.Navigator>
+
+    </Stack.Navigator>
   );
 }
 
-const HomeTabs = ()=> {
-  let spicalHieght 
+const HomeTabs = () => {
+  let spicalHieght
   Platform.OS == "ios" ? spicalHieght = 85 : spicalHieght = 60
   return (
-    <Tab.Navigator  screenOptions={({ route,  }) => ({
+    <Tab.Navigator screenOptions={({ route, }) => ({
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
-    
+        let labelColor
         if (route.name === 'Home') {
           iconName = homeLogo;
-         
         }
         else if (route.name === 'Porfile') {
-          iconName =perfil;
+          focused ? labelColor = "rgb(235,6,42)" : null
+          iconName = perfil;
         }
         else if (route.name === 'Clients') {
-          iconName =clientes;
+          focused ? labelColor = "rgb(235,6,42)" : null
+          iconName = clientes;
         }
         else if (route.name === 'Transfers') {
-          iconName =repartos;
+          focused ? labelColor = "rgb(235,6,42)" : null
+          iconName = repartos;
         }
-
         else if (route.name === 'Reports') {
-          iconName =arrows;
+          focused ? labelColor = "rgb(235,6,42)" : null
+          iconName = arrows;
         }
 
-         return  <Image source={iconName}  color="black"/>
+        return <Image source={iconName} color="black" 
+        style={{tintColor: `${labelColor}`}}
         
+        />
       },
     })}
-    initialRouteName ="Home"
-    tabBarOptions={{
-     showLabel :false,
-     style:{height:spicalHieght}
-     
+      initialRouteName="Home"
+      tabBarOptions={{
+        showLabel: false,
+        style: { height: spicalHieght }
+      }}
 
-    }}
-    
     >
       <Tab.Screen name="Reports" component={ReportScreen} />
-        <Tab.Screen name="Clients" component={ClientScreen} />
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Transfers" component={TransfersScreen} />
-        <Tab.Screen name="Porfile" component={ProfileScreen} />
+      <Tab.Screen name="Clients" component={ClientScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Transfers" component={TransfersScreen} />
+      <Tab.Screen name="Porfile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
 
-const mapStateToProps = ({product,billeteras}) => ({
-  activeProvider : product.activeProvider,
-  titleHeader : billeteras.title
-    
+const mapStateToProps = ({ product, billeteras }) => ({
+  activeProvider: product.activeProvider,
+  titleHeader: billeteras.title
+
 })
 
 
-export default connect(mapStateToProps,null)(AppNavigator);
+export default connect(mapStateToProps, null)(AppNavigator);
 
