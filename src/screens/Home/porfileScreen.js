@@ -68,9 +68,11 @@ const CategoriesScreen = ({ activeBalance, navigation }) => {
               Herramientos
             </Text>
           </View>
-          <ProfileType />
+          <ProfileType
+            navigation={navigation}
+          />
 
-           <ProfileBarCode /> 
+          <ProfileBarCode />
 
 
 

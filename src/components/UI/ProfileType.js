@@ -3,13 +3,13 @@ import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions } from 'rea
 import { profilData } from './staticData'
 import LinearGradient from 'react-native-linear-gradient';
 
-const renderPayment = () => {
+const renderPayment = ({navigation}) => {
 
     return profilData.map((d, v) => {
         return (
             <LinearGradient key={v} colors={['rgb(35,45,60)', 'rgb(57,72,93)']} style={styles.content}>
 
-                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} >
+                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate(d.route)}>
                     <Image source={d.icon} style={styles.icon} />
                     <Text style={styles.Text}> {d.name} </Text>
                 </TouchableOpacity >
@@ -19,11 +19,11 @@ const renderPayment = () => {
     })
 
 }
-const ProfileType = () => {
+const ProfileType = ({navigation}) => {
     return (
         // <View style={styles.Contentcontainer}>
         <LinearGradient colors={['rgb(57,72,93)', 'rgb(35,45,60)']} style={styles.Contentcontainer}>
-            {renderPayment()}
+            {renderPayment({navigation})}
         </LinearGradient>
         //  </View>
     )

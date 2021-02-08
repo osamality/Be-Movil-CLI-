@@ -25,11 +25,6 @@ import epm from '../../assets/Images/epm3.png'
 import pego from '../../assets/Images/pego.png'
 
 
-
-
-
-
-
 import claroIcon from '../../assets/Images/claro3.png';
 import avetalIcon from '../../assets/Images/avetal3.png'
 import ExitoIcon from '../../assets/Images/Exito3.png'
@@ -58,119 +53,110 @@ import snr from "../../assets/Images/snr3.png"
 import runt from "../../assets/Images/runt3.png"
 
 
-
-
-
-export const profilData =[
+export const profilData = [
     {
-        name:"Productos",
-        icon:picon1
-
+        name: "Productos",
+        icon: picon1,
+        route: "Products"
     },
     {
-        name:"Perfiles",
-        icon:picon2
-
+        name: "Perfiles",
+        icon: picon2,
+        route: "Profiles"
     },
     {
-        name:"Comision",
-        icon:picon3
-
+        name: "Comision",
+        icon: picon3,
+        route: 'Comision'
     },
     {
-        name:"Soporte",
-        icon:picon4
-
+        name: "Soporte",
+        icon: picon4,
+        route: 'Messages'
     },
     {
-        name:"Mensajes",
-        icon:picon5
+        name: "Mensajes",
+        icon: picon5,
+        route: "Messages"
     },
-    
 ]
 
-export const paymetData =[
+export const paymetData = [
     {
-        name:"PSE",
-        icon:icon1
-
+        name: "PSE",
+        icon: icon1
     },
     {
-        name:"Tarjeta",
-        icon:icon2
-
+        name: "Tarjeta",
+        icon: icon2
     },
     {
-        name:"Deposito",
-        icon:icon5
-
+        name: "Deposito",
+        icon: icon5
     },
     {
-        name:"QR code",
-        icon:icon3
-
+        name: "QR code",
+        icon: icon3
     },
     {
-        name:"Bitcoin",
-        icon:icon4
-
+        name: "Bitcoin",
+        icon: icon4
     },
-    
 ]
 
-export const productsData =[
+export const productsData = [
     {
-        name:"Recargas",
-        icon:img1,
-        route:"Recargas"
+        name: "Recargas",
+        icon: img1,
+        route: "Recargas"
 
     },
     {
-        name:"Apuestas",
-        icon:img2,
-        route :"Apuestas"
-        
+        name: "Apuestas",
+        icon: img2,
+        route: "Apuestas"
+
 
     },
     {
-        name:"Pines Digitales",
-        icon:img3,
-        route:"Digitales"
+        name: "Pines Digitales",
+        icon: img3,
+        route: "Digitales"
 
     },
     {
-        name:"Billeteras",
-        icon:img4,
-        route:"Billeteras"
+        name: "Billeteras",
+        icon: img4,
+        route: "Billeteras"
 
     },
     {
-        name:"Facturas",
-        icon:img5,
-        route : "Facturas"
+        name: "Facturas",
+        icon: img5,
+        route: "Facturas"
 
     },
     {
-        name:"Seguros",
-        icon:img6
+        name: "Seguros",
+        icon: img6
 
     },
     {
-        name:"Certificados",
-        icon:img7,
-        route : 'Certificados'
+        name: "Certificados",
+        icon: img7,
+        route: 'Certificados'
 
     },
     {
-        name:"Internacional",
-        icon:img8,
-        route : 'Internacional'
+        name: "Internacional",
+        icon: img8,
+        route: 'Internacional'
 
     },
     {
-        name:"Tv",
-        icon:img9,
-        route : 'Tv'
+        name: "Tv",
+        icon: img9,
+        route: 'Tv'
 
     },
     // {
@@ -179,306 +165,306 @@ export const productsData =[
     //     route : 'Transporte'
 
     // },
-    
+
 ]
 
-export const singelProduct =[
+export const singelProduct = [
     {
-        name:"PSE",
-        icon:img1
+        name: "PSE",
+        icon: img1
 
     },
-    
+
 ]
 
-export const recargasType=[
+export const recargasType = [
     {
-        name:'Movil',
+        name: 'Movil',
         redux: 'Recargas'
     },
     {
-        name:'Packages',
-        redux:"Recargas_Packages"
+        name: 'Packages',
+        redux: "Recargas_Packages"
 
     }
 ]
 
 export const productsDiscription = {
-    "Recargas":[
+    "Recargas": [
         {
-            name:'Claro',
-            id:'2',
-            icon:claroIcon,
-            package:'paqueclaro'
+            name: 'Claro',
+            id: '2',
+            icon: claroIcon,
+            package: 'paqueclaro'
         },
         {
-            name:'Tigo',
-            id:'7',
-            icon:tigoIcon,
-            package:'paquetigo'
+            name: 'Tigo',
+            id: '7',
+            icon: tigoIcon,
+            package: 'paquetigo'
         },
         {
-            name:'Movistar',
-            id:'6',
-            icon:MovistarIcon,
-            package:'paquemovistar'
+            name: 'Movistar',
+            id: '6',
+            icon: MovistarIcon,
+            package: 'paquemovistar'
 
         },
         {
-            name:'Flash',
-            id:'16',
-            icon:flashIcon,
-            package:null
+            name: 'Flash',
+            id: '16',
+            icon: flashIcon,
+            package: null
 
         },
         {
-            name:'Virgin',
-            id:'10',
-            icon:VirginIcon,
-            package:'paquevirgin'
+            name: 'Virgin',
+            id: '10',
+            icon: VirginIcon,
+            package: 'paquevirgin'
         },
         {
-            name:'ETP',
-            id:'4',
-            icon:EtbIcon,
-            package:'paqueetb'
-        },
-         
-        {
-            name:'Éxito',
-            id:'5',
-            icon:ExitoIcon,
-            package:null
-        },
-        {
-            name:'Avantel',
-            id:'1',
-            icon:avetalIcon,
-            package:'paqueavantel'
-        },
-       
-       
-      
-       
-      
-
-    ],
-    "Recargas_Packages":[
-        {
-            name:'Paqueclaro',
-            id:'13',
-            icon:''
-        },
-        {
-            name:'Paquemovistar',
-            id:'19',
-            icon:''
-        },
-        {
-            name:'Paquetigos',
-            id:'12',
-            icon:''
-        },
-        {
-            name:'Paqueavantel',
-            id:'17',
-            icon:''
-        },
-        {
-            name:'Paquevirgin',
-            id:'15',
-            icon:''
-        },
-        {
-            name:'Paqueetb',
-            id:'18',
-            icon:''
+            name: 'ETP',
+            id: '4',
+            icon: EtbIcon,
+            package: 'paqueetb'
         },
 
+        {
+            name: 'Éxito',
+            id: '5',
+            icon: ExitoIcon,
+            package: null
+        },
+        {
+            name: 'Avantel',
+            id: '1',
+            icon: avetalIcon,
+            package: 'paqueavantel'
+        },
+
+
+
+
+
+
     ],
-    "bet_companies_Recargas":[
+    "Recargas_Packages": [
         {
-            name:'WPLAY',
-            id:'26',
-            icon:WPLAY,
+            name: 'Paqueclaro',
+            id: '13',
+            icon: ''
         },
         {
-            name:'Rush Bet',
-            id:'63',
-            icon:Rush,
+            name: 'Paquemovistar',
+            id: '19',
+            icon: ''
         },
         {
-            name:'Rivalo',
-            id:'47',
-            icon:Rivalo,
+            name: 'Paquetigos',
+            id: '12',
+            icon: ''
         },
         {
-            name:'Ya Juego',
-            id:'47', //need update
-            icon:Ya,
-        },
-      
-        {
-            name:'Aqui Juego',
-            id:'48', 
-            icon:Aqui,
+            name: 'Paqueavantel',
+            id: '17',
+            icon: ''
         },
         {
-            name:'Sportium',
-            id:'53', 
-            icon:Sportium,
+            name: 'Paquevirgin',
+            id: '15',
+            icon: ''
         },
         {
-            name:'Mi Jugada',
-            id:'46', 
-            icon:Jugada,
+            name: 'Paqueetb',
+            id: '18',
+            icon: ''
+        },
+
+    ],
+    "bet_companies_Recargas": [
+        {
+            name: 'WPLAY',
+            id: '26',
+            icon: WPLAY,
+        },
+        {
+            name: 'Rush Bet',
+            id: '63',
+            icon: Rush,
+        },
+        {
+            name: 'Rivalo',
+            id: '47',
+            icon: Rivalo,
+        },
+        {
+            name: 'Ya Juego',
+            id: '47', //need update
+            icon: Ya,
+        },
+
+        {
+            name: 'Aqui Juego',
+            id: '48',
+            icon: Aqui,
+        },
+        {
+            name: 'Sportium',
+            id: '53',
+            icon: Sportium,
+        },
+        {
+            name: 'Mi Jugada',
+            id: '46',
+            icon: Jugada,
         },
     ],
-    "bet_companies_Pago_premio":[
+    "bet_companies_Pago_premio": [
         {
-            name:'WPLAY',
-            id:'26',
-            icon:WPLAY,
+            name: 'WPLAY',
+            id: '26',
+            icon: WPLAY,
         },
         {
-            name:'Ya Juego',
-            id:'47', //need update
-            icon:Ya,
+            name: 'Ya Juego',
+            id: '47', //need update
+            icon: Ya,
         },
     ],
-    "Digitales":[
+    "Digitales": [
         {
-            name:'Netflix',
-            id:'56', 
-            icon:Netflix,
+            name: 'Netflix',
+            id: '56',
+            icon: Netflix,
         },
         {
-            name:'Play Station',
-            id:'39', 
-            icon:PlayStation,
+            name: 'Play Station',
+            id: '39',
+            icon: PlayStation,
         },
         {
-            name:'Spotify',
-            id:'41', 
-            icon:Spotify,
+            name: 'Spotify',
+            id: '41',
+            icon: Spotify,
         },
         {
-            name:'Xbox',
-            id:'36', 
-            icon:Xbox,
+            name: 'Xbox',
+            id: '36',
+            icon: Xbox,
         },
         {
-            name:'Office',
-            id:'38', 
-            icon:Office,
+            name: 'Office',
+            id: '38',
+            icon: Office,
         },
         {
-            name:'Minecraft',
-            id:'40', 
-            icon:Minecraft,
+            name: 'Minecraft',
+            id: '40',
+            icon: Minecraft,
         },
         {
-            name:'IMVU',
-            id:'37', 
-            icon:IMVU,
+            name: 'IMVU',
+            id: '37',
+            icon: IMVU,
         },
         {
-            name:'Rixty',
-            id:'42', 
-            icon:Rixty,
+            name: 'Rixty',
+            id: '42',
+            icon: Rixty,
         },
-        
+
     ],
-    "Deposito":[
+    "Deposito": [
         {
-            name:"Nequi",
-            id : '58',
-            icon:Rixty,
+            name: "Nequi",
+            id: '58',
+            icon: Rixty,
         }
     ],
-    "Retiros":[
+    "Retiros": [
         {
-            name:"Nequi",
-            id : '59',
-            icon:Rixty,
+            name: "Nequi",
+            id: '59',
+            icon: Rixty,
         }
     ],
-    "certificados" : [
+    "certificados": [
         {
-            name :"Runt",
-            id : '00', //need to update
+            name: "Runt",
+            id: '00', //need to update
             icon: runt,
-            title : "Certificado"
+            title: "Certificado"
         },
         {
-            name :"SNR",
-            id : '35',
+            name: "SNR",
+            id: '35',
             icon: snr,
-            title : "SOAT"
+            title: "SOAT"
         },
 
     ],
-    "Venezuela":[
+    "Venezuela": [
         {
-            name : "Movilnet",
-            id :'66',
-            icon : snr //need to update
+            name: "Movilnet",
+            id: '66',
+            icon: snr //need to update
         },
         {
-            name : "Movistar",
-            id : '67',
-            icon : snr
+            name: "Movistar",
+            id: '67',
+            icon: snr
         },
         {
-            name : "Movistar TV",
-            id : '70',
-            icon : snr
+            name: "Movistar TV",
+            id: '70',
+            icon: snr
         }
     ],
     "Ecuador": [
         {
-            name : "Movilnet",
-            id :'66',
-            icon : snr //need to update
+            name: "Movilnet",
+            id: '66',
+            icon: snr //need to update
         },
         {
-            name : "Movistar",
-            id : '67',
-            icon : snr
+            name: "Movistar",
+            id: '67',
+            icon: snr
         },
         {
-            name : "Movistar TV",
-            id : '70',
-            icon : snr
+            name: "Movistar TV",
+            id: '70',
+            icon: snr
         }
     ],
-    "Directv" : [
+    "Directv": [
         {
-            name : "Directv",
+            name: "Directv",
             id: "3",
-        
+
         },
         {
-            name : "Kit Directv",
-            id : "60",
-            
+            name: "Kit Directv",
+            id: "60",
+
         }
     ],
-    "Facturas": [ 
+    "Facturas": [
         {
-            name : "EPM",
-            icon : epm,
-            id:"43"
+            name: "EPM",
+            icon: epm,
+            id: "43"
         },
         {
-            name : "ESSA",
-            icon : essa,
-            id:"62"
+            name: "ESSA",
+            icon: essa,
+            id: "62"
         },
         {
-            name:"Pago de Facturas",
-            icon : pego,
-            id:"" //need update
+            name: "Pago de Facturas",
+            icon: pego,
+            id: "" //need update
         }
     ]
 }

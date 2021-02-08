@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const MealDetailesScreen = props =>  {
   return (
     <View style={styles.container}>
-      <Text>Report</Text>
+      <Text>Coodiar que info mostrar aqui</Text>
     </View>
   );
 }

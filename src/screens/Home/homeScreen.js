@@ -82,10 +82,11 @@ const CategoriesScreen = ({ activeBalance, navigation }) => {
             </Text>
             {/* </View> */}
           </LinearGradient>
+
           <Products navigation={navigation} />
 
           {/* <View style={styles.paymentIcons}>
-          <PaymentType/>
+          <PaymentType />
          </View> */}
 
         </View>

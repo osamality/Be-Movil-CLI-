@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Image, StyleSheet, Platform } from 'react-native';
+import { View, Image,TouchableOpacity, StyleSheet, Platform } from 'react-native';
 
 import HomeScreen from '../screens/Home/homeScreen';
 import ProfileScreen from '../screens/Home/porfileScreen';
@@ -12,6 +12,12 @@ import TransfersScreen from '../screens/Home/transfersScreen';
 import ClientScreen from '../screens/Home/clientScreen';
 import RecargasScreen from '../screens/Recargas/Recargas';
 import BeCompanies from '../screens/betCompanies/Recargas'
+import Comision from '../screens/Profile/Comision/Comision';
+import Messages from '../screens/Profile/Messages/Messages';
+import Products from '../screens/Profile/Products/Products';
+import Profiles from '../screens/Profile/Profiles/Profiles';
+import createProfile from '../screens/Profile/Profiles/createProfile';
+
 import HeaderComponent from '../screens/layout/headerHome';
 import Packages from '../screens/Recargas/Packages';
 import Digital from '../screens/Digital';
@@ -33,7 +39,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-const AppNavigator = ({ activeProvider, titleHeader }) => {
+const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
 
 
   return (
@@ -49,6 +55,8 @@ const AppNavigator = ({ activeProvider, titleHeader }) => {
         }}
 
       />
+
+
       <Stack.Screen name="Recargas" component={RecargasScreen}
         options={{
           headerBackTitleVisible: false,
@@ -186,6 +194,78 @@ const AppNavigator = ({ activeProvider, titleHeader }) => {
       />
 
 
+      <Stack.Screen name="Products" component={Products}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
+
+          title: "Productos Activos",
+          headerStyle: {
+            backgroundColor: 'rgb(216,50,75)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Stack.Screen name="Profiles" component={Profiles}
+        options={({route, navigation}) => ({
+       
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
+
+          title: "Perfiles",
+          headerStyle: {
+            backgroundColor: 'rgb(216,50,75)',
+          },
+          headerTintColor: '#fff',
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('createProfile')}
+              style={{paddingHorizontal: '100%'}} 
+            >
+             <Image source={require('../assets/Images/UserPlus.png')} style={{height: 18, width: 23}} />
+            </TouchableOpacity>
+          ),
+        })}
+      />
+      <Stack.Screen name="createProfile" component={createProfile}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
+
+          title: "Crear Perfil",
+          headerStyle: {
+            backgroundColor: 'rgb(216,50,75)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Stack.Screen name="Comision" component={Comision}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
+
+          title: "Comision",
+          headerStyle: {
+            backgroundColor: 'rgb(216,50,75)',
+
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Stack.Screen name="Messages" component={Messages}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
+
+          title: "Mensajes",
+          headerStyle: {
+            backgroundColor: 'rgb(216,50,75)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+
     </Stack.Navigator>
   );
 }
@@ -218,9 +298,9 @@ const HomeTabs = () => {
           iconName = arrows;
         }
 
-        return <Image source={iconName} color="black" 
-        style={{tintColor: `${labelColor}`}}
-        
+        return <Image source={iconName} color="black"
+          style={{ tintColor: `${labelColor}` }}
+
         />
       },
     })}

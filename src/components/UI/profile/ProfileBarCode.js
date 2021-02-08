@@ -133,9 +133,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '90%',
         borderRadius: 10,
-        // borderRadius: 1,
-        // borderTopLeftRadius: 10,
-        // borderTopRightRadius: 10,
         textAlign: 'center',
         marginTop: 10
     },
