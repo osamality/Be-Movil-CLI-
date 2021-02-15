@@ -185,7 +185,6 @@ export const recargasType = [
     {
         name: 'Packages',
         redux: "Recargas_Packages"
-
     }
 ]
 

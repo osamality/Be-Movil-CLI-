@@ -17,7 +17,7 @@ const HeaderComponent = ({}) =>  {
       <View style={{flex:1,justifyContent:'space-around',
       width:'100%',
       alignItems:'center',flexDirection:'row',}} >
-     <TouchableOpacity onPress={()=>navigation.navigate("Setting")}> 
+     <TouchableOpacity onPress={()=>navigation.navigate("Transactions")}> 
        <Image  source={homebe}/>
        </TouchableOpacity>
       <Image  style={styles.Logo1} source={Logo1}/>

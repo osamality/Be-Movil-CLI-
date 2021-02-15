@@ -7,6 +7,7 @@ import {
     Keyboard,
     FlatList,
     Image,
+    ScrollView,
     TouchableOpacity
 } from 'react-native';
 import { profileData } from '../pachageData';
@@ -47,7 +48,7 @@ const createProfile = ({ activeProvider, navigation }) => {
 
     return (
         <>
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <TextInput
                     label="Nombre del Perfil"
                     value={number}
@@ -59,7 +60,6 @@ const createProfile = ({ activeProvider, navigation }) => {
                 />
 
                 <Text style={{ marginHorizontal: '2%', fontWeight: '600', fontSize: 20 }}>Permisos</Text>
-                <Text> asd</Text>
 
 
                 <View style={styles.drop}>
@@ -78,19 +78,60 @@ const createProfile = ({ activeProvider, navigation }) => {
                     <Text style={styles.textDrop}>Administración</Text>
                 </View>
                 {showOption ?
-                    <View style={styles.drop}>
-                        <View style={styles.space}/>
+                    <>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
 
-                        <Checkbox.Android
-                            color={'grey'}
-                            uncheckedColor={'grey'}
-                            status={checked ? 'checked' : 'unchecked'}
-                            onPress={() => {
-                                setChecked(!checked);
-                            }}
-                        />
-                        <Text style={styles.textDrop}>Administración</Text>
-                    </View>
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Cliente</Text>
+                        </View>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Inventario</Text>
+                        </View>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Registor USSD</Text>
+                        </View>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Usuarios Propios</Text>
+                        </View>
+                    </>
                     :
                     null
                 }
@@ -110,19 +151,47 @@ const createProfile = ({ activeProvider, navigation }) => {
                     <Text style={styles.textDrop}>Reportes</Text>
                 </View>
                 {showOption ?
-                    <View style={styles.drop}>
-                        <View style={styles.space}/>
-                       
-                        <Checkbox.Android
-                            color={'grey'}
-                            uncheckedColor={'grey'}
-                            status={checked ? 'checked' : 'unchecked'}
-                            onPress={() => {
-                                setChecked(!checked);
-                            }}
-                        />
-                        <Text style={styles.textDrop}>Administración</Text>
-                    </View>
+                    <>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Distribución y Compras</Text>
+                        </View>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Informes de Gestión</Text>
+                        </View>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Ventas</Text>
+                        </View>
+                    </>
                     :
                     null
                 }
@@ -142,25 +211,137 @@ const createProfile = ({ activeProvider, navigation }) => {
                     <Text style={styles.textDrop}>Solicitudes</Text>
                 </View>
                 {showOption ?
-                    <View style={styles.drop}>
-                        <View style={styles.space}/>
-                        <Checkbox.Android
-                            color={'grey'}
-                            uncheckedColor={'grey'}
-                            status={checked ? 'checked' : 'unchecked'}
-                            onPress={() => {
-                                setChecked(!checked);
-                            }}
-                        />
-                        <Text style={styles.textDrop}>Administración</Text>
-                    </View>
+                    <>
+                        <View style={styles.drop}>
+                            <View style={styles.space} />
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Aprobación Avances</Text>
+                        </View>
+                        <View style={styles.drop}>
+                            <View style={styles.spacee} />
+
+                            <TouchableOpacity style={styles.touchDrop} >
+                                <Image style={styles.dropimg} source={drop} />
+                            </TouchableOpacity>
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Solicitudes</Text>
+                        </View>
+                        {showOption ?
+                            <>
+                                <View style={styles.drop}>
+                                    <View style={styles.space} />
+                                    <View style={styles.spacee} />
+
+
+                                    <Checkbox.Android
+                                        color={'grey'}
+                                        uncheckedColor={'grey'}
+                                        status={checked ? 'checked' : 'unchecked'}
+                                        onPress={() => {
+                                            setChecked(!checked);
+                                        }}
+                                    />
+                                    <Text style={styles.textDrop}>Distribución y Compras</Text>
+                                </View>
+                            </>
+                            :
+                            null
+                        }
+                        <View style={styles.drop}>
+                            <View style={styles.spacee} />
+
+                            <TouchableOpacity style={styles.touchDrop} >
+                                <Image style={styles.dropimg} source={drop} />
+                            </TouchableOpacity>
+
+                            <Checkbox.Android
+                                color={'grey'}
+                                uncheckedColor={'grey'}
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    setChecked(!checked);
+                                }}
+                            />
+                            <Text style={styles.textDrop}>Solicitudes</Text>
+                        </View>
+                        {showOption ?
+                            <>
+                                <View style={styles.drop}>
+                                    <View style={styles.space} />
+                                    <View style={styles.spacee} />
+
+
+                                    <Checkbox.Android
+                                        color={'grey'}
+                                        uncheckedColor={'grey'}
+                                        status={checked ? 'checked' : 'unchecked'}
+                                        onPress={() => {
+                                            setChecked(!checked);
+                                        }}
+                                    />
+                                    <Text style={styles.textDrop}>Distribución y Compras</Text>
+                                </View>
+                            </>
+                            :
+                            null
+                        }
+                    </>
                     :
                     null
                 }
 
+                <View style={styles.drop}>
 
-            </View>
+                    <View style={styles.spacee} />
 
+                    <Checkbox.Android
+                        color={'grey'}
+                        uncheckedColor={'grey'}
+                        status={checked ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked(!checked);
+                        }}
+                    />
+                    <Text style={styles.textDrop}>Recargas</Text>
+                </View>
+
+                <View style={styles.drop}>
+
+                    <View style={styles.spacee} />
+                    <Checkbox.Android
+                        color={'grey'}
+                        uncheckedColor={'grey'}
+                        status={checked ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked(!checked);
+                        }}
+                    />
+                    <Text style={styles.textDrop}>Recaudas</Text>
+                </View>
+
+
+
+
+
+            </ScrollView>
+            <TouchableOpacity style={styles.Button}>
+                <Text style={styles.btnText}>Registrar Perfil</Text>
+            </TouchableOpacity>
 
         </>
     );
@@ -182,8 +363,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 10
     },
+    Button: {
+        width: '90%',
+        height: '6%',
+        margin: '5%',
+        borderRadius: 10,
+        backgroundColor: 'red',
+        justifyContent: 'center',
+    },
+    btnText: {
+        textAlign: 'center',
+        color: 'white'
+    },
     checkbox: {
-        marginHorizontal: 102
+        marginHorizontal: 10
     },
     drop: {
         flexDirection: 'row',
@@ -203,7 +396,10 @@ const styles = StyleSheet.create({
         width: 7
     },
     space: {
-        width: '12%'
+        width: '15%'
+    },
+    spacee: {
+        width: '7.5%'
     }
 
 });

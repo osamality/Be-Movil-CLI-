@@ -19,10 +19,10 @@ import ProductType from '../../components/UI/Recargas/productType'
 import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import { isEmpty } from 'lodash'
-import RecargasChangeType from '../Repartos/RepartosChangeType'
+import RecargasChangeType from './RepartosChangeType'
 
 
-const Repartos = ({ activeProvider, navigation }) => {
+const CategoriesScreen = ({ activeProvider, navigation }) => {
 
   const dispatch = useDispatch();
   const refRBSheet = useRef();
@@ -63,27 +63,37 @@ const Repartos = ({ activeProvider, navigation }) => {
   return (
 
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
       <Container >
-
         <Content style={{ flex: 1 }}>
-
           <View style={styles.Contentcontainer}>
 
             <RecargasType />
+            <View style={styles.paymentContent}>
+              {activeImage()}
+              <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
+                Choose Provider:
+              </Text>
+              {
+                activeProvider.name && <Text style={{ color: 'rgb(44,209,158)', fontWeight: 'bold' }}>
+                  {activeProvider.name}
+                </Text>
+              }
 
+            </View>
+            <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
+
+            </View>
+            <ProductType />
             <RecargasChangeType navigation={navigation} />
+            <CustomTapsBalance />
+
 
           </View>
-
         </Content>
-
       </Container>
-
     </TouchableWithoutFeedback>
 
   );
-  
 }
 
 const styles = StyleSheet.create({
@@ -151,4 +161,4 @@ const mapStateToProps = ({ balance, product, recargas }) => ({
 })
 
 
-export default connect(mapStateToProps, null)(Repartos);
+export default connect(mapStateToProps, null)(CategoriesScreen);

@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Image,TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 
 import HomeScreen from '../screens/Home/homeScreen';
 import ProfileScreen from '../screens/Home/porfileScreen';
@@ -11,6 +11,7 @@ import ReportScreen from '../screens/Home/reportScreen';
 import TransfersScreen from '../screens/Home/transfersScreen';
 import ClientScreen from '../screens/Home/clientScreen';
 import RecargasScreen from '../screens/Recargas/Recargas';
+import RepartosScreen from '../screens/Repartos/Repartos';
 import BeCompanies from '../screens/betCompanies/Recargas'
 import Comision from '../screens/Profile/Comision/Comision';
 import Messages from '../screens/Profile/Messages/Messages';
@@ -31,6 +32,8 @@ import BilleterasScreen from '../screens/Billeteras'
 import Certificados from '../screens/Certificados'
 import Internacional from '../screens/Internacional'
 import Settings from "../screens/Home/setting"
+import Transactions from "../screens/transactions/Transactions"
+import TransactionsDetails from "../screens/transactions/TransactionsDetails"
 import TvScreen from "../screens/tv"
 import Facturas from "../screens/Facturas"
 import Pego from "../screens/Facturas/pego"
@@ -53,9 +56,7 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
           headerTitle: props => <HeaderComponent />,
           headerTitleAlign: 'center',
         }}
-
       />
-
 
       <Stack.Screen name="Recargas" component={RecargasScreen}
         options={{
@@ -80,6 +81,31 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
           headerTintColor: '#fff',
         }}
       />
+
+      <Stack.Screen name="Transactions" component={Transactions}
+        options={{
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          title: 'Últimas Transacciones',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen name="TransactionsDetails" component={TransactionsDetails}
+        options={{
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          title: 'Comprobante de Pago',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
       <Stack.Screen name="Package" component={Packages}
         options={{
           headerTitleAlign: 'center',
@@ -207,8 +233,8 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
         }}
       />
       <Stack.Screen name="Profiles" component={Profiles}
-        options={({route, navigation}) => ({
-       
+        options={({ route, navigation }) => ({
+
           headerTitleAlign: 'center',
           headerBackTitleVisible: false,
 
@@ -220,9 +246,9 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
           headerRight: () => (
             <TouchableOpacity
               onPress={() => navigation.navigate('createProfile')}
-              style={{paddingHorizontal: '100%'}} 
+              style={{ paddingHorizontal: '100%' }}
             >
-             <Image source={require('../assets/Images/UserPlus.png')} style={{height: 18, width: 23}} />
+              <Image source={require('../assets/Images/UserPlus.png')} style={{ height: 18, width: 23 }} />
             </TouchableOpacity>
           ),
         })}
