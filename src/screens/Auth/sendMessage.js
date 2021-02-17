@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,14 +9,14 @@ import {
   Alert,
   Image,
   TouchableWithoutFeedback,
-  Keyboard  
+  Keyboard
 } from 'react-native';
 // import SegmentedControlTab from "react-native-segmented-control-tab";
 import { Formik } from 'formik';
 import OTPCompo from './otp'
 
-import { Container,Form, Content,Text, Button} from 'native-base';
-import {TextInput} from 'react-native-paper'
+import { Container, Form, Content, Text, Button } from 'native-base';
+import { TextInput } from 'react-native-paper'
 import { useNavigation } from "@react-navigation/native";
 
 import * as authActions from '../../store/actions/auth';
@@ -26,16 +26,16 @@ import Logo1 from '../../assets/Images/mainLogo.png'
 import Logo2 from '../../assets/Images/mainMaster.png'
 import OtpInputs from 'react-native-otp-inputs';
 
-const ResetPass = props =>  {
+const ResetPass = props => {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [selected, setSelected] = useState(0);
 
-  const Navigation =useNavigation()
+  const Navigation = useNavigation()
 
   const dispatch = useDispatch();
 
-  
+
   const authHandler = async () => {
     Navigation.navigate("Login")
 
@@ -48,67 +48,67 @@ const ResetPass = props =>  {
   }, [error]);
 
 
- 
+
   return (
-     
-       
-<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <KeyboardAvoidingView
-    behavior={Platform.OS == "ios" ? "padding" : "height"}
-    style={styles.container}
-  > 
-    <>
-  <View style={{margin:10}}></View>
-     <View style={styles.imageContainer}>
-           <Image  style={styles.Logo1}
+
+
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
+        <>
+          <View style={{ margin: 10 }}></View>
+          <View style={styles.imageContainer}>
+            <Image style={styles.Logo1}
               source={Logo1}
             />
-           <Image  style={styles.Logo2}
+            <Image style={styles.Logo2}
               source={Logo2}
-           />
-      </View>
-    {/* <View style={{margin:15}}></View> */}
+            />
+          </View>
+          {/* <View style={{margin:15}}></View> */}
 
-    <Container style={{justifyContent:'center',alignItems:'center'}}>
-        <Content>
-        
-          <Form style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <View style={styles.inputContainerText}>
-          <Text style={{fontWeight:'bold'}}>
-          Código de Verificación
+          <Container style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Content>
+
+              <Form style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <View style={styles.inputContainerText}>
+                  <Text style={{ fontWeight: 'bold' }}>
+                    Código de Verificación
           </Text>
-        </View>
-        <View style={styles.inputContainerTextSecond}>
-          <Text style={{alignSelf:'center',textAlign:'center'}}>
-          Ingrese o pegue su Token Authy
+                </View>
+                <View style={styles.inputContainerTextSecond}>
+                  <Text style={{ alignSelf: 'center', textAlign: 'center' }}>
+                    Ingrese o pegue su Token Authy
           </Text>
-        </View>
-       
-           <OTPCompo/>
-    
-           <View style={styles.buttonContainer}>
-       {isLoading ? (
-         <ActivityIndicator size="small" color='rgb(235,6,42)' />
-       ) : (
-         <Button
-           style={styles.btn}
-          onPress={authHandler}
-         >
-         <Text  style={{color:'#ffff'}}>Continuar</Text>
-         </Button>
-       )}
+                </View>
 
-      </View>
-  
-      </Form>
-     </Content>
-  </Container>
+                <OTPCompo />
 
- 
-  </>
-</KeyboardAvoidingView>
-</TouchableWithoutFeedback>
-  
+                <View style={styles.buttonContainer}>
+                  {isLoading ? (
+                    <ActivityIndicator size="small" color='rgb(235,6,42)' />
+                  ) : (
+                      <Button
+                        style={styles.btn}
+                        onPress={authHandler}
+                      >
+                        <Text style={{ color: '#ffff' }}>Continuar</Text>
+                      </Button>
+                    )}
+
+                </View>
+
+              </Form>
+            </Content>
+          </Container>
+
+
+        </>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
+
 
 
   );
@@ -116,82 +116,82 @@ const ResetPass = props =>  {
 
 const styles = StyleSheet.create({
 
-  container:{
+  container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor:'#ffff'
+    backgroundColor: '#ffff'
   },
 
   inner: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center' ,
-   },
-  imageContainer:{
-    flex:0.5,
-    alignItems:'center',
-    justifyContent:'center',
-    
+    alignItems: 'center',
   },
-  Logo1:{
-    marginBottom:25,
-  },
-  Logo2:{
-    marginBottom:10
+  imageContainer: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
 
   },
-  UserContainer:{
-    flex:1,
-    marginTop:40,
-    marginBottom:40
+  Logo1: {
+    marginBottom: 25,
+  },
+  Logo2: {
+    marginBottom: 10
+
+  },
+  UserContainer: {
+    flex: 1,
+    marginTop: 40,
+    marginBottom: 40
   },
   buttonContainer: {
-  
+
     marginTop: 30,
-    width:'100%',
+    width: '100%',
     alignSelf: 'center',
   },
-  btn:{
-    
-    backgroundColor:'rgb(235,6,42)',
-      borderRadius:5,
-      width: '100%',
-      justifyContent:'center',
-      alignItems:'center',
-      marginBottom:2
+  btn: {
+
+    backgroundColor: 'rgb(235,6,42)',
+    borderRadius: 5,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 2
   },
 
- 
-  inputContainerText:{
+
+  inputContainerText: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     // marginBottom:15,
   },
-  inputContainerTextSecond:{
-      flex:1,
-      justifyContent:'center',
-      alignItems:'center',
-      margin:20,
-      width:'100%',
-      textAlign:"center"
+  inputContainerTextSecond: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 20,
+    width: '100%',
+    textAlign: "center"
   }
 
 
 });
 const defaultStyle = StyleSheet.create({
   InputText1Style: {
-      backgroundColor: '#fff',
-      // paddingBottom:20,
-      // shadowColor: '#000',
-      // shadowOpacity: 0.4,
-      // elevation: 2,
-      // position: 'relative',
-      height:50,
-      width:345,
+    backgroundColor: '#fff',
+    // paddingBottom:20,
+    // shadowColor: '#000',
+    // shadowOpacity: 0.4,
+    // elevation: 2,
+    // position: 'relative',
+    height: 50,
+    width: 345,
     //   marginBottom:20
-      // marginLeft:5
+    // marginLeft:5
   }
 })
 

@@ -2,7 +2,7 @@ import Receipt from '../../assets/Images/Receipt.png'
 import CheckCircle from '../../assets/Images/CheckCircle.png'
 import uploadd from '../../assets/Images/uploadd.png'
 import clientlistsign from '../../assets/Images/clientlistsign.png'
-import clientlistsign from '../../assets/Images/ema'
+// import clientlistsign from '../../assets/Images/ema'
 
 
 
@@ -22,7 +22,7 @@ import icon15 from '../../assets/Images/pro4.png'
 import userIcon from '../../assets/Images/UserCircle.png'
 
 
-export const packgesData = [
+export const packgesData2 = [
   
     {
         ID: "200853",
@@ -33,10 +33,7 @@ export const packgesData = [
         Coord: uploadd,
         icon: clientlistsign
     },
-   
-  
 ]
-
 
 
 export const packgesData = [

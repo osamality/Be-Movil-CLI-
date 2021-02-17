@@ -27,8 +27,8 @@ export default class App extends React.Component {
         <OTPInput
           value={this.state.otp}
           onChange={this.handleOTPChange}
-          tintColor="#FB6C6A"
-          offTintColor="#BBBCBE"
+          // tintColor="#FB6C6A"
+          // offTintColor="#BBBCBE"
           otpLength={6}
           cellStyle={styles.cell}
         />
@@ -44,26 +44,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    width:"90%"
+    width: "90%"
   },
   text: {
     marginBottom: 15
   },
-  cell:{
-      width: 43,
-    //   height:53,
-      borderRadius:5,
-      shadowOffset: { width: 0, height: 0 },
-      shadowColor: 'grey',
-      shadowOpacity: 25,
-      elevation: 8,
-      padding:15,
-      borderRadius:20,
-        backgroundColor : "rgb(255,255,255)" ,
-        // borderRadius:10,
-        padding:20,  
-        borderColor:'#ffff'    ,
-        textAlign:'center'  
+  cell: {
+    width: 43,
+      height:53,
+    shadowOffset: { width: 0, height: 3 },
+    shadowColor: 'grey',
+    shadowOpacity: 0.5,
+    elevation: 1,
+    backgroundColor: "white",
+    textAlign: 'center'
   },
 
 });

@@ -15,9 +15,12 @@ import { TextInput } from 'react-native-paper'
 import { Button } from 'native-base';
 import { Picker } from '@react-native-picker/picker';
 import RNPickerSelect from 'react-native-picker-select';
-import arr from "../../../assets/Images/arr.png"
-import arrowBottom from "../../../assets/Images/arrowBotton.png"
-
+import arr from "../../../assets/Images/arrowBalance.png"
+import iconIonicIosClose from "../../../assets/Images/Close.png"
+import arrowBack from "../../../assets/Images/arrowBack.png"
+import bigLogo from "../../../assets/Images/bigLogo.png"
+import arrowF from "../../../assets/Images/arrowF.png"
+import arrowB from "../../../assets/Images/arrowB.png"
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -61,6 +64,9 @@ const RenderText = ({ data, resetCount }) => {
 }
 const CustomTapsBalance = ({ activeBalance, balance }) => {
     const [toggleModel, setToggleModel] = useState(false);
+    const [toggleModel2, setToggleModel2] = useState(false);
+    const [toggleModel3, setToggleModel3] = useState(false);
+
     const [Valor, setValor] = useState('')
     const [activeOption, setActiveOption] = useState("Mi Caja")
     const [activeOptionBalance, setActiveOptionBalance] = useState()
@@ -100,14 +106,14 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
         <>
 
             <View style={styles.TextContent}>
-                <Text style={{ textAlign: 'center', marginTop: 7, ...styles.Text }}>
+                <Text style={{ ...styles.Text }}>
                     Balance
                 </Text>
-                <Text style={{ fontWeight: 'bold', textAlign: 'center', marginTop: 7}}>
-                    {second} COP
+                <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>
+                    {second} <Text style={{ fontSize: 14, fontWeight: '500' }}>COP</Text>
                 </Text>
-                <TouchableOpacity style={{ width: 20 }} onPress={() => setToggleModel(true)}>
-                    <Image source={arr} />
+                <TouchableOpacity style={{ marginRight: 10 }} onPress={() => setToggleModel(true)}>
+                    <Image style={{ height: 20, width: 20 }} source={arr} />
                 </TouchableOpacity>
             </View>
 
@@ -119,7 +125,7 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                     modalTitle={
                         <View style={styles.titleModal}>
                             <Text style={styles.title}>Movimientos entre Bolsas</Text>
-                            <Text style={styles.closeBtn} onPress={() => setToggleModel(false)}> X</Text>
+                            <Text style={styles.closeBtn} onPress={() => setToggleModel(false)}><Image source={iconIonicIosClose} /></Text>
                         </View>
                     }>
                     <ModalContent >
@@ -127,7 +133,8 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                         <View style={styles.wraper}>
                             <Text style={styles.TitleText}>
                                 Enviar desde:
-                    </Text>
+                            </Text>
+                            <Image style={{ height: 22, width: 22 }} source={arrowF} />
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center', width: '100%', height: 60, marginVertical: 20 }}>
                             <View style={styles.select}>
@@ -136,7 +143,7 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                                     <Picker
                                         selectedValue={activeOption}
                                         mode="dropdown"
-                                        style={{ height: 50, width: '100%' }}
+                                        style={{ height: 50, width: '100%', }}
                                         onValueChange={(itemValue, itemIndex) =>
                                             setSelect(itemValue)
                                         }>
@@ -163,7 +170,7 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                             </View>
 
                             <View style={styles.balanceWrapper}>
-                                <Text style={{ color: 'rgb(44,209,158)' }}>
+                                <Text style={{ color: 'red', }}>
                                     Balance
                         </Text>
                                 <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'black' }}>
@@ -171,16 +178,17 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                         </Text>
                             </View>
                         </View>
-                        <View style={{ ...styles.wraper, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <View style={{ ...styles.wraper }}>
                             <Text style={styles.TitleText}>Depositar en:</Text>
-                            <View style={{
+                            <Image style={{ height: 22, width: 22 }} source={arrowB} />
+                            {/* <View style={{
                                 width: 40, height: 40, borderRadius: 5,
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 borderWidth: 1, borderColor: "black"
                             }}>
                                 <Image source={arrowBottom} />
-                            </View>
+                            </View> */}
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center', width: '100%', height: 60, marginVertical: 20 }}>
                             <View style={styles.selectGreen}>
@@ -199,8 +207,8 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                         </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                             <Text style={{ fontSize: 15, color: 'black', textAlign: 'center' }}>
-                                Enviar monto desde Recargas a Mi Caja
-                    </Text>
+                                Enviar monto desde <Text style={styles.greenText}>Mi Caja</Text> a <Text style={styles.greenText}>Recargas</Text>
+                            </Text>
                         </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                             <TextInput
@@ -221,10 +229,89 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
                             <Button
-                                onPress={() => setToggleModel(false)}
+                                onPress={() => {
+                                    setToggleModel(false)
+                                    setToggleModel2(true)
+                                }}
                                 style={styles.btn}>
                                 <Text style={{ color: '#ffff' }}>Transferir</Text>
                             </Button>
+                        </View>
+
+
+                    </ModalContent>
+                </Modal>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <Modal width={380} height={380} visible={toggleModel2} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}
+                    modalTitle={
+                        <View style={styles.titleModal2}>
+
+                            <Text style={styles.closeBtn} onPress={() => {
+                                setToggleModel2(false)
+                                setToggleModel(true)
+                            }}>
+                                <Image source={arrowBack} /></Text>
+                            <Image style={styles.bigLogo} source={bigLogo} />
+                        </View>
+                    }>
+                    <ModalContent >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            <Text style={styles.TitleText2}>
+                                Confirmar Transferencia
+                            </Text>
+                            <Text style={{ fontSize: 17, color: 'black', textAlign: 'center', marginTop: 10, fontWeight: '300' }}>
+                                Se esta realizando un moviento entre cajas
+                                Desde <Text style={styles.greenText}>Mi Caja</Text> con destino <Text style={styles.greenText}>Recargas</Text>
+                            </Text>
+                            <Text style={{ fontSize: 30, color: 'black', textAlign: 'center', marginVertical: 20 }}>
+                                100.000 COP
+                            </Text>
+                            <Button
+                                onPress={() => {
+                                    setToggleModel2(false)
+                                    setToggleModel3(true)
+                                }}
+                                style={styles.btnTransfer}>
+                                <Text style={{ color: '#ffff' }}>Transferir Balance</Text>
+                            </Button>
+                        </View>
+
+
+                    </ModalContent>
+                </Modal>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <Modal width={380} height={350} visible={toggleModel3} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}
+                    modalTitle={
+                        <View style={styles.titleModal2}>
+                            <Image style={styles.bigLogo} source={bigLogo} />
+                        </View>
+                    }>
+                    <ModalContent >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            <Text style={styles.TitleText2}>
+                                Confirmar Transferencia
+                            </Text>
+                            <Text style={{ fontSize: 17, color: 'black', textAlign: 'center', marginVertical: 20, fontWeight: '300' }}>
+                                ¿ Desea cancelar está transferencia ?</Text>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Button
+                                    onPress={() => {
+                                        setToggleModel3(false)
+                                    }}
+                                    style={{ ...styles.btnCancel, marginTop: 30 }}>
+                                    <Text>Cancelar</Text>
+                                </Button>
+                                <Button
+                                    onPress={() => {
+                                        setToggleModel2(false)
+                                        setToggleModel3(true)
+                                    }}
+                                    style={{ ...styles.btnAccept, marginTop: 30 }}>
+                                    <Text style={{ color: '#ffff' }}>Aceptar</Text>
+                                </Button>
+                            </View>
                         </View>
 
 
@@ -299,33 +386,44 @@ const styles = StyleSheet.create({
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.27,
-        shadowRadius: 8,
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
 
         elevation: 6,
         padding: 10,
+        paddingHorizontal: '5%',
         flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         width: '60%',
         height: '100%',
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 6,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 6,
-        textAlign: 'center',
     },
     TitleText: {
-        fontSize: 15,
+        fontSize: 18,
         color: "black",
         textAlign: 'left',
-        fontWeight: 'bold'
+        fontWeight: '500',
+        marginRight: 7
+    },
+    TitleText2: {
+        fontSize: 26,
+        color: "black",
+        textAlign: 'center',
+        fontWeight: '600',
+        marginTop: 20
     },
     wraper: {
-        marginTop: 5,
-        // margin : 10,
+        flexDirection: 'row',
+        marginTop: 18,
         width: '90%'
-
+    },
+    wraper2: {
+        flexDirection: 'row',
+        marginTop: 18,
+        justifyContent: 'center'
     },
     btn: {
         backgroundColor: 'red',
@@ -335,8 +433,37 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 2
-
-
+    },
+    btnTransfer: {
+        backgroundColor: 'rgb(5,193,121)',
+        width: '100%',
+        borderRadius: 5,
+        // width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 2
+    },
+    btnCancel: {
+        backgroundColor: 'white',
+        width: '43%',
+        borderRadius: 5,
+        // width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 2,
+        borderWidth: 2,
+        borderColor: 'black',
+        marginRight: 5
+    },
+    btnAccept: {
+        backgroundColor: 'rgb(235,6,42)',
+        width: '43%',
+        borderRadius: 5,
+        // width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 2,
+        marginLeft: 5
     },
     InputText1Style: {
         backgroundColor: '#fff',
@@ -354,22 +481,31 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgb(235,6,42)',
+        backgroundColor: 'rgb(225,6,52)',
         height: 50
+
     },
+    titleModal2: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // backgroundColor: 'rgb(225,6,52)',
+        height: 100,
+        marginTop: 20,
+    },
+
     closeBtn: {
         color: '#ffff',
         textAlign: 'left',
         width: '8%',
-        fontWeight: 'bold',
-        fontSize: 16
-
+        marginTop: 6
     },
     title: {
         color: '#ffff',
         textAlign: 'center',
         width: '92%',
-        fontSize: 18
+        fontWeight: '600',
+        fontSize: 19
     },
 
     Contentcontainer: {
@@ -380,12 +516,12 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 9,
+            height: 6,
         },
-        shadowOpacity: 0.27,
-        shadowRadius: 8,
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
         flexDirection: 'row',
-        width: '90%',
+        width: '92%',
         borderBottomLeftRadius: 1,
         borderBottomRightRadius: 1,
         borderBottomLeftRadius: 10,
@@ -408,7 +544,7 @@ const styles = StyleSheet.create({
 
     },
     Text: {
-        fontSize: 12,
+        fontSize: 14,
         textAlign: 'center',
         color: 'rgb(145,145,145)'
     },
@@ -442,11 +578,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 8,
         backgroundColor: 'white',
-        paddingVertical: 10,
+        paddingTop: '4%',
+        paddingBottom: '2.5%',
+        paddingHorizontal: '10%',
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        width: '90%',
+        width: '92%',
         borderBottomLeftRadius: 1,
         borderBottomRightRadius: 1,
         borderTopLeftRadius: 10,
@@ -454,6 +592,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 10
     },
+    greenText: {
+        color: 'rgb(5,193,121)'
+    },
+    bigLogo: {
+        height: 64,
+        width: 255,
+        marginLeft: 20
+    }
 
 });
 
