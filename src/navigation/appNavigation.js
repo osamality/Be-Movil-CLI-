@@ -18,6 +18,7 @@ import Messages from '../screens/Profile/Messages/Messages';
 import Products from '../screens/Profile/Products/Products';
 import Profiles from '../screens/Profile/Profiles/Profiles';
 import createProfile from '../screens/Profile/Profiles/createProfile';
+import Complete from '../screens/complete';
 
 import HeaderComponent from '../screens/layout/headerHome';
 import Packages from '../screens/Recargas/Packages';
@@ -288,6 +289,21 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
             backgroundColor: 'rgb(216,50,75)',
           },
           headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen name="Complete" component={Complete}
+      
+        options={{
+          headerShown: false
+          // headerTitleAlign: 'center',
+          // headerBackTitleVisible: false,
+
+          // title: "Mensajes",
+          // headerStyle: {
+          //   backgroundColor: 'rgb(216,50,75)',
+          // },
+          // headerTintColor: '#fff',
         }}
       />
 

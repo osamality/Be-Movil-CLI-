@@ -20,58 +20,7 @@ const Products = ({ activeProvider, navigation }) => {
 
     return (
         <View>
-            <View
-                style={styles.headerStyle}
-            >
-                <Text
-                    style={styles.headerText}
-                >Producto</Text>
-                <View style={styles.headerStyle2}>
-                    <Text
-                        style={styles.headerText}
-                    >Descripción</Text>
-                    <Text
-                        style={styles.headerText}
-                    >Comision</Text>
-                </View>
-            </View>
-            <FlatList
-                horizontal={true}
-                numColumns={1}
-                data={packgesData}
-                style={{
-                    marginBottom: '10%'
-                }}
-                ItemSeparatorComponent={() => {
-                    return (
-                        <View
-                            style={{ borderBottomWidth: 1, borderBottomColor: 'rgb(216,216,216)', marginVertical: '1%', }}
-                        />
-                    )
-                }}
-                renderItem={({ item, index }) => (
-                    <View
-                        key={index}
-                        style={styles.listHeaderStyle}
-                    >
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Image source={item.icon} style={styles.icon} />
-
-                            <Text
-                                style={styles.listHeaderText}
-                            >{item.name}</Text>
-                        </View>
-                        <View style={styles.listHeaderStyle2}>
-                            <Text
-                                style={styles.listHeaderText}
-                            >0.5 %</Text>
-                            <Text
-                                style={styles.listHeaderText}
-                            >0 %</Text>
-                        </View>
-                    </View>
-                )}
-            />
+           
         </View>
     );
 }

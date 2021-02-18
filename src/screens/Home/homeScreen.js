@@ -64,7 +64,7 @@ const CategoriesScreen = ({ activeBalance, navigation }) => {
               Banner Ads
             </Text>
           </View>
-          <CustomTapsBalance />
+          <CustomTapsBalance navigation={navigation} />
 
 
           <View style={styles.paymentContent}>
@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
     padding: 7,
     backgroundColor: 'black',
     marginTop: 10,
+    backgroundColor:'rgb(30,48,74)'
   },
   productContent: {
     flexDirection: 'row',

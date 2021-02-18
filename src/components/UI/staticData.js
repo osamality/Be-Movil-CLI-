@@ -11,6 +11,7 @@ import picon4 from '../../assets/Images/Whatsapp.png'
 import picon5 from '../../assets/Images/Messages.png'
 
 import img1 from '../../assets/Images/recargas.png'
+import corresponsal from '../../assets/Images/corresponsal.png'
 import img2 from '../../assets/Images/bit.png'
 import img3 from '../../assets/Images/dig.png'
 import img4 from '../../assets/Images/bill.png'
@@ -104,6 +105,14 @@ export const paymetData = [
     },
 ]
 
+export const productsData2 = [
+    {
+        name: "Corresponsal",
+        icon: corresponsal,
+        route: "Recargas"
+
+    },
+]
 export const productsData = [
     {
         name: "Recargas",

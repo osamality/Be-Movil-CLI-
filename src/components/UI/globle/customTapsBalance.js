@@ -62,7 +62,7 @@ const RenderText = ({ data, resetCount }) => {
     })
 
 }
-const CustomTapsBalance = ({ activeBalance, balance }) => {
+const CustomTapsBalance = ({ activeBalance, balance, navigation }) => {
     const [toggleModel, setToggleModel] = useState(false);
     const [toggleModel2, setToggleModel2] = useState(false);
     const [toggleModel3, setToggleModel3] = useState(false);
@@ -305,21 +305,18 @@ const CustomTapsBalance = ({ activeBalance, balance }) => {
                                 </Button>
                                 <Button
                                     onPress={() => {
-                                        setToggleModel2(false)
-                                        setToggleModel3(true)
+                                        setToggleModel3(false)
+                                        navigation.navigate('Complete')
                                     }}
                                     style={{ ...styles.btnAccept, marginTop: 30 }}>
                                     <Text style={{ color: '#ffff' }}>Aceptar</Text>
                                 </Button>
                             </View>
                         </View>
-
-
                     </ModalContent>
                 </Modal>
             </TouchableWithoutFeedback>
         </>
-
     )
 }
 
