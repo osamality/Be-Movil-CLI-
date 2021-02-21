@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet,Image, Text, View, ScrollView, SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
 import { packgesTaps } from './pachageData'
+import CalendarIcon from '../../assets/Images/CalendarIcon.png'
 import { connect } from 'react-redux'
 import { packgesData } from './pachageData'
 import { get, filter, isEmpty } from 'lodash'
 import { Button } from 'native-base'
 import * as RecargasActions from '../../store/actions/recargas'
+import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch } from 'react-redux';
 
 const RenderItems = ({ setType }) => {
@@ -15,18 +17,18 @@ const RenderItems = ({ setType }) => {
   const handelPress = (index, data) => {
     setIndex(index);
     setType(data.name)
-
   }
-
   return packgesTaps.map((d, v) => {
     return (
+      <LinearGradient colors={['rgb(46,58,75)', 'rgb(37,47,63)']} style={styles.productContent} >
 
-      <TouchableOpacity key={v}
-        style={index == v ? styles.tapactive : styles.tap}
-        onPress={() => handelPress(v, d)}
-      >
-        <Text style={styles.tapText}> {d.name} </Text>
-      </TouchableOpacity>
+        <TouchableOpacity key={v}
+          style={index == v ? styles.tapactive : styles.tap}
+          onPress={() => handelPress(v, d)}
+        >
+          <Text style={index == v ? styles.activeTapText : styles.tapText}> {d.name} </Text>
+        </TouchableOpacity>
+      </LinearGradient>
     )
   })
 
@@ -63,7 +65,7 @@ const Packages = ({ activeProvider, navigation }) => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         >
-          <View style={{ marginTop: 20, flexDirection: 'row' }}>
+          <View style={{ marginTop: 10, flexDirection: 'row' }}>
             <RenderItems setType={setType} />
           </View>
           {/* {renderItems(setType)} */}
@@ -125,16 +127,17 @@ const Packages = ({ activeProvider, navigation }) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                  <Text style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    marginBottom: 10, fontWeight: 'bold'
-
-                  }}>
-                    {item.price}
-
-                  </Text>
+                  <View style={{flexDirection: 'row'}}>
+                    <Image source={CalendarIcon} style={{marginTop: 2}}/>
+                    <Text style={{
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      marginBottom: 10, fontWeight: 'bold',
+                      color: 'rgb(5,193,121)'
+                    }}> :    {item.price}
+                    </Text>
+                  </View>
                   <Button
                     style={styles.buttonactive}>
                     <Text style={{ color: '#ffff' }}>Seleccionar</Text>
@@ -144,7 +147,8 @@ const Packages = ({ activeProvider, navigation }) => {
               </TouchableOpacity >
             )}
           />
-          : <View style={styles.EmptyContetnt}>
+          :
+          <View style={styles.EmptyContetnt}>
             <Text style={styles.EmptyMessage}>Not Avalibale Packages</Text>
           </View>
         }
@@ -167,15 +171,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     //   width:'100%',
-    backgroundColor: 'black',
-
-
+    backgroundColor: 'rgb(46,58,75)',
   },
   tap: {
-    backgroundColor: 'black',
+    backgroundColor: 'transparent',
     flex: 1,
-    borderWidth: 1,
-    borderColor: '#ffff',
     height: 40,
     padding: 10,
     marginHorizontal: 5,
@@ -183,10 +183,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   tapactive: {
-    backgroundColor: 'rgb(145,145,145)',
+    backgroundColor: 'transparent',
     flex: 1,
-    borderWidth: 1,
-    borderColor: '#ffff',
+    borderBottomWidth: 2,
+    borderBottomColor: 'rgb(5,193,121)',
     height: 40,
     padding: 10,
     marginHorizontal: 5,
@@ -194,27 +194,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   tapText: {
+    fontSize: 16,
     color: "#ffff"
-
+  },
+  activeTapText: {
+    fontSize: 16,
+    color: "rgb(5,193,121)"
   },
   scrollView: {
-    backgroundColor: 'black',
-
+    backgroundColor: 'rgb(46,58,75)',
     marginHorizontal: 5,
   },
   item: {
     shadowColor: 'black',
-    shadowOpacity: 5.26,
+    shadowOpacity: 0.3,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 5,
+    shadowRadius: 5,
+    elevation: 3,
     backgroundColor: 'white',
     borderRadius: 8,
     padding: 15,
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
-    margin: 8,
+    margin: 4,
     flexDirection: 'row',
 
   },

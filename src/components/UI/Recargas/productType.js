@@ -95,11 +95,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 10,
-    width: 50,
-    height: 50,
+    width: 68,
+    height: 68,
     borderColor: 'rgb(44,209,158)',
     borderWidth: 1,
-    borderRadius: 50 / 2,
+    borderRadius: 68 / 2,
     backgroundColor: '#ffff',
     overflow: "hidden"
 

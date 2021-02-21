@@ -22,9 +22,14 @@ import { connect } from 'react-redux';
 const Products = ({ activeProvider, navigation }) => {
     const [toggleModel, setToggleModel] = useState(false);
 
-    useEffect(() => {
+    const showModal = () => {
+        console.log(toggleModel)
+        // setToggleModel(!toggleModel)
+    }
 
-    }, []);
+    useEffect(() => {
+        console.log(toggleModel)
+    });
 
     return (
         <>
@@ -39,8 +44,6 @@ const Products = ({ activeProvider, navigation }) => {
                 >
                     <FlatList
                         horizontal={false}
-                        // numColumns={1}
-
                         ListHeaderComponent={() => {
                             return (
                                 <View
@@ -69,7 +72,12 @@ const Products = ({ activeProvider, navigation }) => {
                         }}
                         data={packgesData}
                         renderItem={({ item, index }) => (
-                            <TouchableOpacity key={index} style={styles.listHeaderStyle} onPress={setToggleModel(true)}>
+                            <View>
+                                <TouchableOpacity
+                                    key={index}
+                                    style={styles.listHeaderStyle}
+                                    onPress={navigation.navigate('TransactionsDetails')}
+                                >
                                     {/* <Image source={item.icon} style={styles.icon} /> */}
                                     <Text
                                         style={{ ...styles.listText, textDecorationLine: 'underline' }}
@@ -89,46 +97,50 @@ const Products = ({ activeProvider, navigation }) => {
                                     <Text
                                         style={styles.listText}
                                     >{item.Archivos}</Text>
-                            </TouchableOpacity>
+                                </TouchableOpacity>
+                            </View>
                         )}
                     />
                 </ScrollView>
+
+
+
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <Modal width={'100%'} height={'100%'} visible={toggleModel} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}
-                    modalTitle={
-                        <View style={styles.titleModal2}>
-                            <Text style={styles.closeBtn} onPress={() => {
-                                setToggleModel2(false)
-                            }}>
-                                <Image source={Close} /></Text>
-                            <Image style={styles.bigLogo} source={bigLogo} />
-                        </View>
-                    }>
-                    <ModalContent >
-                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                            <Text style={styles.TitleText2}>
-                                Confirmar Transferencia
+                    <Modal width={'100%'} height={'100%'} visible={toggleModel} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}
+                        modalTitle={
+                            <View style={styles.titleModal2}>
+                                <TouchableOpacity style={styles.closeBtn} onPress={() => {
+                                    setToggleModel(false)
+                                }}>
+                                    <Image source={Close} /></TouchableOpacity>
+                                <Image style={styles.bigLogo} source={bigLogo} />
+                            </View>
+                        }>
+                        <ModalContent >
+                            <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                                <Text style={styles.TitleText2}>
+                                    Confirmar Transferencia
                             </Text>
-                            <Text style={{ fontSize: 17, color: 'black', textAlign: 'center', marginTop: 10, fontWeight: '300' }}>
-                                Se esta realizando un moviento entre cajas
+                                <Text style={{ fontSize: 17, color: 'black', textAlign: 'center', marginTop: 10, fontWeight: '300' }}>
+                                    Se esta realizando un moviento entre cajas
                                 Desde <Text style={styles.greenText}>Mi Caja</Text> con destino <Text style={styles.greenText}>Recargas</Text>
+                                </Text>
+                                <Text style={{ fontSize: 30, color: 'black', textAlign: 'center', marginVertical: 20 }}>
+                                    100.000 COP
                             </Text>
-                            <Text style={{ fontSize: 30, color: 'black', textAlign: 'center', marginVertical: 20 }}>
-                                100.000 COP
-                            </Text>
-                            {/* <Button
+                                {/* <Button
                                 onPress={() => {
                                     setToggleModel(false)
                                 }}
                                 style={styles.btnTransfer}>
                                 <Text style={{ color: '#ffff' }}>Transferir Balance</Text>
                             </Button> */}
-                        </View>
+                            </View>
 
 
-                    </ModalContent>
-                </Modal>
-            </TouchableWithoutFeedback>
+                        </ModalContent>
+                    </Modal>
+                </TouchableWithoutFeedback>
             </View>
         </>
     );

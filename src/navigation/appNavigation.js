@@ -33,6 +33,9 @@ import BilleterasScreen from '../screens/Billeteras'
 import Certificados from '../screens/Certificados'
 import Internacional from '../screens/Internacional'
 import Settings from "../screens/Home/setting"
+import Account from "../screens/Settings/Account"
+import ChangePassword from "../screens/Settings/ChangePassword"
+
 import Transactions from "../screens/transactions/Transactions"
 import TransactionsDetails from "../screens/transactions/TransactionsDetails"
 import TvScreen from "../screens/tv"
@@ -83,6 +86,30 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
         }}
       />
 
+      <Stack.Screen name="Account" component={Account}
+        options={{
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          title: 'Mi Cuenta',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen name="ChangePassword" component={ChangePassword}
+        options={{
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          title: 'Seguridad',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
       <Stack.Screen name="Transactions" component={Transactions}
         options={{
           headerBackTitleVisible: false,
@@ -114,7 +141,7 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
 
           title: `Paquetes ${activeProvider.name}`,
           headerStyle: {
-            backgroundColor: 'black',
+            backgroundColor: 'rgb(46,58,75)',
           },
           headerTintColor: '#fff',
         }}
@@ -293,7 +320,7 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
       />
 
       <Stack.Screen name="Complete" component={Complete}
-      
+
         options={{
           headerShown: false
           // headerTitleAlign: 'center',

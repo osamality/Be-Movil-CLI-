@@ -55,7 +55,6 @@ const Billeteras = ({ activeProvider,navigation, nameOfType }) =>  {
     <Content style={{flex:1}}>
    
       <View style={styles.Contentcontainer}>
-        <CustomTapsBalance/>
   
        
         <TapOptions/>

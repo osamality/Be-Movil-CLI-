@@ -50,44 +50,48 @@ function RecargasType() {
 }
 const styles = StyleSheet.create({
 
-    Contentcontainer:{
-        flex:1,
-        flexDirection:'row',
-        shadowColor: 'black',
-        shadowOpacity: 5.26,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 8,
-        elevation: 5,
+    Contentcontainer: {
+        flex: 1,
+        flexDirection: 'row',
+        // shadowColor: 'black',
+        // shadowOpacity: 5.26,
+        // shadowOffset: { width: 0, height: 2 },
+        // shadowRadius: 8,
+        // elevation: 5,
         backgroundColor: 'white',
         flexDirection: 'row',
         width: '60%',
-        borderRadius:5,
-        textAlign:'center',
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:20
-       
+        borderRadius: 5,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 20
+    },
+    content: {
+        flex: 1,
+        flexDirection: 'column',
+        paddingVertical: 9,
+        backgroundColor: 'rgb(232,232,232)',
+        borderRadius: 3
 
     },
-    content:{
-        flex:1,
-        flexDirection:'column',
-        paddingVertical:8,
-    },
-    contentActive:{
-        flex:1,
-        flexDirection:'column',
-        paddingVertical:8,
-        backgroundColor:'rgb(44,209,158)',
-        borderRadius:3
+    contentActive: {
+        flex: 1,
+        flexDirection: 'column',
+        paddingVertical: 9,
+        backgroundColor: 'rgb(44,209,158)',
+        borderRadius: 3
     },
 
-    Text:{
-       fontSize:10,
-       textAlign:'center'
-
+    Text: {
+        fontSize: 12,
+        textAlign: 'center',
     },
-
+    TextActive: {
+        fontSize: 12,
+        textAlign: 'center',
+        color: 'white',
+    },
   });
 
 

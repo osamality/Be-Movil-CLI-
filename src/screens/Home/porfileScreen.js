@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Container, Header, Left, Body, Right, Content, Button } from 'native-base';
-import Logo1 from '../../assets/Images/Group5134.png'
+import proId from '../../assets/Images/proId.png'
 import { useDispatch } from 'react-redux';
 import * as BalanceActions from '../../store/actions/balance';
 import * as RecargasActions from '../../store/actions/recargas'
@@ -54,13 +54,26 @@ const CategoriesScreen = ({ activeBalance, navigation }) => {
       <Content style={{ flex: 1 }}>
 
         <View style={styles.Contentcontainer}>
-          <LinearGradient colors={['rgb(235,6,42)', 'rgb(232,6,42)', 'rgb(209,28,57)']} style={styles.productContent} >
-            <Text style={styles.textAdds}>
-              Banner Ads
-            </Text>
-            <Text style={styles.textAdds}>
-              Banner Ads
-            </Text>
+          <LinearGradient colors={['rgb(178,43,65)', 'rgb(227,60,86)']} style={styles.productContent} >
+            <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, paddingBottom: 5 }}>
+              <Text style={{ ...styles.textAdds }}>
+                Ultima Conexión 25 Enero a las 10:28 pm
+              </Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 5 }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Image source={proId} />
+                <Text style={styles.textAdds}>Image</Text>
+              </View>
+              <View style={{ marginLeft: 70 }}>
+                <Text style={styles.textAdds}>
+                  Nicole Hamilton
+                </Text>
+                <Text style={styles.textAdds}>
+                  Distribuidor
+                </Text>
+              </View>
+            </View>
           </LinearGradient>
           <CustomTapsBalance />
           <View style={styles.paymentContent}>
@@ -99,7 +112,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   textAdds: {
-    color: 'rgb(209,209,209)'
+    color: 'white',
+    textAlign: 'center',
+    marginLeft: 10
   },
 
   test: {
@@ -141,13 +156,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   productContent: {
-    flexDirection: 'row',
     width: "100%",
     justifyContent: 'flex-start',
     padding: 8,
     backgroundColor: 'red',
     marginTop: 10,
-
+  },
+  productContent2: {
+    flexDirection: 'row',
+    width: "100%",
+    justifyContent: 'flex-start',
+    padding: 8,
+    backgroundColor: 'red',
+    marginTop: 1,
   },
   paymentText: {
     fontWeight: "bold",

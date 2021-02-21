@@ -171,11 +171,9 @@ const CustomTapsBalance = ({ activeBalance, balance, navigation }) => {
 
                             <View style={styles.balanceWrapper}>
                                 <Text style={{ color: 'red', }}>
-                                    Balance
-                        </Text>
+                                    Balance </Text>
                                 <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'black' }}>
-                                    {activeOptionBalance} COP
-                        </Text>
+                                    {activeOptionBalance} COP</Text>
                             </View>
                         </View>
                         <View style={{ ...styles.wraper }}>
@@ -193,16 +191,13 @@ const CustomTapsBalance = ({ activeBalance, balance, navigation }) => {
                         <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center', width: '100%', height: 60, marginVertical: 20 }}>
                             <View style={styles.selectGreen}>
                                 <Text style={{ color: '#ffff', textAlign: 'center' }}>
-                                    Recargas
-                        </Text>
+                                    Recargas </Text>
                             </View>
                             <View style={{ ...styles.balanceWrapper, backgroundColor: 'rgb(44,209,158)' }}>
                                 <Text style={{ color: '#ffff', textAlign: 'right' }}>
-                                    Balance
-                        </Text>
+                                    Balance </Text>
                                 <Text style={{ fontWeight: 'bold', fontSize: 18, color: '#ffff', textAlign: 'right' }}>
-                                    {balance?.SS} COP
-                        </Text>
+                                    {balance?.SS} COP </Text>
                             </View>
                         </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
@@ -513,10 +508,10 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 6,
+            height: 4,
         },
         shadowOpacity: 0.2,
-        shadowRadius: 6,
+        shadowRadius: 4,
         flexDirection: 'row',
         width: '92%',
         borderBottomLeftRadius: 1,
@@ -572,8 +567,8 @@ const styles = StyleSheet.create({
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.27,
-        shadowRadius: 8,
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
         backgroundColor: 'white',
         paddingTop: '4%',
         paddingBottom: '2.5%',

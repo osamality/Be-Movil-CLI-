@@ -93,7 +93,6 @@ const CategoriesScreen = ({ activeProvider, navigation }) => {
             </View>
             <ProductType />
             <RecargasChangeType navigation={navigation} />
-            <CustomTapsBalance />
 
 
           </View>

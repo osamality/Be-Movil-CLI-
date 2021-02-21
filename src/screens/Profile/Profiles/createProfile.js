@@ -8,14 +8,19 @@ import {
     FlatList,
     Image,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
+    Button
 } from 'react-native';
 import { profileData } from '../pachageData';
 import { TextInput, Checkbox } from 'react-native-paper';
+import Modal, { SlideAnimation, ModalContent, ModalButton } from 'react-native-modals';
 import { get, filter, isEmpty } from 'lodash';
 import { connect } from 'react-redux';
 import drop from '../../../assets/Images/Dropdown.png'
 
+import arrowBack from "../../../assets/Images/arrowBack.png"
+import bigLogo from "../../../assets/Images/bigLogo.png"
+import CheckCircleOutline from "../../../assets/Images/CheckCircleOutline.png"
 const Check = () => {
     return (
         <View style={styles.drop}>
@@ -38,13 +43,12 @@ const Check = () => {
 }
 
 const createProfile = ({ activeProvider, navigation }) => {
+    const [toggleModel, setToggleModel] = useState(false);
     const [checked, setChecked] = useState(false);
     const [showOption, setShowOptions] = useState(false);
 
     const [number, setNumber] = useState('')
-    useEffect(() => {
-
-    }, []);
+ 
 
     return (
         <>
@@ -339,10 +343,40 @@ const createProfile = ({ activeProvider, navigation }) => {
 
 
             </ScrollView>
-            <TouchableOpacity style={styles.Button}>
+            <TouchableOpacity style={styles.Button} onPress={() => {
+                setToggleModel(true)
+            }}>
                 <Text style={styles.btnText}>Registrar Perfil</Text>
             </TouchableOpacity>
 
+
+
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <Modal width={380} height={380} visible={toggleModel} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}>
+                    <ModalContent >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            <Image style={styles.bigLogo} source={bigLogo} />
+                            <Image style={styles.CheckCircleOutline} source={CheckCircleOutline} />
+                            <Text style={{ fontSize: 22, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 20 }}>
+                            Nuevo Perfil</Text>
+                            <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 5  }}>
+                            Perfil Creado Satisfactoriamente
+                            </Text>
+                            <Text style={{ fontSize: 12, color: 'rgb(5,193,121)', textAlign: 'center', fontWeight: '500' }}>
+                            Perfil 2021</Text>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    setToggleModel(false)
+                                }}
+                                style={styles.btnTransfer}>
+                                <Text style={{ color: '#ffff' }}>Transferir Balance</Text>
+                            </TouchableOpacity>
+                        </View>
+
+
+                    </ModalContent>
+                </Modal>
+            </TouchableWithoutFeedback>
         </>
     );
 }
@@ -400,8 +434,30 @@ const styles = StyleSheet.create({
     },
     spacee: {
         width: '7.5%'
-    }
-
+    },
+    Contentcontainer: {
+        flex: 1,
+        justifyContent: 'center', alignItems: 'center', width: '100%',height: '100%', backgroundColor: 'white'
+    },
+    bigLogo: {
+        height: 64,
+        width: 255,
+    },
+    CheckCircleOutline: {
+        height: 80,
+        width: 80,
+        marginTop: 30
+    },
+    btnTransfer: {
+        backgroundColor: 'red',
+        width: '100%',
+        borderRadius: 5,
+        // width: '80%',
+        paddingVertical: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 5
+    },
 });
 
 

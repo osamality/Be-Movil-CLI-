@@ -6,7 +6,9 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Image,
-  FlatList
+  FlatList,
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import { Container, Content, Form, Button } from 'native-base';
 import { useDispatch } from 'react-redux';
@@ -74,7 +76,87 @@ const Repartos = ({ activeProvider, navigation }) => {
 
             <RecargasType />
 
-            <FlatList
+            <ScrollView
+              style={{
+                marginTop: '5%',
+                width: '100%'
+              }}
+              horizontal
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
+            >
+              <FlatList
+                horizontal={false}
+                // numColumns={1}
+
+                ListHeaderComponent={() => {
+                  return (
+                    <View
+                      style={styles.headerStyle}
+                    >
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 100, marginLeft: 30 }}
+                      >ID</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 50 }}
+                      >Asociar</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 60 }}
+                      >Nombre</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 20 }}
+                      >Usuario</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 20 }}
+                      >Estado</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 20 }}
+                      >Coord</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 20 }}
+                      >Comisión</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 20 }}
+                      >Borrar</Text>
+                    </View>
+                  )
+                }}
+                data={packgesData}
+                renderItem={({ item, index }) => (
+                  <View>
+                    <TouchableOpacity
+                      key={index}
+                      style={styles.listHeaderStyle}
+                      // onPress={navigation.navigate('TransactionsDetails')}
+                    >
+                      {/* <Image source={item.icon} style={styles.icon} /> */}
+                      <Text
+                        style={{ ...styles.listText, textDecorationLine: 'underline' }}
+                      >{item.ID}</Text>
+                      {/* <Image source={item.icon} style={styles.icon} /> */}
+
+                      <Text
+                        style={styles.listText}
+                      >{item.Fecha}</Text>
+                      <Text
+                        style={styles.listText}
+                      >{item.Valor}</Text>
+                      <Text
+                        style={styles.listText}
+                      >{item.Servicio}</Text>
+                      <Text
+                        style={styles.listText}
+                      >{item.Estado}</Text>
+                      <Text
+                        style={styles.listText}
+                      >{item.Archivos}</Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              />
+            </ScrollView>
+
+            {/* <FlatList
               // horizontal
               scrollEnabled={false}
               numColumns={1}
@@ -129,21 +211,7 @@ const Repartos = ({ activeProvider, navigation }) => {
                   key={index}
                   style={styles.listHeaderStyle}
                 >
-                  {/* <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Image source={item.icon} style={styles.icon} />
-
-                                <Text
-                                    style={styles.listHeaderText}
-                                >{item.name}</Text>
-                            </View>
-                            <View style={styles.listHeaderStyle2}>
-                                <Text
-                                    style={styles.listHeaderText}
-                                >0.5 %</Text>
-                                <Text
-                                    style={styles.listHeaderText}
-                                >0 %</Text>
-                            </View>  */}
+           
 
 
                   <Text
@@ -169,7 +237,7 @@ const Repartos = ({ activeProvider, navigation }) => {
                 </View>
 
               )}
-            />
+            /> */}
 
           </View>
 
@@ -257,7 +325,7 @@ const styles = StyleSheet.create({
   },
   listText: {
     fontWeight: '300',
-    fontSize: 15,
+    fontSize: 13,
     marginHorizontal: 5
   },
   listHeaderStyle: {

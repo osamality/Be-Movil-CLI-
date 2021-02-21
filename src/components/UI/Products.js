@@ -43,15 +43,9 @@ const Products = ({ navigation }) => {
                 if (d.product_id == a.id) {
                     result.push(a)
                 }
-
-
             })
         })
-
-
-
     }
-
 
     if (stuts == 1) {
 
@@ -63,6 +57,7 @@ const Products = ({ navigation }) => {
                     showsHorizontalScrollIndicator={false}
                 >
                     <FlatList
+                        scrollEnabled={false}
                         horizontal={false}
                         numColumns={3}
                         data={productsData}
@@ -76,6 +71,7 @@ const Products = ({ navigation }) => {
                         )}
                     />
                     <FlatList
+                        scrollEnabled={false}
                         horizontal={false}
                         numColumns={3}
                         data={productsData2}
@@ -123,31 +119,20 @@ const styles = StyleSheet.create({
 
     },
     content: {
-
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        // shadowColor: 'black',
-        // shadowOpacity: 5.26,
-        // shadowOffset: { width: 0, height: 2 },
-        // shadowRadius: 8,
-        // elevation: 5,
-        // backgroundColor: 'white',
-        shadowOffset: { width: 0, height: 0 },
+        shadowOffset: { width: 0, height: 3 },
         shadowColor: 'grey',
-        shadowOpacity: 1,
+        shadowRadius: 7,
+        shadowOpacity: 0.5,
         elevation: 8,
-        // background color must be set
         backgroundColor: "rgb(255,255,255)",
         borderRadius: 5,
-        padding: 15,
+        padding: 13,
         paddingHorizontal: 0,
-        // maxWidth: Dimensions.get('window').width / 3 - 10, // Width / 3 - (marginLeft and marginRight for the components)
         margin: 13,
-        // height:100,
-        // maxHeight:Dimensions.get('window').width / 3 - 10,
-
     },
     ItemContent: {
         // width:50,
@@ -157,20 +142,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%'
         // backgroundColor:'red'
-
-
     },
     Text: {
         textAlign: 'center',
         width: 100,
-        fontSize: 11,
+        fontSize: 13,
         marginTop: 7,
         flex: 1,
         flexWrap: 'nowrap',
         color: 'black',
         lineHeight: 17
-
-
     }
 
 })

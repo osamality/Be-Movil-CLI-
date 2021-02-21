@@ -68,14 +68,13 @@ const BetCompanies = ({ activeProvider,navigation }) =>  {
     <Content style={{flex:1}}>
    
       <View style={styles.Contentcontainer}>
-        <CustomTapsBalance/>
   
        
         <BetCompaniesRenderOption/>
         <View style={styles.paymentContent}>
           {activeImage()}
           <Text style={{...styles.paymentText,marginRight:4,fontWeight:'bold'}}>
-          Recarga casa apuestas :     
+          Recarga casa apuestas:     
           </Text>
           {
             activeProvider?.name && <Text style={{color:'rgb(44,209,158)',fontWeight:'bold'}}>

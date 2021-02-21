@@ -7,9 +7,8 @@ const renderPayment = () => {
 
     return paymetData.map((d, v) => {
         return (
-            <LinearGradient key={v} colors={['rgb(35,45,60)', 'rgb(57,72,93)']} style={styles.content}>
-
-                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }} >
+            <LinearGradient key={v} colors={['rgba(255,255,255,0.14)', 'rgba(150,150,150,0.1)']} style={styles.content}>
+                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', }} >
                     <Image source={d.icon} style={styles.icon} />
                     <Text style={styles.Text}> {d.name} </Text>
                 </TouchableOpacity >
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flex: 1,
         width: '100%',
-        padding: 5,
+        padding: 8,
         marginTop: -1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,16 +42,15 @@ const styles = StyleSheet.create({
     },
     content: {
         flexDirection: 'column',
-        height: 80,
-        margin: 5,
+        height: 70,
+        margin: 8,
         flex: 1,
         shadowOffset: { width: 0, height: 0 },
         shadowColor: 'grey',
         shadowOpacity: 25,
         elevation: 8,
-        padding: 15,
+        padding: 10,
         borderRadius: 10,
-        // marginHorizontal:12,
         textAlign: 'center',
         justifyContent: 'center',
         alignItems: 'center',
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
 
     },
     icon: {
-        marginTop: 8,
+        marginTop: 5,
         height: 18,
         width: 20
     },

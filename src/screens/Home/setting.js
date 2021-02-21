@@ -34,16 +34,16 @@ const FavouriteScreen = props => {
         </View>
         <View style={styles.TextId}>
           <Text style={styles.subTitle}>
-            ID: 196196
+            ID: <Text style={{color: 'rgb(235,6,42)'}}>196196</Text>
        </Text>
         </View>
       </View>
       <View style={styles.body}>
-        <TouchableOpacity style={styles.row}>
+        <TouchableOpacity style={styles.row} onPress={()=>{navigation.navigate('Account')}}>
           <Image source={person} style={styles.image} />
           <Text style={styles.subTitle}>Account</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.row}>
+        <TouchableOpacity style={styles.row} onPress={()=>{navigation.navigate('ChangePassword')}}>
           <Image source={change} style={styles.image} />
           <Text style={styles.subTitle}>Seguridad</Text>
         </TouchableOpacity>

@@ -1,16 +1,21 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import { Form, Button } from 'native-base';
 import { TextInput } from 'react-native-paper';
+import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 import RBSheet from "react-native-raw-bottom-sheet";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import arrowImage from '../../assets/Images/arrowBottm3.png';
 import notactiveImage from '../../assets/Images/notactive.png';
 import { isEmpty } from 'lodash';
+import { FlatList } from 'react-native-gesture-handler';
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
+const packagesBottom = [{ pak: '1000' }, { pak: '2000' }, { pak: '5000' }, { pak: '10000' }, { pak: '20000' },]
 const activeImageInputs = (initialValues, activeProvider, type) => {
 
   if (isEmpty(activeProvider)) {
@@ -46,9 +51,7 @@ const activeImageInputs = (initialValues, activeProvider, type) => {
 
 const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet) => {
 
-
   return (
-
     <Form style={{ marginTop: 5 }}>
       <TextInput style={defaultStyle.InputText1Style}
         label="Phone number"
@@ -77,18 +80,15 @@ const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet
         direction='rtl'
         theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
         editable={activeProvider.name ? true : false}
-
-
       />
 
-      <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
-
+      {/* <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
         <Button disabled={initialValues.phone !== '' && initialValues.amount !== '' ? false : true}
           onPress={() => refRBSheet.current.open()}
           style={initialValues.phone !== '' && initialValues.amount !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
           <Text style={{ color: '#ffff' }}>Recargas</Text>
         </Button>
-      </View>
+      </View> */}
 
     </Form>
   )
@@ -108,18 +108,14 @@ const renderInputsPackage = (InitialValesPackage, setInitialValesPackage, active
         underlineColorAndroid={'rgba(0,0,0,0)'}
         text='white'
         direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
+        theme={{ colors: { primary: 'rgb(177,177,177)', underlineColor: 'transparent', background: '#003489' } }}
         editable={activeProvider.name ? true : false}
       />
 
-      <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
 
-        <Button disabled={InitialValesPackage.phone !== '' ? false : true}
-          onPress={() => refRBSheet.current.open()}
-          style={InitialValesPackage.phone !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
-          <Text style={{ color: '#ffff' }}>Recargas</Text>
-        </Button>
-      </View>
+
+
+
 
     </Form>
   )
@@ -139,7 +135,7 @@ const renderPackage = (activePackage, navigation, activeProvider) => {
         </View>
         <Text style={{ color: '#ffff' }}>
           Selecciona tu Paquete
- </Text>
+        </Text>
         <Icon name="chevron-down" size={15} color="#ffff" />
       </TouchableOpacity>
     )
@@ -190,12 +186,43 @@ const handelType = (RecargasActiveType,
         <View style={styles.paymentContent}>
           {activeImageInputs(initialValues, activeProvider, "movil")}
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
-            Escoje tu Operador:
+            Linea a Recargar:
             </Text>
         </View>
         <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
         </View>
         {renderInputs(initialValues, setInitialVales, activeProvider, refRBSheet)}
+
+        <FlatList
+          scrollEnabled={false}
+          horizontal
+          data={packagesBottom}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity key={index} style={styles.content}>
+              <Text style={styles.Text}> {item.pak}</Text>
+            </TouchableOpacity>
+          )}
+        />
+
+        <View style={styles.paymentContent}>
+          {activeImageInputs(initialValues, activeProvider, "package")}
+          <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
+            Paquetes de Consumo:
+            </Text>
+        </View>
+
+        <CustomTapsBalance navigation={navigation} />
+
+
+        <View style={{ justifyContent: 'space-around', flexDirection: 'row', marginTop: 40 }}>
+          <Button disabled={initialValues.phone !== '' && initialValues.amount !== '' ? false : true}
+            onPress={() => refRBSheet.current.open()}
+            style={initialValues.phone !== '' && initialValues.amount !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
+            <Text style={{ color: '#ffff' }}>Recargas</Text>
+          </Button>
+        </View>
+
+
         <View>
           <RBSheet
             ref={refRBSheet}
@@ -204,7 +231,7 @@ const handelType = (RecargasActiveType,
             height={500}
             customStyles={{
               wrapper: {
-                backgroundColor: "transparent",
+                backgroundColor: 'rgba(52, 52, 52, 0.4)',
                 borderRadius: 50,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -227,87 +254,64 @@ const handelType = (RecargasActiveType,
               <View style={{ alignItems: 'center', flex: 1 }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 25 }}>
                   Confirmar Compra
-    </Text>
-                <Text  >
-                  Estas apunto de Recargar la Linea
-    </Text>
-                {/* <Text style={{color:'rgb(235,6,42)'}}>
-    Todo Incluido 30 Dias 
-    
-    </Text> */}
+                 </Text>
+                <View style={styles.tophead}>
+                  <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', letterSpacing: 0.5 }} >
+                    Paquete ETB
+                 </Text>
+                </View>
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Operdor:</Text>
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>{activeProvider.name}</Text>
+                  </View>
+                </View>
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Linea:</Text>
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>{initialValues.phone}</Text>
+                  </View>
+                </View>
+
 
                 <View style={defaultStyle.container}>
                   <View
                     style={defaultStyle.textTable}>
-                    <Text>Operador:</Text>
+                    <Text style={defaultStyle.txt}>Valor:</Text>
                   </View>
                   <View style={defaultStyle.textTable1}>
-                    <Text >{activeProvider.name}</Text>
-                  </View>
-                </View>
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text>Linea:</Text>
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text >{initialValues.phone}</Text>
-                  </View>
-                </View>
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text>Valor:</Text>
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text >{initialValues.amount}</Text>
+                    <Text style={defaultStyle.txt}>{initialValues.amount}</Text>
                   </View>
                 </View>
 
-                <Text style={{ fontWeight: 'bold', fontSize: 25, marginTop: 10 }}  >
-                  Realizar compra desde:
-    </Text>
+
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Pago:</Text>
+                    {/* <Image style={{ height: 20, width: 30 }} source={arrowBB} /> */}
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>Recargas</Text>
+                    <Text style={defaultStyle.txt2}>Cambiar</Text>
+                  </View>
+                </View>
+
+
                 <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
-
                   <Button
-                    style={index == 0 ? defaultStyle.button1active : defaultStyle.button1}
-                    onPress={() => setindex(0)}
-                  >
-                    <Text style={index == 0 ? styles.btnTextActive : styles.btnText}>Recargas</Text>
-                    <Text style={index == 0 ? styles.btnTextActive : styles.btnText}>{allBalance.SS}</Text>
-
-                  </Button>
-
-                  <Button
-                    style={index == 1 ? defaultStyle.button1active : defaultStyle.button1}
-                    onPress={() => setindex(1)}
-                  >
-                    <Text style={index == 1 ? styles.btnTextActive : styles.btnText}>Mi Ahorro</Text>
-                    <Text style={index == 1 ? styles.btnTextActive : styles.btnText}>{allBalance.SP}</Text>
-
-                  </Button>
-                  <Button
-                    onPress={() => setindex(2)}
-                    style={index == 2 ? defaultStyle.button1active : defaultStyle.button1}>
-                    <Text style={index == 2 ? styles.btnTextActive : styles.btnText}>Mi Caja</Text>
-                    <Text style={index == 2 ? styles.btnTextActive : styles.btnText}>{allBalance.ST}</Text>
-
-                  </Button>
-                </View>
-                <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
-
-                  <Button
+                    onPress={() => { navigation.navigate('Complete') }}
                     style={defaultStyle.accecptBtn}>
-                    <Text style={{ color: '#ffff' }}>Aceptar</Text>
+                    <Text style={{ color: '#ffff', fontSize: 17, }}>Aceptar y Comprar</Text>
                   </Button>
                 </View>
-                <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
 
-                  <Button
-                    style={defaultStyle.cancelBtn}>
-                    <Text style={{ color: 'rgb(158,159,159)' }}>Cancel</Text>
-                  </Button>
-                </View>
                 <View style={{ marginTop: 2 }}>
 
                 </View>
@@ -327,7 +331,7 @@ const handelType = (RecargasActiveType,
         <View style={styles.paymentContent}>
           {activeImageInputs(initialValues, activeProvider, "package")}
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
-            Escoje tu Operador:
+            Paquetes de Consumo:
             </Text>
         </View>
         <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
@@ -335,6 +339,26 @@ const handelType = (RecargasActiveType,
         {renderPackage(activePackage, navigation, activeProvider)}
 
         {renderInputsPackage(InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet)}
+
+        <View style={styles.paymentContent}>
+          {activeImageInputs(initialValues, activeProvider, "package")}
+          <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
+            Método de Pago
+            </Text>
+        </View>
+
+        <CustomTapsBalance navigation={navigation} />
+
+
+        <View style={{ justifyContent: 'space-around', flexDirection: 'row', marginTop: 40 }}>
+
+          <Button disabled={InitialValesPackage.phone !== '' ? false : true}
+            onPress={() => refRBSheet.current.open()}
+            style={InitialValesPackage.phone !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
+            <Text style={{ color: '#ffff' }}>Recargas</Text>
+          </Button>
+        </View>
+
         <View>
           <RBSheet
             ref={refRBSheet}
@@ -343,10 +367,10 @@ const handelType = (RecargasActiveType,
             height={500}
             customStyles={{
               wrapper: {
-                backgroundColor: "transparent",
+                backgroundColor: 'rgba(52, 52, 52, 0.4)',
                 borderRadius: 50,
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'center', 
                 flex: 1
               },
               container: {
@@ -367,85 +391,65 @@ const handelType = (RecargasActiveType,
                 <Text style={{ fontWeight: 'bold', fontSize: 25 }}>
                   Confirmar Compra
                  </Text>
-                <Text  >
-                  Estas apunto de Recargar la Linea
+                <View style={styles.tophead}>
+                  <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', letterSpacing: 0.5 }} >
+                    Paquete ETB
                  </Text>
-                {/* <Text style={{color:'rgb(235,6,42)'}}>
-                   Todo Incluido 30 Dias 
-                  </Text> */}
+                </View>
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Operdor:</Text>
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>{activeProvider.name}</Text>
+                  </View>
+                </View>
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Linea:</Text>
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>{initialValues.phone}</Text>
+                  </View>
+                </View>
+
 
                 <View style={defaultStyle.container}>
                   <View
                     style={defaultStyle.textTable}>
-                    <Text>Operador:</Text>
+                    <Text style={defaultStyle.txt}>Valor:</Text>
                   </View>
                   <View style={defaultStyle.textTable1}>
-                    <Text >{activeProvider.name}</Text>
-                  </View>
-                </View>
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text>Linea:</Text>
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text >{initialValues.phone}</Text>
-                  </View>
-                </View>
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text>Valor:</Text>
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text >{initialValues.amount}</Text>
+                    <Text style={defaultStyle.txt}>{initialValues.amount}</Text>
                   </View>
                 </View>
 
-                <Text style={{ fontWeight: 'bold', fontSize: 25, marginTop: 10 }}  >
-                  Realizar compra desde:
-    </Text>
+
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Pago:</Text>
+                    {/* <Image style={{ height: 20, width: 30 }} source={arrowBB} /> */}
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>Recargas</Text>
+                    <Text style={defaultStyle.txt2}>Cambiar</Text>
+                  </View>
+                </View>
+
+
                 <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
-
                   <Button
-                    style={index == 0 ? defaultStyle.button1active : defaultStyle.button1}
-                    onPress={() => setindex(0)}
-                  >
-                    <Text style={index == 0 ? styles.btnTextActive : styles.btnText}>Recargas</Text>
-                    <Text style={index == 0 ? styles.btnTextActive : styles.btnText}>{allBalance.SS}</Text>
-
-                  </Button>
-
-                  <Button
-                    style={index == 1 ? defaultStyle.button1active : defaultStyle.button1}
-                    onPress={() => setindex(1)}
-                  >
-                    <Text style={index == 1 ? styles.btnTextActive : styles.btnText}>Mi Ahorro</Text>
-                    <Text style={index == 1 ? styles.btnTextActive : styles.btnText}>{allBalance.SP}</Text>
-
-                  </Button>
-                  <Button
-                    onPress={() => setindex(2)}
-                    style={index == 2 ? defaultStyle.button1active : defaultStyle.button1}>
-                    <Text style={index == 2 ? styles.btnTextActive : styles.btnText}>Mi Caja</Text>
-                    <Text style={index == 2 ? styles.btnTextActive : styles.btnText}>{allBalance.ST}</Text>
-
-                  </Button>
-                </View>
-                <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
-
-                  <Button
+                    onPress={() => { 
+                      navigation.navigate('Complete')
+                    }}
                     style={defaultStyle.accecptBtn}>
-                    <Text style={{ color: '#ffff' }}>Aceptar</Text>
+                    <Text style={{ color: '#ffff', fontSize: 17, }}>Aceptar y Comprar</Text>
                   </Button>
                 </View>
-                <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
 
-                  <Button
-                    style={defaultStyle.cancelBtn}>
-                    <Text style={{ color: 'rgb(158,159,159)' }}>Cancel</Text>
-                  </Button>
-                </View>
                 <View style={{ marginTop: 2 }}>
 
                 </View>
@@ -499,9 +503,7 @@ const styles = StyleSheet.create({
   },
   btnTextActive: {
     color: '#ffff'
-
   },
-
   paymentContent: {
     flexDirection: 'row',
     width: "100%",
@@ -520,10 +522,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     borderWidth: 2,
-    borderRadius: 5,
-    padding: 10,
-    backgroundColor: 'black'
-    //   marginTop:20
+    borderRadius: 8,
+    padding: 20,
+    backgroundColor: 'rgb(37,47,63)'
   },
   packagesDone: {
     flexDirection: 'row',
@@ -531,19 +532,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: 2,
-    padding: 10,
-
-    //   height:53,
+    padding: 20,
     shadowOffset: { width: 0, height: 0 },
     shadowColor: 'grey',
     shadowOpacity: 25,
     elevation: 8,
     borderRadius: 8,
     backgroundColor: "rgb(255,255,255)",
-    // borderRadius:10,
     borderColor: '#ffff',
     textAlign: 'center'
-    //   marginTop:20
   },
   notactivePackages: {
     flexDirection: 'row',
@@ -552,10 +549,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 2,
     borderColor: 'rgb(219,219,219)',
-    borderRadius: 5,
-    padding: 10,
-    backgroundColor: 'rgb(219,219,219)'
-
+    borderRadius: 8,
+    padding: 20,
+    backgroundColor: 'rgb(181,185,185)'
   },
   DownloadIcon: {
     width: 60,
@@ -565,13 +561,26 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center'
-
   },
   Image: {
     width: 17,
     height: 17,
-
-
+  },
+  content: {
+    backgroundColor: 'rgb(46,58,75)',
+    padding: 6,
+    marginHorizontal: 5,
+    borderRadius: 5,
+  },
+  Text: {
+    color: 'white',
+    fontSize: 18
+  },
+  tophead: {
+    backgroundColor: 'rgb(235,6,42)',
+    width: width,
+    marginTop: '2%',
+    paddingVertical: '2%'
   }
 
 });
@@ -592,7 +601,6 @@ const defaultStyle = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 10
   },
 
   btn: {
@@ -613,25 +621,38 @@ const defaultStyle = StyleSheet.create({
 
   },
   textTable: {
+    flexDirection: 'row',
     backgroundColor: '#ffff',
     borderWidth: 1,
     borderColor: '#0000',
-    width: '30%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: '40%',
+    paddingVertical: '4%',
     borderWidth: 1,
-    borderColor: 'rgb(232,232,232)'
+    borderColor: 'rgb(232,232,232)',
+    paddingHorizontal: '5%'
+  },
+  txt: {
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'left',
+    marginRight: '15%',
+  },
+  txt2: {
+    color: 'rgb(5,193,121)',
+    fontWeight: '600',
+    textAlign: 'left',
+    marginLeft: '8%',
   },
   textTable1: {
+    flexDirection: 'row',
     backgroundColor: '#ffff',
     borderWidth: 1,
     borderColor: '#0000',
-    width: '30%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: '60%',
+    paddingVertical: '4%',
     borderWidth: 1,
-    borderLeftWidth: 0,
-    borderColor: 'rgb(232,232,232)'
+    borderColor: 'rgb(232,232,232)',
+    paddingHorizontal: '5%'
   },
   button1: {
     backgroundColor: '#ffff',
@@ -657,10 +678,10 @@ const defaultStyle = StyleSheet.create({
     margin: 20,
   },
   accecptBtn: {
-    margin: 10,
-    backgroundColor: 'rgb(235,6,42)',
+    marginTop: 60,
+    backgroundColor: 'rgb(5,193,121)',
     borderRadius: 5,
-    width: '80%',
+    width: '90%',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -673,7 +694,8 @@ const defaultStyle = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
 
-  }
+  },
+
 
 })
 

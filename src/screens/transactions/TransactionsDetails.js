@@ -20,7 +20,39 @@ const Products = ({ activeProvider, navigation }) => {
 
     return (
         <View>
-           
+
+            <View style={styles.titleModal2}>
+                <Text style={styles.closeBtn} onPress={() => {
+                    setToggleModel(false)
+                }}>
+                    {/* <Image source={Close} /> */}
+                    </Text>
+                {/* <Image style={styles.bigLogo} source={bigLogo} /> */}
+            </View>
+            {/* <ModalContent > */}
+                <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                    <Text style={styles.TitleText2}>
+                        Confirmar Transferencia
+                            </Text>
+                    <Text style={{ fontSize: 17, color: 'black', textAlign: 'center', marginTop: 10, fontWeight: '300' }}>
+                        Se esta realizando un moviento entre cajas
+                                Desde <Text style={styles.greenText}>Mi Caja</Text> con destino <Text style={styles.greenText}>Recargas</Text>
+                    </Text>
+                    <Text style={{ fontSize: 30, color: 'black', textAlign: 'center', marginVertical: 20 }}>
+                        100.000 COP
+                            </Text>
+                    {/* <Button
+                                onPress={() => {
+                                    setToggleModel(false)
+                                }}
+                                style={styles.btnTransfer}>
+                                <Text style={{ color: '#ffff' }}>Transferir Balance</Text>
+                            </Button> */}
+                </View>
+
+
+            {/* </ModalContent> */}
+
         </View>
     );
 }
