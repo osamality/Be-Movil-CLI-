@@ -87,6 +87,8 @@ const renderInputs = (initialValuesDeposito, initialValuesRetiros, activeProvide
 
 
         />
+
+{/*         
         <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
 
           <Button disabled={initialValuesDeposito.Linea !== '' && initialValuesDeposito.Monto_Recargar !== '' ? false : true}
@@ -94,7 +96,7 @@ const renderInputs = (initialValuesDeposito, initialValuesRetiros, activeProvide
             style={initialValuesDeposito.Linea !== '' && initialValuesDeposito.Monto_Recargar !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
             <Text style={{ color: '#ffff' }}>Recargas</Text>
           </Button>
-        </View>
+        </View> */}
         <View>
           <RBSheet
             ref={refRBSheet}
@@ -377,6 +379,13 @@ const RecargasChange = ({ activeProvider, initialValuesDeposito, initialValuesRe
       <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
       </View>
       {renderInputs(initialValuesDeposito, initialValuesRetiros, activeProvider, refRBSheet, activeType, allBalance, refRBSheetRetiros)}
+  
+      <View style={styles.paymentContent}>
+        {activeImageInputs(initialValuesDeposito, initialValuesRetiros, activeProvider, activeType)}
+        <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
+          Información de tu Cuenta :
+        </Text>
+      </View>
       <CustomTapsBalance />
 
       {activeType == "Deposito" ?

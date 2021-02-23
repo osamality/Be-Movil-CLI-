@@ -30,6 +30,7 @@ import perfil from '../assets/Images/perfil.png'
 import clientes from '../assets/Images/clientes.png'
 import iconAwesomeUser from '../assets/Images/iconAwesomeUser.png'
 import BilleterasScreen from '../screens/Billeteras'
+import Confirmar from '../screens/Confirmar'
 import Certificados from '../screens/Certificados'
 import Internacional from '../screens/Internacional'
 import Settings from "../screens/Home/setting"
@@ -158,7 +159,6 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
           headerTintColor: '#fff',
         }}
       />
-
       <Stack.Screen name="Digitales" component={Digital}
         options={{
           headerTitleAlign: 'center',
@@ -177,6 +177,18 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
           headerBackTitleVisible: false,
 
           title: titleHeader,
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Stack.Screen name="Confirmar" component={Confirmar}
+        options={{
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
+
+          title: 'Escoger Metodo de Pago',
           headerStyle: {
             backgroundColor: 'rgb(235,6,42)',
           },

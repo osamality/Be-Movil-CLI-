@@ -5,13 +5,13 @@ import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import { Form, Button } from 'native-base';
 import { TextInput } from 'react-native-paper';
-import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 import RBSheet from "react-native-raw-bottom-sheet";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import arrowImage from '../../assets/Images/arrowBottm3.png';
 import notactiveImage from '../../assets/Images/notactive.png';
 import { isEmpty } from 'lodash';
 import { FlatList } from 'react-native-gesture-handler';
+import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -213,7 +213,6 @@ const handelType = (RecargasActiveType,
 
         <CustomTapsBalance navigation={navigation} />
 
-
         <View style={{ justifyContent: 'space-around', flexDirection: 'row', marginTop: 40 }}>
           <Button disabled={initialValues.phone !== '' && initialValues.amount !== '' ? false : true}
             onPress={() => refRBSheet.current.open()}
@@ -222,6 +221,138 @@ const handelType = (RecargasActiveType,
           </Button>
         </View>
 
+        <View>
+          <RBSheet
+            ref={refRBSheet}
+            closeOnDragDown={true}
+            closeOnPressMask={false}
+            height={500}
+            customStyles={{
+              wrapper: {
+                backgroundColor: 'rgba(52, 52, 52, 0.4)',
+                borderRadius: 50,
+                justifyContent: 'center',
+                alignItems: 'center',
+                flex: 1
+              },
+              container: {
+                borderRadius: 50,
+                justifyContent: 'center',
+                alignItems: 'center'
+              },
+              draggableIcon: {
+                backgroundColor: "#000"
+              }
+            }}
+          >
+            <ScrollView showsHorizontalScrollIndicator={false}
+            >
+              <View style={{ alignItems: 'center', flex: 1 }}>
+                <Text style={{ fontWeight: 'bold', fontSize: 25 }}>
+                  Confirmar Compra
+                 </Text>
+                <View style={styles.tophead}>
+                  <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', letterSpacing: 0.5 }} >
+                    Paquete ETB
+                 </Text>
+                </View>
+
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Operdor:</Text>
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>{activeProvider.name}</Text>
+                  </View>
+                </View>
+
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Linea:</Text>
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>{initialValues.phone}</Text>
+                  </View>
+                </View>
+
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Valor:</Text>
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>{initialValues.amount}</Text>
+                  </View>
+                </View>
+
+
+                <View style={defaultStyle.container}>
+                  <View
+                    style={defaultStyle.textTable}>
+                    <Text style={defaultStyle.txt}>Pago:</Text>
+                    {/* <Image style={{ height: 20, width: 30 }} source={arrowBB} /> */}
+                  </View>
+                  <View style={defaultStyle.textTable1}>
+                    <Text style={defaultStyle.txt}>Recargas</Text>
+                    <Text style={defaultStyle.txt2}>Cambiar</Text>
+                  </View>
+                </View>
+
+
+                <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
+                  <Button
+                    onPress={() => { navigation.navigate('Complete') }}
+                    style={defaultStyle.accecptBtn}>
+                    <Text style={{ color: '#ffff', fontSize: 17, }}>Aceptar y Comprar</Text>
+                  </Button>
+                </View>
+
+                <View style={{ marginTop: 2 }}>
+
+                </View>
+              </View>
+            </ScrollView>
+          </RBSheet>
+
+        </View>
+
+
+      </>
+    )
+  }
+  else {
+    return (
+      <>
+        <View style={styles.paymentContent}>
+          {activeImageInputs(initialValues, activeProvider, "package")}
+          <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
+            Paquetes de Consumo:
+            </Text>
+        </View>
+        <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
+        </View>
+        {renderPackage(activePackage, navigation, activeProvider)}
+
+        {renderInputsPackage(InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet)}
+
+        <View style={styles.paymentContent}>
+          {activeImageInputs(initialValues, activeProvider, "package")}
+          <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
+            Método de Pago
+          </Text>
+        </View>
+
+        <CustomTapsBalance navigation={navigation} />
+
+        <View style={{ justifyContent: 'space-around', flexDirection: 'row', marginTop: 40 }}>
+          <Button disabled={InitialValesPackage.phone !== '' ? false : true}
+            onPress={() => refRBSheet.current.open()}
+            style={InitialValesPackage.phone !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
+            <Text style={{ color: '#ffff' }}>Recargas</Text>
+          </Button>
+        </View>
 
         <View>
           <RBSheet
@@ -306,143 +437,7 @@ const handelType = (RecargasActiveType,
 
                 <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
                   <Button
-                    onPress={() => { navigation.navigate('Complete') }}
-                    style={defaultStyle.accecptBtn}>
-                    <Text style={{ color: '#ffff', fontSize: 17, }}>Aceptar y Comprar</Text>
-                  </Button>
-                </View>
-
-                <View style={{ marginTop: 2 }}>
-
-                </View>
-              </View>
-            </ScrollView>
-          </RBSheet>
-
-        </View>
-
-
-      </>
-    )
-  }
-  else {
-    return (
-      <>
-        <View style={styles.paymentContent}>
-          {activeImageInputs(initialValues, activeProvider, "package")}
-          <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
-            Paquetes de Consumo:
-            </Text>
-        </View>
-        <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
-        </View>
-        {renderPackage(activePackage, navigation, activeProvider)}
-
-        {renderInputsPackage(InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet)}
-
-        <View style={styles.paymentContent}>
-          {activeImageInputs(initialValues, activeProvider, "package")}
-          <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
-            Método de Pago
-            </Text>
-        </View>
-
-        <CustomTapsBalance navigation={navigation} />
-
-
-        <View style={{ justifyContent: 'space-around', flexDirection: 'row', marginTop: 40 }}>
-
-          <Button disabled={InitialValesPackage.phone !== '' ? false : true}
-            onPress={() => refRBSheet.current.open()}
-            style={InitialValesPackage.phone !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
-            <Text style={{ color: '#ffff' }}>Recargas</Text>
-          </Button>
-        </View>
-
-        <View>
-          <RBSheet
-            ref={refRBSheet}
-            closeOnDragDown={true}
-            closeOnPressMask={false}
-            height={500}
-            customStyles={{
-              wrapper: {
-                backgroundColor: 'rgba(52, 52, 52, 0.4)',
-                borderRadius: 50,
-                justifyContent: 'center',
-                alignItems: 'center', 
-                flex: 1
-              },
-              container: {
-                borderRadius: 50,
-                justifyContent: 'center',
-                // flex:1,
-                alignItems: 'center'
-
-              },
-              draggableIcon: {
-                backgroundColor: "#000"
-              }
-            }}
-          >
-            <ScrollView showsHorizontalScrollIndicator={false}
-            >
-              <View style={{ alignItems: 'center', flex: 1 }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 25 }}>
-                  Confirmar Compra
-                 </Text>
-                <View style={styles.tophead}>
-                  <Text style={{ fontSize: 20, color: 'white', alignSelf: 'center', letterSpacing: 0.5 }} >
-                    Paquete ETB
-                 </Text>
-                </View>
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text style={defaultStyle.txt}>Operdor:</Text>
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text style={defaultStyle.txt}>{activeProvider.name}</Text>
-                  </View>
-                </View>
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text style={defaultStyle.txt}>Linea:</Text>
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text style={defaultStyle.txt}>{initialValues.phone}</Text>
-                  </View>
-                </View>
-
-
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text style={defaultStyle.txt}>Valor:</Text>
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text style={defaultStyle.txt}>{initialValues.amount}</Text>
-                  </View>
-                </View>
-
-
-                <View style={defaultStyle.container}>
-                  <View
-                    style={defaultStyle.textTable}>
-                    <Text style={defaultStyle.txt}>Pago:</Text>
-                    {/* <Image style={{ height: 20, width: 30 }} source={arrowBB} /> */}
-                  </View>
-                  <View style={defaultStyle.textTable1}>
-                    <Text style={defaultStyle.txt}>Recargas</Text>
-                    <Text style={defaultStyle.txt2}>Cambiar</Text>
-                  </View>
-                </View>
-
-
-                <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
-                  <Button
-                    onPress={() => { 
+                    onPress={() => {
                       navigation.navigate('Complete')
                     }}
                     style={defaultStyle.accecptBtn}>

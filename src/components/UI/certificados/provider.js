@@ -68,7 +68,7 @@ const ProductType = ({ ActiveType, activeProvider }) => {
       <Modal
 
         width={350}
-        height={activeProvider.name == "SNR" ? 380 : 280}
+        height={activeProvider.name == "SNR" ? 280 : 280}
         visible={toggleModel}
         modalAnimation={new SlideAnimation({
           slideFrom: 'top',
@@ -76,15 +76,17 @@ const ProductType = ({ ActiveType, activeProvider }) => {
 
         <ModalContent>
           <>
-            <Image source={bigLogo} style={{ width: 350, justifyContent: 'center', alignContent: 'center' }} />
-            {activeProvider.name == "SNR" ? <Text style={styles.PopupText}>
+            <Image source={bigLogo} style={{ width: 200, height: 50, justifyContent: 'center', alignContent: 'center', alignSelf: 'center' }} />
+            {/* {activeProvider.name == "SNR" ? <Text style={styles.PopupText}>
               Recuerde que este producto tiene un valor de <Text style={{ ...styles.PopupText, fontWeight: 'bold' }}> $20.000 COP. </Text> En ciertos casos el tiempo
-    de respuesta a este producto puede ser superior a 2 minutos, dale tiempo y verifica el historial de transacciones antes de reenviarla
-    </Text>
-              : <Text style={styles.PopupText}>
+              de respuesta a este producto puede ser superior a 2 minutos, dale tiempo y verifica el historial de transacciones antes de reenviarla
+              </Text>
+              :  */}
+              <Text style={styles.PopupText}>
                 Recuerde que este producto
-    tiene un valor de <Text style={{ ...styles.PopupText, fontWeight: 'bold' }}>$35.000 COP</Text>
-              </Text>}
+               tiene un valor de <Text style={{ ...styles.PopupText, fontWeight: 'bold' }}>$35.000 COP</Text>
+               </Text>
+              {/* } */}
 
             <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
               <Button
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: 'rgb(235,6,42)',
     borderRadius: 5,
-    width: '50%',
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     height: 40
@@ -118,7 +120,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    fontSize: 18
+    fontSize: 18,
+    marginVertical: 40
   },
   Contentcontainer: {
     flex: 1,
