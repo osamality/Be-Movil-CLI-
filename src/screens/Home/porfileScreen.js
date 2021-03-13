@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 import ProfileBarCode from '../../components/UI/profile/ProfileBarCode';
 import LinearGradient from 'react-native-linear-gradient';
+import HeaderComponent from '../layout/headerHome';
 
 const CategoriesScreen = ({ activeBalance, navigation }) => {
   const [storageData, setStorageData] = useState({})
@@ -50,9 +51,8 @@ const CategoriesScreen = ({ activeBalance, navigation }) => {
 
   return (
     <Container style={{ backgroundColor: "rgb(252,254,255)" }} >
-
+      <HeaderComponent />
       <Content style={{ flex: 1 }}>
-
         <View style={styles.Contentcontainer}>
           <LinearGradient colors={['rgb(178,43,65)', 'rgb(227,60,86)']} style={styles.productContent} >
             <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, paddingBottom: 5 }}>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10
+    // marginTop: 10
   },
 
   TextContent: {

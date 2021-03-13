@@ -118,20 +118,16 @@ export const productsData = [
         name: "Recargas",
         icon: img1,
         route: "Recargas"
-
     },
     {
         name: "Apuestas",
         icon: img2,
         route: "Apuestas"
-
-
     },
     {
         name: "Pines Digitales",
         icon: img3,
         route: "Digitales"
-
     },
     {
         name: "Billeteras",
@@ -147,7 +143,8 @@ export const productsData = [
     },
     {
         name: "Seguros",
-        icon: img6
+        icon: img6,
+        route: "Seguros"
 
     },
     {

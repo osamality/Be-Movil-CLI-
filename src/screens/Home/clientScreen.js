@@ -15,15 +15,15 @@ import { useDispatch } from 'react-redux';
 import * as RecargasActions from '../../store/actions/recargas';
 import * as ProductActions from '../../store/actions/product';
 
-import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 import { connect } from 'react-redux';
-import RecargasType from '../../components/UI/Recargas/recargasType'
-import ProductType from '../../components/UI/Recargas/productType'
-import beImg from '../../assets/Images/be.png'
-import beactiveImg from '../../assets/Images/bactive2.png'
-import { isEmpty } from 'lodash'
-import RecargasChangeType from '../Repartos/RepartosChangeType'
-import { packgesData } from '../transactions/pachageData';
+import RecargasType from '../../components/UI/Recargas/recargasType';
+import ProductType from '../../components/UI/Recargas/productType';
+import beImg from '../../assets/Images/be.png';
+import beactiveImg from '../../assets/Images/bactive2.png';
+import { isEmpty } from 'lodash';
+import RecargasChangeType from '../Repartos/RepartosChangeType';
+import { userData } from '../transactions/pachageData';
+import HeaderComponent from '../layout/headerHome2';
 
 
 const Repartos = ({ activeProvider, navigation }) => {
@@ -69,6 +69,7 @@ const Repartos = ({ activeProvider, navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
       <Container >
+        <HeaderComponent />
 
         <Content style={{ flex: 1 }}>
 
@@ -86,158 +87,76 @@ const Repartos = ({ activeProvider, navigation }) => {
               showsHorizontalScrollIndicator={false}
             >
               <FlatList
+              style={{width: 800}}
                 horizontal={false}
                 // numColumns={1}
-
+                ItemSeparatorComponent={()=>{
+                  return(
+                    <View style={{borderBottomWidth: 0.5, borderBottomColor: 'grey', marginVertical: 2}}>
+                    </View>
+                  )
+                }}
                 ListHeaderComponent={() => {
                   return (
                     <View
                       style={styles.headerStyle}
                     >
                       <Text
-                        style={{ ...styles.headerText, marginRight: 100, marginLeft: 30 }}
-                      >ID</Text>
+                        style={{ ...styles.headerText, marginRight: 45 }}
+                      >Editar</Text>
                       <Text
-                        style={{ ...styles.headerText, marginRight: 50 }}
-                      >Asociar</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 60 }}
-                      >Nombre</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 20 }}
+                        style={{ ...styles.headerText, marginRight: 70 }}
                       >Usuario</Text>
                       <Text
-                        style={{ ...styles.headerText, marginRight: 20 }}
+                        style={{ ...styles.headerText, marginRight: 110 }}
+                      >Perfil</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 130 }}
+                      >Correo</Text>
+                      <Text
+                        style={{ ...styles.headerText, marginRight: 70 }}
                       >Estado</Text>
                       <Text
                         style={{ ...styles.headerText, marginRight: 20 }}
                       >Coord</Text>
                       <Text
                         style={{ ...styles.headerText, marginRight: 20 }}
-                      >Comisión</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 20 }}
                       >Borrar</Text>
+                      
                     </View>
                   )
                 }}
-                data={packgesData}
+                data={userData}
                 renderItem={({ item, index }) => (
                   <View>
                     <TouchableOpacity
                       key={index}
                       style={styles.listHeaderStyle}
-                      // onPress={navigation.navigate('TransactionsDetails')}
+                    // onPress={navigation.navigate('TransactionsDetails')}
                     >
-                      {/* <Image source={item.icon} style={styles.icon} /> */}
+                      <Image source={item.icon} />
                       <Text
                         style={{ ...styles.listText, textDecorationLine: 'underline' }}
-                      >{item.ID}</Text>
-                      {/* <Image source={item.icon} style={styles.icon} /> */}
+                      >{item.Usuario}</Text>
 
                       <Text
-                        style={styles.listText}
-                      >{item.Fecha}</Text>
+                        style={{...styles.listText, color: 'rgb(51,103,214)', textDecorationLine: 'underline'}}
+                      >{item.Perfil}</Text>
                       <Text
                         style={styles.listText}
-                      >{item.Valor}</Text>
+                      >{item.Correo}</Text>
                       <Text
                         style={styles.listText}
-                      >{item.Servicio}</Text>
-                      <Text
-                        style={styles.listText}
-                      >{item.Estado}</Text>
-                      <Text
-                        style={styles.listText}
-                      >{item.Archivos}</Text>
+                      >{item.Padre}</Text>
+
+                      <Image style={{ marginLeft: 20}} source={item.Coord} />
+                      <Image style={{ marginLeft: 20}} source={item.Borrar} />
+
                     </TouchableOpacity>
                   </View>
                 )}
               />
             </ScrollView>
-
-            {/* <FlatList
-              // horizontal
-              scrollEnabled={false}
-              numColumns={1}
-              data={packgesData}
-              style={{
-                marginVertical: '7%',
-
-              }}
-              ItemSeparatorComponent={() => {
-                return (
-                  <View
-                    style={{ borderBottomWidth: 1, borderBottomColor: 'rgb(216,216,216)', marginVertical: '1%', }}
-                  />
-                )
-              }}
-              ListHeaderComponent={() => {
-                return (
-                  <View
-                    style={styles.headerStyle}
-                  >
-                    <Text
-                      style={{ ...styles.headerText, marginRight: 100, marginLeft: 30 }}
-                    >ID</Text>
-                    <Text
-                      style={{ ...styles.headerText, marginRight: 50 }}
-                    >Asociar</Text>
-                    <Text
-                      style={{ ...styles.headerText, marginRight: 60 }}
-                    >Nombre</Text>
-                      <Text
-                      style={{ ...styles.headerText, marginRight: 20 }}
-                    >Usuario</Text>
-                    <Text
-                      style={{ ...styles.headerText, marginRight: 20 }}
-                    >Estado</Text>
-                    <Text
-                      style={{ ...styles.headerText, marginRight: 20 }}
-                    >Coord</Text>
-                    <Text
-                      style={{ ...styles.headerText, marginRight: 20 }}
-                    >Comisión</Text>
-                     <Text
-                      style={{ ...styles.headerText, marginRight: 20 }}
-                    >Borrar</Text>
-                   
-                  </View>
-                )
-              }}
-              renderItem={({ item, index }) => (
-
-                <View
-                  key={index}
-                  style={styles.listHeaderStyle}
-                >
-           
-
-
-                  <Text
-                    style={{ ...styles.listText, textDecorationLine: 'underline' }}
-                  >{item.ID}</Text>
-                  <Image source={item.icon} style={styles.icon} />
-
-                  <Text
-                    style={styles.listText}
-                  >{item.Fecha}</Text>
-                  <Text
-                    style={styles.listText}
-                  >{item.Valor}</Text>
-                  <Text
-                    style={styles.listText}
-                  >{item.Servicio}</Text>
-                  <Text
-                    style={styles.listText}
-                  >{item.Estado}</Text>
-                  <Text
-                    style={styles.listText}
-                  >{item.Archivos}</Text>
-                </View>
-
-              )}
-            /> */}
 
           </View>
 
@@ -310,7 +229,7 @@ const styles = StyleSheet.create({
     width: '180%',
     backgroundColor: 'rgb(57,72,93)',
     flexDirection: 'row',
-    paddingHorizontal: '10%',
+    paddingHorizontal: '2%',
     paddingVertical: '1%'
   },
   headerStyle2: {
@@ -325,7 +244,7 @@ const styles = StyleSheet.create({
   },
   listText: {
     fontWeight: '300',
-    fontSize: 13,
+    fontSize: 15,
     marginHorizontal: 5
   },
   listHeaderStyle: {
@@ -333,7 +252,7 @@ const styles = StyleSheet.create({
 
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: '2%',
+    paddingHorizontal: '4%',
     paddingVertical: '2%'
 
   },

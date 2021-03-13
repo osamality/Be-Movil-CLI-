@@ -1,35 +1,40 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { Container, Header, Left, Body, Right, Title } from 'native-base';
-import Logo1 from '../../assets/Images/Group5134.png'
+import arrowBack from '../../assets/Images/arrowBack.png'
 import menu from '../../assets/Images/menu.png'
-import homebe from '../../assets/Images/transactionsIcon.png'
+import UserPlus from '../../assets/Images/UserPlus.png'
 import { useNavigation } from "@react-navigation/native";
 
 // props.navigation.navigate('Auth');
 
 
 
-const HeaderComponent = ({ }) => {
+export const HeaderComponent = ({ }) => {
   const navigation = useNavigation()
   return (
 
     <View
       style={{
-        marginTop: '12%',
+        height: '10%',
+        // marginTop: '12%',
         marginBottom: '2%',
-        justifyContent: 'space-around',
         width: '100%',
         alignItems: 'center',
         flexDirection: 'row',
+        backgroundColor: 'red'
       }} >
-      <TouchableOpacity onPress={() => navigation.navigate("Transactions")}>
-        <Image source={homebe} />
+      <Text
+        style={{ color: 'white', marginTop: 25, fontSize: 23, marginLeft: '33%' }}
+      >
+        Mis Usuarios
+      </Text>
+      <TouchableOpacity style={{ marginTop: 30, marginLeft: '27%' }} onPress={() => navigation.navigate("createUser")}>
+        <Image style={{ height: 18, width: 23 }} source={UserPlus} />
       </TouchableOpacity>
-      <Image style={styles.Logo1} source={Logo1} />
-      <TouchableOpacity onPress={() => navigation.navigate("Setting")}>
+      {/* <TouchableOpacity onPress={() => navigation.navigate("Setting")}>
         <Image style={styles.Logo1} source={menu} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
 
 
@@ -37,6 +42,7 @@ const HeaderComponent = ({ }) => {
 
   );
 }
+
 
 const styles = StyleSheet.create({
   bodycon: {

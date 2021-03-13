@@ -138,7 +138,7 @@ const Account = props => {
                                     setToggleModel2(false)
                                 }}
                                 style={styles.btnTransfer}>
-                                <Text style={{ color: '#ffff' }}>Transferir Balance</Text>
+                                <Text style={{ color: '#ffff' }}>Terminar</Text>
                             </TouchableOpacity>
                         </View>
 

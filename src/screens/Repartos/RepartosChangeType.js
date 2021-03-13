@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
@@ -12,8 +12,11 @@ import arrowF from '../../assets/Images/arrowF.png';
 import arrowB from '../../assets/Images/arrowB.png';
 import arrowFF from '../../assets/Images/arrowFF.png';
 import arrowBB from '../../assets/Images/arrowBB.png';
-
+import bigLogo from '../../assets/Images/bigLogo.png'
+import CheckCircleOutline from '../../assets/Images/CheckCircleOutline.png';
 import notactiveImage from '../../assets/Images/notactive.png';
+
+import Modal, { SlideAnimation, ModalContent, ModalButton } from 'react-native-modals';
 import { isEmpty } from 'lodash';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -52,7 +55,6 @@ const activeImageInputs = (initialValues, activeProvider, type) => {
 
 
 const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet, checked, setChecked) => {
-
 
   return (
 
@@ -364,6 +366,9 @@ const handelType = (RecargasActiveType,
 ) => {
   const [index, setindex] = useState(0)
   const [checked, setChecked] = useState(false);
+  const [toggleModel1, setToggleModel1] = useState(false);
+  const [toggleModel2, setToggleModel2] = useState(false);
+
 
 
   if (RecargasActiveType == "Recargas") {
@@ -473,7 +478,11 @@ const handelType = (RecargasActiveType,
                 </View>
                 <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
                   <Button
-                    style={defaultStyle.accecptBtn}>
+                    style={defaultStyle.accecptBtn}
+                    onPress={() => {
+                      setToggleModel1(true)
+                    }}
+                  >
                     <Text style={{ color: '#ffff', fontSize: 17, }}>Realizar Reparto</Text>
                   </Button>
                 </View>
@@ -486,6 +495,34 @@ const handelType = (RecargasActiveType,
           </RBSheet>
 
         </View>
+
+
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <Modal width={380} height={400} visible={toggleModel1} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}>
+            <ModalContent >
+              <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                <Image style={styles.bigLogo} source={bigLogo} />
+                <Image style={styles.CheckCircleOutline} source={CheckCircleOutline} />
+                <Text style={{ fontSize: 22, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 20 }}>
+                  Reparto Satisfactorio</Text>
+                <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 5 }}>
+                  Perfil Creado Satisfactoriamente
+                            </Text>
+                <Text style={{ fontSize: 12, color: 'rgb(5,193,121)', textAlign: 'center', fontWeight: '500' }}>
+                  Perfil 2021</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    setToggleModel1(false)
+                  }}
+                  style={styles.btnTransfer}>
+                  <Text style={{ color: '#ffff' }}>Terminar</Text>
+                </TouchableOpacity>
+              </View>
+
+
+            </ModalContent>
+          </Modal>
+        </TouchableWithoutFeedback>
 
 
       </>
@@ -602,7 +639,11 @@ const handelType = (RecargasActiveType,
                 </View>
                 <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
                   <Button
-                    style={defaultStyle.accecptBtn}>
+                    style={defaultStyle.accecptBtn}
+                    onPress={() => {
+                      setToggleModel1(true)
+                    }}
+                  >
                     <Text style={{ color: '#ffff', fontSize: 17, }}>Realizar Reparto</Text>
                   </Button>
                 </View>
@@ -616,7 +657,32 @@ const handelType = (RecargasActiveType,
 
         </View>
 
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <Modal width={380} height={400} visible={toggleModel2} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}>
+            <ModalContent >
+              <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                <Image style={styles.bigLogo} source={bigLogo} />
+                <Image style={styles.CheckCircleOutline} source={CheckCircleOutline} />
+                <Text style={{ fontSize: 22, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 20 }}>
+                  Reparto Satisfactorio</Text>
+                <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 5 }}>
+                  Perfil Creado Satisfactoriamente
+                </Text>
+                <Text style={{ fontSize: 12, color: 'rgb(5,193,121)', textAlign: 'center', fontWeight: '500' }}>
+                  Perfil 2021</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    setToggleModel2(false)
+                  }}
+                  style={styles.btnTransfer}>
+                  <Text style={{ color: '#ffff' }}>Terminar</Text>
+                </TouchableOpacity>
+              </View>
 
+
+            </ModalContent>
+          </Modal>
+        </TouchableWithoutFeedback>
 
       </>
 
@@ -744,7 +810,26 @@ const styles = StyleSheet.create({
     width: width,
     marginTop: '2%',
     paddingVertical: '2%'
-  }
+  },
+  btnTransfer: {
+    backgroundColor: 'red',
+    width: '100%',
+    borderRadius: 5,
+    // width: '80%',
+    paddingVertical: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 40
+  },
+  bigLogo: {
+    height: 64,
+    width: 255,
+  },
+  CheckCircleOutline: {
+    height: 80,
+    width: 80,
+    marginTop: 30
+  },
 
 
 });

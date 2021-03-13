@@ -4,8 +4,6 @@ import * as React from 'react';
 
 import Recargas from '../screens/Recargas/Recargas';
 
-
-
 const Stack = createStackNavigator();
 
 const RecargasNavigator= ()=> {

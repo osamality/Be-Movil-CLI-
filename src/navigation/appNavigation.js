@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -11,6 +11,7 @@ import ReportScreen from '../screens/Home/reportScreen';
 import TransfersScreen from '../screens/Home/transfersScreen';
 import ClientScreen from '../screens/Home/clientScreen';
 import RecargasScreen from '../screens/Recargas/Recargas';
+import createUser from '../screens/Clients/createUser';
 import RepartosScreen from '../screens/Repartos/Repartos';
 import BeCompanies from '../screens/betCompanies/Recargas'
 import Comision from '../screens/Profile/Comision/Comision';
@@ -40,6 +41,7 @@ import ChangePassword from "../screens/Settings/ChangePassword"
 import Transactions from "../screens/transactions/Transactions"
 import TransactionsDetails from "../screens/transactions/TransactionsDetails"
 import TvScreen from "../screens/tv"
+import Seguros from "../screens/seguros"
 import Facturas from "../screens/Facturas"
 import Pego from "../screens/Facturas/pego"
 import { connect } from 'react-redux'
@@ -56,14 +58,38 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
       <Stack.Screen
         name="Home"
         component={HomeTabs}
-
         options={{
-          headerTitle: props => <HeaderComponent />,
+          // headerTitle: props => <HeaderComponent />,
+          // headerTitleAlign: 'center',
+          headerShown: false
+        }}
+      />
+
+      <Stack.Screen name="Seguros" component={Seguros}
+        options={{
+          headerBackTitleVisible: false,
           headerTitleAlign: 'center',
+          title: 'Seguros',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
         }}
       />
 
       <Stack.Screen name="Recargas" component={RecargasScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          title: 'Recargas Móviles',
+          headerStyle: {
+            backgroundColor: 'rgb(235,6,42)',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen name="createUser" component={createUser}
         options={{
           headerBackTitleVisible: false,
           headerTitleAlign: 'center',
@@ -356,6 +382,9 @@ const HomeTabs = () => {
   Platform.OS == "ios" ? spicalHieght = 85 : spicalHieght = 60
   return (
     <Tab.Navigator screenOptions={({ route, }) => ({
+      tabBarOptions: {
+        activeTintColor: 'grey',
+      },
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
         let labelColor

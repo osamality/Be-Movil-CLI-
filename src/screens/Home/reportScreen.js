@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import HeaderComponent from '../layout/headerHome';
 
 const MealDetailesScreen = props =>  {
   return (
     <View style={styles.container}>
+
       <Text>Coodiar que info mostrar aqui</Text>
     </View>
   );

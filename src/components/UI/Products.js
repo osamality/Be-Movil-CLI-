@@ -8,9 +8,6 @@ import { productsDiscription } from './staticData'
 import img2 from '../../assets/Images/bit.png'
 import { get } from 'lodash'
 
-
-
-
 const Products = ({ navigation }) => {
     const [stuts, setStuts] = useState(null)
 
@@ -32,8 +29,6 @@ const Products = ({ navigation }) => {
 
     }, []);
 
-
-
     const handelPress = () => {
         const data = [{ "product_id": 1 }, { "product_id": 20 }];
         const test = get(productsDiscription, "Recargas", {})
@@ -48,7 +43,6 @@ const Products = ({ navigation }) => {
     }
 
     if (stuts == 1) {
-
         return (
             <View style={styles.Contentcontainer}>
                 <ScrollView
@@ -153,7 +147,6 @@ const styles = StyleSheet.create({
         color: 'black',
         lineHeight: 17
     }
-
 })
 
 export default Products

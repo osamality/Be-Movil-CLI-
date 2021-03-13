@@ -15,15 +15,14 @@ import Products from '../../components/UI/Products'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import CustomTapsBalance from '../../components/UI/globle/customTapsBalance'
 import LinearGradient from 'react-native-linear-gradient';
+import HeaderComponent from '../layout/headerHome';
 
 const CategoriesScreen = ({ activeBalance, navigation }) => {
   const [storageData, setStorageData] = useState({})
   const dispatch = useDispatch();
 
   useEffect(() => {
-
     const fetchBalance = async () => {
-
       const userData = await AsyncStorage.getItem('token');
       if (userData) {
         const transferData = JSON.parse(userData)
@@ -52,7 +51,7 @@ const CategoriesScreen = ({ activeBalance, navigation }) => {
 
   return (
     <Container style={{ backgroundColor: "rgb(252,254,255)" }} >
-
+   <HeaderComponent />
       <Content style={{ flex: 1 }}>
 
         <View style={styles.Contentcontainer}>

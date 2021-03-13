@@ -93,7 +93,6 @@ const Confirmar = ({ navigation }) => {
                             <Text style={selected2 ? styles.txt2Active : styles.txt2}>  300.900.900 COP</Text>
                         </TouchableOpacity>
 
-
                         <TouchableOpacity style={selected3 ? styles.barActive : styles.bar} onPress={() => {
                             setSelected1(false)
                             setSelected2(false)
@@ -104,8 +103,6 @@ const Confirmar = ({ navigation }) => {
                             <Text style={selected3 ? styles.txt2Active : styles.txt2}>  300.900.900 COP</Text>
                         </TouchableOpacity>
 
-
-
                     </View>
                 </Content>
             </Container>
@@ -115,7 +112,7 @@ const Confirmar = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-
+ 
     container: {
         flex: 1,
     },

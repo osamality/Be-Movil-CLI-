@@ -6,7 +6,10 @@ import clientlistsign from '../../assets/Images/clientlistsign.png'
 
 
 
-import icon3 from '../../assets/Images/subtraction3.png'
+import iconAwesomeEdit from '../../assets/Images/iconAwesomeEdit.png'
+import iconMaterialEmail from '../../assets/Images/iconMaterialEmail.png'
+import iconMetroBin from '../../assets/Images/iconMetroBin.png'
+
 import icon4 from '../../assets/Images/pro4.png'
 import icon5 from '../../assets/Images/PlayStation.png'
 import icon6 from '../../assets/Images/pro4.png'
@@ -35,6 +38,94 @@ export const packgesData2 = [
     },
 ]
 
+export const userData = [
+  
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    {
+        icon: iconAwesomeEdit,
+        Usuario: "Leomessiuser",
+        Perfil: 'Grupo A',
+        Correo: "Leomessiuser@gmail.com",
+        Padre: "Leomessiuser",
+        Coord: iconMaterialEmail,
+        Borrar: iconMetroBin,      
+    },
+    
+    
+]
+
+
 
 export const packgesData = [
   
@@ -45,7 +136,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -54,7 +147,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -63,7 +158,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -72,7 +169,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -81,7 +180,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -90,7 +191,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -99,7 +202,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -108,7 +213,9 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
     {
         ID: "803091628720771",
@@ -117,10 +224,43 @@ export const packgesData = [
         Servicio: "Nequi Deposito",
         Estado: CheckCircle,
         Archivos: uploadd,
-        icon: Receipt
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
     },
-
-  
+    {
+        ID: "803091628720771",
+        Fecha: "03/08/2020",
+        Valor: "1.000 COP",
+        Servicio: "Nequi Deposito",
+        Estado: CheckCircle,
+        Archivos: uploadd,
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
+    },
+    {
+        ID: "803091628720771",
+        Fecha: "03/08/2020",
+        Valor: "1.000 COP",
+        Servicio: "Nequi Deposito",
+        Estado: CheckCircle,
+        Archivos: uploadd,
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
+    },
+    {
+        ID: "803091628720771",
+        Fecha: "03/08/2020",
+        Valor: "1.000 COP",
+        Servicio: "Nequi Deposito",
+        Estado: CheckCircle,
+        Archivos: uploadd,
+        icon: Receipt,
+        route: 'TransactionsDetails',
+        toggle: true,
+    },
 ]
 
 export const profileData = [

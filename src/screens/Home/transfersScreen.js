@@ -20,6 +20,7 @@ import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import { isEmpty } from 'lodash'
 import RecargasChangeType from '../Repartos/RepartosChangeType'
+import HeaderComponent from '../layout/headerHome';
 
 
 const Repartos = ({ activeProvider, navigation }) => {
@@ -65,6 +66,7 @@ const Repartos = ({ activeProvider, navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
       <Container >
+        <HeaderComponent />
 
         <Content style={{ flex: 1 }}>
 
@@ -83,7 +85,7 @@ const Repartos = ({ activeProvider, navigation }) => {
     </TouchableWithoutFeedback>
 
   );
-  
+
 }
 
 const styles = StyleSheet.create({
