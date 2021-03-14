@@ -16,7 +16,7 @@ import * as RecargasActions from '../../store/actions/recargas';
 import * as ProductActions from '../../store/actions/product';
 
 import { connect } from 'react-redux';
-import RecargasType from '../../components/UI/Recargas/recargasType';
+import RecargasType from '../../components/UI/clients/recargasType';
 import ProductType from '../../components/UI/Recargas/productType';
 import beImg from '../../assets/Images/be.png';
 import beactiveImg from '../../assets/Images/bactive2.png';

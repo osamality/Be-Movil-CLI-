@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, } from 'react-native';
-import { recargasType } from '../staticData'
+import { clientType } from '../staticData'
 import * as RecargasActions from '../../../store/actions/recargas';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
@@ -38,7 +38,7 @@ const renderText = () => {
         }
     }
 
-    return map(recargasType, (d, v) => {
+    return map(clientType, (d, v) => {
         return (
             <TouchableOpacity key={v}
                 style={index == v ? styles.contentActive : styles.content}
@@ -93,11 +93,11 @@ const styles = StyleSheet.create({
     },
 
     Text: {
-        fontSize: 13,
+        fontSize: 12,
         textAlign: 'center',
     },
     TextActive: {
-        fontSize: 13,
+        fontSize: 12,
         textAlign: 'center',
         color: 'white',
     },

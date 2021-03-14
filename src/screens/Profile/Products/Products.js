@@ -65,7 +65,7 @@ const Products = ({ activeProvider, navigation }) => {
                         <View style={styles.listHeaderStyle2}>
                             <Text
                                 style={styles.listHeaderText}
-                            >0.5 %</Text>
+                            >{item.Descripcion}</Text>
                             <Text
                                 style={styles.listHeaderText}
                             >0 %</Text>

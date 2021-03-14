@@ -133,25 +133,21 @@ export const productsData = [
         name: "Billeteras",
         icon: img4,
         route: "Billeteras"
-
     },
     {
         name: "Facturas",
         icon: img5,
         route: "Facturas"
-
     },
     {
         name: "Seguros",
         icon: img6,
         route: "Seguros"
-
     },
     {
         name: "Certificados",
         icon: img7,
         route: 'Certificados'
-
     },
     {
         name: "Internacional",
@@ -185,11 +181,22 @@ export const singelProduct = [
 
 export const recargasType = [
     {
-        name: 'Movil',
+        name: 'Recargas',
         redux: 'Recargas'
     },
     {
-        name: 'Packages',
+        name: 'Paquetes',
+        redux: "Recargas_Packages"
+    }
+]
+
+export const clientType = [
+    {
+        name: 'Clientes',
+        redux: 'Recargas'
+    },
+    {
+        name: 'Usuarios',
         redux: "Recargas_Packages"
     }
 ]
