@@ -93,11 +93,11 @@ const AppNavigator = ({ activeProvider, titleHeader, navigation }) => {
         options={{
           headerBackTitleVisible: false,
           headerTitleAlign: 'center',
-          title: 'Recargas Móviles',
+          title: 'Crear Usuario',
           headerStyle: {
-            backgroundColor: 'rgb(235,6,42)',
+            backgroundColor: 'white',
           },
-          headerTintColor: '#fff',
+          headerTintColor: 'black',
         }}
       />
 

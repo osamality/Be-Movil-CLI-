@@ -215,7 +215,9 @@ const handelType = (RecargasActiveType,
 
         <View style={{ justifyContent: 'space-around', flexDirection: 'row', marginTop: 40 }}>
           <Button disabled={initialValues.phone !== '' && initialValues.amount !== '' ? false : true}
-            onPress={() => refRBSheet.current.open()}
+            onPress={() => {
+              refRBSheet.current.open()
+            }}
             style={initialValues.phone !== '' && initialValues.amount !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
             <Text style={{ color: '#ffff' }}>Recargas</Text>
           </Button>
@@ -296,14 +298,19 @@ const handelType = (RecargasActiveType,
                   </View>
                   <View style={defaultStyle.textTable1}>
                     <Text style={defaultStyle.txt}>Recargas</Text>
-                    <Text style={defaultStyle.txt2}>Cambiar</Text>
+                    <Text onPress={() => {
+                      refRBSheet.current.close()
+                      
+                      navigation.navigate('Confirmar')}} style={defaultStyle.txt2}>Cambiar</Text>
                   </View>
                 </View>
 
 
                 <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
                   <Button
-                    onPress={() => { navigation.navigate('Complete') }}
+                    onPress={() => {
+                      refRBSheet.current.close()
+                      navigation.navigate('Complete') }}
                     style={defaultStyle.accecptBtn}>
                     <Text style={{ color: '#ffff', fontSize: 17, }}>Aceptar y Comprar</Text>
                   </Button>
@@ -430,7 +437,10 @@ const handelType = (RecargasActiveType,
                   </View>
                   <View style={defaultStyle.textTable1}>
                     <Text style={defaultStyle.txt}>Recargas</Text>
-                    <Text style={defaultStyle.txt2}>Cambiar</Text>
+                    <Text onPress={() =>{
+                      refRBSheet.current.close()
+                      
+                      navigation.navigate('Confirmar')}} style={defaultStyle.txt2}>Cambiar</Text>
                   </View>
                 </View>
 
@@ -439,6 +449,7 @@ const handelType = (RecargasActiveType,
                   <Button
                     onPress={() => {
                       navigation.navigate('Complete')
+                      refRBSheet.current.close()
                     }}
                     style={defaultStyle.accecptBtn}>
                     <Text style={{ color: '#ffff', fontSize: 17, }}>Aceptar y Comprar</Text>
@@ -493,6 +504,204 @@ const RecargasChange = ({ RecargasActiveType, activeProvider, navigation, active
 }
 
 const styles = StyleSheet.create({
+
+  Contentcontainer: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    width: '100%'
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: 'grey',
+    shadowOpacity: 1,
+    elevation: 8,
+    backgroundColor: "rgb(255,255,255)",
+    borderRadius: 5,
+    padding: 15,
+    paddingHorizontal: 0,
+    margin: 13,
+  },
+  ItemContent: {
+    // width:50,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '100%'
+  },
+  Text: {
+    textAlign: 'center',
+    width: 100,
+    fontSize: 11,
+    marginTop: 7,
+    flex: 1,
+    flexWrap: 'nowrap',
+    color: 'black',
+    lineHeight: 17
+  },
+  headerStyle: {
+    // width: '180%',
+    backgroundColor: 'rgb(57,72,93)',
+    flexDirection: 'row',
+    paddingHorizontal: '10%',
+    paddingVertical: '1%'
+  },
+  headerStyle2: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '56%',
+  },
+  headerText: {
+    color: 'white',
+    fontWeight: '500',
+    fontSize: 15
+  },
+  listText: {
+    fontWeight: '300',
+    fontSize: 14,
+    marginHorizontal: 10,
+    borderBottomWidth: 1, borderBottomColor: 'rgb(216,216,216)',
+    paddingBottom: '1%',
+  },
+  listHeaderStyle: {
+    flexDirection: 'row',
+    paddingHorizontal: '2%',
+    paddingVertical: '2%',
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'rgb(216,216,216)'
+  },
+  listHeaderStyle2: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '55%',
+    alignItems: 'center',
+    paddingHorizontal: '6%'
+  },
+  listHeaderText: {
+    color: 'black',
+    fontWeight: '300',
+    fontSize: 13
+  },
+  item: {
+    flexDirection: 'row',
+  },
+  icon: {
+    height: 16,
+    width: 16,
+    marginRight: '1%'
+  },
+  greenText: {
+    color: 'rgb(5,193,121)'
+  },
+  titleModal2: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(225,6,52)',
+    height: 90,
+    paddingTop: '6%'
+  },
+  closeBtn: {
+    color: '#ffff',
+    textAlign: 'left',
+    width: '8%',
+    marginTop: 6
+  },
+  Modaltitle: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '400'
+  },
+  bigLogo: {
+    marginVertical: 15,
+    height: 55,
+    width: 220,
+  },
+  greenback: {
+    backgroundColor: 'rgb(5,193,121)',
+    width: width,
+    flexDirection: 'row',
+  },
+  blueback: {
+    backgroundColor: 'rgb(57,72,93)',
+    width: width,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  CheckCircle: {
+    height: 30,
+    width: 30,
+    tintColor: 'white',
+    marginVertical: 12,
+    marginRight: '10%',
+    marginLeft: 30
+  },
+  innerView: {
+    width: width,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomColor: 'rgb(195,195,195)',
+    borderBottomWidth: 0.5,
+  },
+  innerText: {
+    marginVertical: 17,
+    marginHorizontal: '5%'
+  },
+  btmText1: {
+    marginTop: 15,
+    marginHorizontal: '5%'
+  },
+  btmText: {
+    marginTop: 6,
+    marginHorizontal: '5%'
+  },
+  TextIcon: {
+    textAlign: 'center',
+    width: 50,
+    fontSize: 13,
+    marginTop: 8,
+    flex: 1,
+    flexWrap: 'nowrap',
+    color: '#ffff',
+  },
+  iconBtm: {
+    marginTop: 5,
+    height: 18,
+    width: 20
+  },
+  productContent: {
+    flexDirection: 'row',
+    flex: 1,
+    width: '100%',
+    padding: 8,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%'
+  },
+  btmContent: {
+    flexDirection: 'column',
+    height: 65,
+    marginHorizontal: 16,
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: 'grey',
+    shadowOpacity: 25,
+    elevation: 8,
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 70,
+    marginTop: 10
+  },
   btnText: {
     color: 'rgb(145,145,145)'
   },

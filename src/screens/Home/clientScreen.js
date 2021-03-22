@@ -21,7 +21,7 @@ import ProductType from '../../components/UI/Recargas/productType';
 import beImg from '../../assets/Images/be.png';
 import beactiveImg from '../../assets/Images/bactive2.png';
 import { isEmpty } from 'lodash';
-import RecargasChangeType from '../Repartos/RepartosChangeType';
+import RecargasChangeType5 from '../Clients/RecargasChangeType5';
 import { userData } from '../transactions/pachageData';
 import HeaderComponent from '../layout/headerHome2';
 
@@ -76,87 +76,8 @@ const Repartos = ({ activeProvider, navigation }) => {
           <View style={styles.Contentcontainer}>
 
             <RecargasType />
-
-            <ScrollView
-              style={{
-                marginTop: '5%',
-                width: '100%'
-              }}
-              horizontal
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-            >
-              <FlatList
-              style={{width: 800}}
-                horizontal={false}
-                // numColumns={1}
-                ItemSeparatorComponent={()=>{
-                  return(
-                    <View style={{borderBottomWidth: 0.5, borderBottomColor: 'grey', marginVertical: 2}}>
-                    </View>
-                  )
-                }}
-                ListHeaderComponent={() => {
-                  return (
-                    <View
-                      style={styles.headerStyle}
-                    >
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 45 }}
-                      >Editar</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 70 }}
-                      >Usuario</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 110 }}
-                      >Perfil</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 130 }}
-                      >Correo</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 70 }}
-                      >Estado</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 20 }}
-                      >Coord</Text>
-                      <Text
-                        style={{ ...styles.headerText, marginRight: 20 }}
-                      >Borrar</Text>
-                      
-                    </View>
-                  )
-                }}
-                data={userData}
-                renderItem={({ item, index }) => (
-                  <View>
-                    <TouchableOpacity
-                      key={index}
-                      style={styles.listHeaderStyle}
-                    // onPress={navigation.navigate('TransactionsDetails')}
-                    >
-                      <Image source={item.icon} />
-                      <Text
-                        style={{ ...styles.listText, textDecorationLine: 'underline' }}
-                      >{item.Usuario}</Text>
-
-                      <Text
-                        style={{...styles.listText, color: 'rgb(51,103,214)', textDecorationLine: 'underline'}}
-                      >{item.Perfil}</Text>
-                      <Text
-                        style={styles.listText}
-                      >{item.Correo}</Text>
-                      <Text
-                        style={styles.listText}
-                      >{item.Padre}</Text>
-
-                      <Image style={{ marginLeft: 20}} source={item.Coord} />
-                      <Image style={{ marginLeft: 20}} source={item.Borrar} />
-
-                    </TouchableOpacity>
-                  </View>
-                )}
-              />
-            </ScrollView>
+            <RecargasChangeType5 />
+          
 
           </View>
 

@@ -11,11 +11,8 @@ import { Container, Content, Form, Button } from 'native-base';
 import { useDispatch } from 'react-redux';
 import * as RecargasActions from '../../store/actions/recargas';
 import * as ProductActions from '../../store/actions/product';
-
-import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 import { connect } from 'react-redux';
-import RecargasType from '../../components/UI/Recargas/recargasType'
-import ProductType from '../../components/UI/Recargas/productType'
+import RecargasType from '../../components/UI/Transfers/recargasType'
 import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import { isEmpty } from 'lodash'

@@ -23,6 +23,10 @@ import img9 from '../../assets/Images/tv.png'
 import img10 from '../../assets/Images/tra.png'
 import essa from '../../assets/Images/essa3.png'
 import epm from '../../assets/Images/epm3.png'
+import component1441 from '../../assets/Images/component1441.png'
+import component1263 from '../../assets/Images/component1262.png'
+import component1253 from '../../assets/Images/component1253.png'
+import component1273 from '../../assets/Images/component1273.png'
 import pego from '../../assets/Images/pego.png'
 
 
@@ -52,6 +56,10 @@ import IMVU from "../../assets/Images/IMVU3.png"
 import Rixty from "../../assets/Images/Rixty3.png"
 import snr from "../../assets/Images/snr3.png"
 import runt from "../../assets/Images/runt3.png"
+
+
+import component345 from "../../assets/Images/component345.png"
+import component357 from "../../assets/Images/component357.png"
 
 
 export const profilData = [
@@ -179,6 +187,16 @@ export const singelProduct = [
 
 ]
 
+export const transferType = [
+    {
+        name: 'Repartos',
+        redux: 'Recargas'
+    },
+    {
+        name: 'Reversión',
+        redux: "Recargas_Packages"
+    }
+]
 export const recargasType = [
     {
         name: 'Recargas',
@@ -254,11 +272,6 @@ export const productsDiscription = {
             icon: avetalIcon,
             package: 'paqueavantel'
         },
-
-
-
-
-
 
     ],
     "Recargas_Packages": [
@@ -392,14 +405,35 @@ export const productsDiscription = {
             name: "Nequi",
             id: '58',
             icon: Rixty,
-        }
+        },
+        {
+            name: "Movii",
+            id: '68',
+            icon: component345,
+        },
+        {
+            name: "Daviplata",
+            id: '78',
+            icon: component357,
+        },
+        
     ],
     "Retiros": [
         {
             name: "Nequi",
-            id: '59',
+            id: '58',
             icon: Rixty,
-        }
+        },
+        {
+            name: "Movii",
+            id: '68',
+            icon: component345,
+        },
+        {
+            name: "Daviplata",
+            id: '78',
+            icon: component357,
+        },
     ],
     "certificados": [
         {
@@ -474,9 +508,24 @@ export const productsDiscription = {
             id: "62"
         },
         {
-            name: "Pago de Facturas",
-            icon: pego,
-            id: "" //need update
-        }
+            name: "Facturas",
+            icon: component1441,
+            id: "473"
+        },
+        {
+            name: "Servicios",
+            icon: component1263,
+            id: "562"
+        },
+        {
+            name: "Gas",
+            icon: component1253,
+            id: "439"
+        },
+        {
+            name: "Recaudos",
+            icon: component1273,
+            id: "622"
+        },
     ]
 }

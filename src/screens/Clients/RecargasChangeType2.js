@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import arrowImage from '../../assets/Images/arrowBottm3.png';
 import notactiveImage from '../../assets/Images/notactive.png';
 import { isEmpty } from 'lodash';
+import Modal, { SlideAnimation, ModalContent, ModalButton } from 'react-native-modals';
 import { FlatList } from 'react-native-gesture-handler';
 import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 const width = Dimensions.get('window').width;
@@ -50,203 +51,113 @@ const activeImageInputs = (initialValues, activeProvider, type) => {
 
 
 const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet) => {
+  const [toggleModel, setToggle] = useState(false)
 
   return (
-    <Form style={{ marginTop: 5 }}>
-      <TextInput style={defaultStyle.InputText1Style}
-        label="Nombres"
-        value={initialValues.phone}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, phone: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
+    <>
+      <Form style={{ marginTop: 5, marginBottom: 26 }}>
+        <TextInput style={defaultStyle.InputText1Style}
+          label="Usuario"
+          value={initialValues.phone}
+          mode='outlined'
+          keyboardType="numeric"
+          onChangeText={text => setInitialVales({ ...initialValues, phone: text })}
+          underlineColor='transparent'
+          underlineColorAndroid={'rgba(0,0,0,0)'}
+          text='white'
+          direction='rtl'
+          theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
+        // editable={activeProvider.name ? true : false}
+        />
 
-      <TextInput style={defaultStyle.InputText1Style}
-        label="Apellidos"
-        value={initialValues.phone}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, phone: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
+        <TextInput style={defaultStyle.InputText1Style}
+          editable={false}
+          label="Escoger Perdasdafil"
+          value={initialValues.phone}
+          mode='outlined'
+          keyboardType="numeric"
+          onChangeText={text => setInitialVales({ ...initialValues, phone: text })}
+          underlineColor='transparent'
+          underlineColorAndroid={'rgba(0,0,0,0)'}
+          text='white'
+          direction='rtl'
+          theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
+        // editable={activeProvider.name ? true : false}
+        />
+        <Icon onPress={() => { setToggle(true) }} name={'chevron-down'} size={20} color={'grey'} style={{ position: 'absolute', right: 15, top: '32.5%' }} />
 
-      <TextInput
-        label="Numero de Indetidad"
-        value={initialValues.amount}
-        style={defaultStyle.InputText1Style}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
+        <TextInput
+          label="Contraseña"
+          value={initialValues.amount}
+          style={defaultStyle.InputText1Style}
+          mode='outlined'
+          keyboardType="numeric"
+          onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
+          underlineColor='transparent'
+          underlineColorAndroid={'rgba(0,0,0,0)'}
+          text='white'
+          direction='rtl'
+          theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
+        // editable={activeProvider.name ? true : false}
 
+        />
+        <Icon name={'eye'} size={25} color={'grey'} style={{ position: 'absolute', right: 13, top: '56%' }} />
 
-      <TextInput
-        label="Departamento"
-        value={initialValues.amount}
-        style={defaultStyle.InputText1Style}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
+        <TextInput
+          label="Confirmar Contraseña"
+          value={initialValues.amount}
+          style={defaultStyle.InputText1Style}
+          mode='outlined'
+          keyboardType="numeric"
+          onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
+          underlineColor='transparent'
+          underlineColorAndroid={'rgba(0,0,0,0)'}
+          text='white'
+          direction='rtl'
+          theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
+        // editable={activeProvider.name ? true : false}
+        />
+        <Icon name={'eye'} size={25} color={'grey'} style={{ position: 'absolute', right: 13, top: '81%' }} />
 
-      <TextInput
-        label="Ciudad"
-        value={initialValues.amount}
-        style={defaultStyle.InputText1Style}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
+      </Form>
+      <Modal
 
+        width={350}
+        height={260}
+        visible={toggleModel}
+        modalAnimation={new SlideAnimation({
+          slideFrom: 'top',
+        })}>
 
-      <TextInput
-        label="Celular"
-        value={initialValues.amount}
-        style={defaultStyle.InputText1Style}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
-
-      <TextInput
-        label="Email"
-        value={initialValues.amount}
-        style={defaultStyle.InputText1Style}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
+        <ModalContent>
+          <View style={{ flexDirection: 'row', backgroundColor: 'red', padding: 10, margin: -24 }}>
+            <Text style={{ margin: 5, marginLeft: 90, color: 'white', fontSize: 20, fontWeight: '400' }}>Tipo de Comercio</Text>
+            <TouchableOpacity onPress={() => setToggle(false)}>
+              <Text style={{ marginLeft: 58, marginTop: -3, fontSize: 29, color: 'white', fontWeight: '700' }}>x</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ marginTop: 24 }}>
+            <View style={styles.togglee}>
+              <Text onPress={() => setToggle(false)} style={{ margin: 5, color: 'black', fontSize: 18, fontWeight: '400' }}>Full Perfil</Text>
+            </View>
+            <View style={styles.togglee}>
+              <Text onPress={() => setToggle(false)} style={{ margin: 5, color: 'black', fontSize: 18, fontWeight: '400' }}>Perfil Asistente</Text>
+            </View>
+            <View style={styles.togglee}>
+              <Text onPress={() => setToggle(false)} style={{ margin: 5, color: 'black', fontSize: 18, fontWeight: '400' }}>Perfil Avanzado</Text>
+            </View>
+            <View style={styles.togglee}>
+              <Text onPress={() => setToggle(false)} style={{ margin: 5, color: 'black', fontSize: 18, fontWeight: '400' }}>Mi perfil 2021</Text>
+            </View>
+          </View>
 
 
-      <TextInput
-        label="Confirmar Email"
-        value={initialValues.amount}
-        style={defaultStyle.InputText1Style}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialVales({ ...initialValues, amount: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'gray', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
-    </Form>
+        </ModalContent>
+
+      </Modal>
+    </>
   )
 
-}
-
-const renderInputsPackage = (InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet) => {
-  return (
-    <Form style={{ marginTop: 5 }}>
-      <TextInput style={defaultStyle.InputText1Style}
-        label="Phone number"
-        value={InitialValesPackage.phone}
-        mode='outlined'
-        keyboardType="numeric"
-        onChangeText={text => setInitialValesPackage({ ...InitialValesPackage, phone: text })}
-        underlineColor='transparent'
-        underlineColorAndroid={'rgba(0,0,0,0)'}
-        text='white'
-        direction='rtl'
-        theme={{ colors: { primary: 'rgb(177,177,177)', underlineColor: 'transparent', background: '#003489' } }}
-      // editable={activeProvider.name ? true : false}
-      />
-
-
-
-
-
-
-    </Form>
-  )
-}
-
-const renderPackage = (activePackage, navigation, activeProvider) => {
-
-  if (isEmpty(activePackage)) {
-    return (
-      <TouchableOpacity
-        style={activeProvider.name ? styles.packages : styles.notactivePackages}
-        onPress={() => navigation.navigate('Package')}
-        disabled={activeProvider.name ? false : true}
-      >
-        <View style={styles.DownloadIcon}>
-          <Image source={arrowImage} style={styles.Image} />
-        </View>
-        <Text style={{ color: '#ffff' }}>
-          Selecciona tu Paquete
-        </Text>
-        <Icon name="chevron-down" size={15} color="#ffff" />
-      </TouchableOpacity>
-    )
-  }
-  else {
-    return (
-      <TouchableOpacity
-        style={styles.packagesDone}
-        onPress={() => navigation.navigate('Package')}
-      >
-        {/* <View style={styles.DownloadIcon}>
-             <Image source={arrowImage} style={styles.Image}/>
-         </View> */}
-        <View style={{ marginHorizontal: 5 }}>
-          <Text style={{ color: 'rgb(235,6,42)', fontSize: 14, fontWeight: 'bold', marginVertical: 2 }}>{activePackage.name}</Text>
-          <Text style={{ textAlign: 'left', fontWeight: 'bold', fontSize: 12, marginVertical: 2 }}>{activePackage.price} COP</Text>
-          <Text style={{ textAlign: 'left', fontSize: 10, marginVertical: 2 }}>{activePackage.description}</Text>
-        </View>
-
-        <Icon name="chevron-down" size={15} color="black" />
-      </TouchableOpacity>
-      // <View>
-
-
-      // </View>
-    )
-
-  }
 }
 
 
@@ -289,7 +200,7 @@ const handelType = (RecargasActiveType,
         {renderInputs(initialValues, setInitialVales, activeProvider, refRBSheet)}
 
         <View style={{ justifyContent: 'space-around', flexDirection: 'row', marginTop: 20 }}>
-          <Button 
+          <Button
             // disabled={initialValues.phone !== '' && initialValues.amount !== '' ? false : true}
             // onPress={() => refRBSheet.current.open()}
             style={initialValues.phone !== '' && initialValues.amount !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
@@ -332,6 +243,7 @@ const RecargasChange = ({ RecargasActiveType, activeProvider, navigation, active
 }
 
 const styles = StyleSheet.create({
+  togglee: { borderBottomWidth: 0.5, borderBottomColor: 'grey', flexDirection: 'row', backgroundColor: 'white', padding: 10, marginHorizontal: -24, marginTop: 0, alignItems: 'center', alignContent: 'center', justifyContent: 'center' },
   btnText: {
     color: 'rgb(145,145,145)'
   },
@@ -418,7 +330,107 @@ const styles = StyleSheet.create({
   }
 
 });
+const PopUpStyle = StyleSheet.create({
+  InputText1Style: {
+    backgroundColor: '#fff',
+    // paddingBottom:20,
+    shadowColor: '#000',
+    shadowOpacity: 0.4,
+    elevation: 2,
+    // position: 'relative',
+    height: 39,
+    width: 375,
+    marginBottom: 20
+    // marginLeft:5
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 10,
+    width: '100%'
+  },
 
+  btn: {
+    backgroundColor: 'rgb(103 ,103 ,103)',
+    borderRadius: 5,
+    // width: '80%',
+    width: 375,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonactive: {
+    backgroundColor: 'red',
+    width: 375,
+    borderRadius: 5,
+    // width: '80%',
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  },
+  textTable: {
+    backgroundColor: '#ffff',
+    borderWidth: 1,
+    borderColor: '#0000',
+    width: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgb(232,232,232)'
+  },
+  textTable1: {
+    backgroundColor: '#ffff',
+    borderWidth: 1,
+    borderColor: '#0000',
+    width: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderColor: 'rgb(232,232,232)'
+  },
+  button1: {
+    backgroundColor: '#ffff',
+    borderWidth: 1,
+    borderColor: 'rgb(177,177,177)',
+    borderRadius: 3,
+    width: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 20,
+    flexDirection: 'column',
+
+  },
+  button1active: {
+    flexDirection: 'column',
+    backgroundColor: 'rgb(44,209,158)',
+    borderWidth: 1,
+    borderColor: 'rgb(44,209,158)',
+    borderRadius: 3,
+    width: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 20,
+  },
+  accecptBtn: {
+    margin: 10,
+    backgroundColor: 'rgb(235,6,42)',
+    borderRadius: 5,
+    width: '80%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  cancelBtn: {
+    backgroundColor: '#ffff',
+    borderWidth: 1,
+    borderColor: '#0000',
+    borderRadius: 5,
+    width: '80%',
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  }
+
+})
 const defaultStyle = StyleSheet.create({
   InputText1Style: {
     backgroundColor: '#fff',

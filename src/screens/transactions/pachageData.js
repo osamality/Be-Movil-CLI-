@@ -2,8 +2,6 @@ import Receipt from '../../assets/Images/Receipt.png'
 import CheckCircle from '../../assets/Images/CheckCircle.png'
 import uploadd from '../../assets/Images/uploadd.png'
 import clientlistsign from '../../assets/Images/clientlistsign.png'
-// import clientlistsign from '../../assets/Images/ema'
-
 
 
 import iconAwesomeEdit from '../../assets/Images/iconAwesomeEdit.png'
@@ -126,6 +124,84 @@ export const userData = [
 ]
 
 
+
+export const clientsData = [
+  
+    {
+        ID: '200853',
+        Asociar: clientlistsign,
+        Nombre: "Leo Messi",
+        Usuario: 'Leomessiuser',
+        Estado: CheckCircle,
+        Coord: iconMaterialEmail,
+        Comisión: "Grupo A",
+        Borrar: iconMetroBin,      
+    },
+    {
+        ID: '200853',
+        Asociar: clientlistsign,
+        Nombre: "Leo Messi",
+        Usuario: 'Leomessiuser',
+        Estado: CheckCircle,
+        Coord: iconMaterialEmail,
+        Comisión: "Grupo A",
+        Borrar: iconMetroBin,      
+    },
+    {
+        ID: '200853',
+        Asociar: clientlistsign,
+        Nombre: "Leo Messi",
+        Usuario: 'Leomessiuser',
+        Estado: CheckCircle,
+        Coord: iconMaterialEmail,
+        Comisión: "Grupo A",
+        Borrar: iconMetroBin,      
+    },
+    {
+        ID: '200853',
+        Asociar: clientlistsign,
+        Nombre: "Leo Messi",
+        Usuario: 'Leomessiuser',
+        Estado: CheckCircle,
+        Coord: iconMaterialEmail,
+        Comisión: "Grupo A",
+        Borrar: iconMetroBin,      
+    },
+
+    {
+        ID: '200853',
+        Asociar: clientlistsign,
+        Nombre: "Leo Messi",
+        Usuario: 'Leomessiuser',
+        Estado: CheckCircle,
+        Coord: iconMaterialEmail,
+        Comisión: "Grupo A",
+        Borrar: iconMetroBin,      
+    },
+    {
+        ID: '200853',
+        Asociar: clientlistsign,
+        Nombre: "Leo Messi",
+        Usuario: 'Leomessiuser',
+        Estado: CheckCircle,
+        Coord: iconMaterialEmail,
+        Comisión: "Grupo A",
+        Borrar: iconMetroBin,      
+    },
+    {
+        ID: '200853',
+        Asociar: clientlistsign,
+        Nombre: "Leo Messi",
+        Usuario: 'Leomessiuser',
+        Estado: CheckCircle,
+        Coord: iconMaterialEmail,
+        Comisión: "Grupo A",
+        Borrar: iconMetroBin,      
+    },
+    
+   
+   
+]
 
 export const packgesData = [
   

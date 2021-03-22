@@ -18,7 +18,6 @@ import icon16 from '../../assets/Images/exito.png'
 import userIcon from '../../assets/Images/UserCircle.png'
 
 export const packgesData = [
-  
     {
         name: "WPlay",
         icon: icon1,
@@ -145,6 +144,4 @@ export const profileData = [
         icon: userIcon,
         desp: 'Administración Cliente       Crear Cliente Listar Cliente Inventario Registro USSD Usuarios Propios Crear Nuevo Perfil Crear Usuario Propio Listar Usuarios Cambiar Perfil Usuario Listar Perfiles Recargas'
     },
-   
-    
 ]

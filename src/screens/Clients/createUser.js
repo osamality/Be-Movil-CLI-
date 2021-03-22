@@ -5,21 +5,26 @@ import {
     View,
     TouchableWithoutFeedback,
     Keyboard,
-    Image
+    Image,
+    Pressable
 } from 'react-native';
-import { Container, Content, Form, Button } from 'native-base';
+import { Container, Content, Form, Button, TouchableOpacity, } from 'native-base';
 import { useDispatch } from 'react-redux';
+import bigLogo from '../../assets/Images/bigLogo.png'
+import CheckCircleOutline from '../../assets/Images/CheckCircleOutline.png';
+import notactiveImage from '../../assets/Images/notactive.png';
+
 import * as RecargasActions from '../../store/actions/recargas';
 import * as ProductActions from '../../store/actions/product';
-
-import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import { connect } from 'react-redux';
-import RecargasType from '../../components/UI/Recargas/recargasType'
-import ProductType from '../../components/UI/Recargas/productType'
 import beImg from '../../assets/Images/be.png'
 import beactiveImg from '../../assets/Images/bactive2.png'
 import { isEmpty } from 'lodash'
 import RecargasChangeType from './RecargasChangeType'
+import RecargasChangeType2 from './RecargasChangeType2'
+import RecargasChangeType3 from './RecargasChangeType3'
+import Modal, { SlideAnimation, ModalContent, ModalButton } from 'react-native-modals';
 
 
 const createUser = ({ activeProvider, navigation }) => {
@@ -60,26 +65,23 @@ const createUser = ({ activeProvider, navigation }) => {
         }
     }
 
+    const [toggleModel1, setToggleModel1] = useState(false);
 
 
     return (
+        <>
 
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <Container >
+                    <Content style={{ flex: 1 }}>
+                        <View style={styles.Contentcontainer}>
 
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-            <Container >
-
-                <Content style={{ flex: 1 }}>
-
-                    <View style={styles.Contentcontainer}>
-
-
-                        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+                            {/* <View style={{ flexDirection: 'row', marginTop: 20 }}>
                             <View style={{ backgroundColor: 'rgb(235,6,42)', padding: 8, paddingHorizontal: 13, borderRadius: 20 }}>
                                 <Text style={{ color: 'white' }}>1</Text>
                             </View>
                             <View style={{ borderBottomWidth: 4, borderBottomColor: 'rgb(219,219,219)', width: 60, marginBottom: 13 }}></View>
-                            <View style={{ backgroundColor: 'rgb(219,219,219)',  padding: 8, paddingHorizontal: 13, borderRadius: 20 }}>
+                            <View style={{ backgroundColor: 'rgb(219,219,219)', padding: 8, paddingHorizontal: 13, borderRadius: 20 }}>
                                 <Text style={{ color: 'rgb(177,177,177)' }}>2</Text>
                             </View>
                             <View style={{ borderBottomWidth: 4, borderBottomColor: 'rgb(219,219,219)', width: 60, marginBottom: 13 }}></View>
@@ -87,7 +89,6 @@ const createUser = ({ activeProvider, navigation }) => {
                             <View style={{ backgroundColor: 'rgb(219,219,219)', padding: 8, paddingHorizontal: 13, borderRadius: 20 }}>
                                 <Text style={{ color: 'rgb(177,177,177)' }}>3</Text>
                             </View>
-
                         </View>
 
                         <View style={{ flexDirection: 'row', marginTop: 2 }}>
@@ -97,32 +98,157 @@ const createUser = ({ activeProvider, navigation }) => {
 
                             <View style={{ padding: 5, paddingHorizontal: 20, borderRadius: 20, marginLeft: 5 }}>
 
-                                <Text style={{ color: 'rgb(177,177,177)', fontSize: 12  }}>Be Movil</Text>
+                                <Text style={{ color: 'rgb(177,177,177)', fontSize: 12 }}>Be Movil</Text>
                             </View>
 
-                            <View style={{ padding: 5, paddingHorizontal: 15, borderRadius: 20, marginLeft: 10}}>
+                            <View style={{ padding: 5, paddingHorizontal: 15, borderRadius: 20, marginLeft: 10 }}>
 
-                                <Text style={{ color: 'rgb(177,177,177)', fontSize: 12  }}>Revisión</Text>
+                                <Text style={{ color: 'rgb(177,177,177)', fontSize: 12 }}>Revisión</Text>
                             </View>
 
+                        </View> */}
+
+
+                            <ProgressSteps
+                                borderWidth={3}
+                                borderStyle={'dotted'}
+                                progressBarColor={'grey'}
+                                activeStepIconBorderColor={'rgb(235,6,42)'}
+                                activeStepIconColor={'rgb(235,6,42)'}
+                                completedStepIconColor={'green'}
+                                disabledStepIconColor={'#dadada'}
+                                activeStepNumColor={'white'}
+                                marginBottom={'4%'}
+                                completedLabelColor={'green'}
+                                activeLabelColor={'red'}
+                            >
+                                <ProgressStep
+
+                                    label={'Datos Personales'}
+                                    activeLabelColor={'red'}
+                                    previousBtnDisabled={true}
+                                    previousBtnText={''}
+                                    nextBtnStyle={styles.nextBtnStyle} nextBtnTextStyle={{ color: '#ffff' }}
+                                    previousBtnStyle={styles.previousBtnStyle}
+                                    nextBtnText={'Recargas'}
+                                >
+                                    <View style={{ zIndex: 22, height: '50%' }}>
+                                        {/* <Step1 /> */}
+                                        <RecargasChangeType />
+                                    </View>
+                                </ProgressStep>
+
+                                <ProgressStep
+                                    label={'Datos Personales'}
+
+                                    previousBtnDisabled={true}
+                                    previousBtnText={''}
+                                    nextBtnStyle={styles.nextBtnStyle} nextBtnTextStyle={{ color: '#ffff' }}
+                                    previousBtnStyle={styles.previousBtnStyle}
+                                    nextBtnText={'Continuar'}>
+                                    <View style={{ marginBottom: '68%', }}>
+                                        <RecargasChangeType2 />
+                                    </View>
+                                </ProgressStep>
+                                <ProgressStep
+                                    onSubmit={() => {
+                                        console.log('sadasd')
+                                        setToggleModel1(true)
+                                    }
+                                    }
+                                    label={'Datos Personales'}
+                                    previousBtnDisabled={true}
+                                    previousBtnText={''}
+                                    nextBtnStyle={{
+                                        ...styles.nextBtnStyle,
+                                        right: -40,
+                                        backgroundColor: 'rgb(5,193,121)'
+                                    }}
+                                    nextBtnTextStyle={{ color: '#ffff' }}
+                                    previousBtnStyle={styles.previousBtnStyle}
+                                    nextBtnText={'Continuar'}
+                                >
+                                    <View style={{ marginBottom: '10%', }}>
+                                        <RecargasChangeType3 />
+                                    </View>
+                                </ProgressStep>
+
+                            </ProgressSteps>
                         </View>
-                        <RecargasChangeType navigation={navigation} />
+                    </Content>
+                </Container>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <Modal width={380} height={400} visible={toggleModel1} modalAnimation={new SlideAnimation({ slideFrom: 'top', })}>
+                    <ModalContent >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            <Image style={styles.bigLogo} source={bigLogo} />
+                            <Image style={styles.CheckCircleOutline} source={CheckCircleOutline} />
+                            <Text style={{ fontSize: 22, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 20 }}>
+                                Reparto Satisfactorio</Text>
+                            <Text style={{ fontSize: 16, color: 'black', textAlign: 'center', fontWeight: '500', marginVertical: 5 }}>
+                                Perfil Creado Satisfactoriamente
+                                        </Text>
+                            <Text style={{ fontSize: 12, color: 'rgb(5,193,121)', textAlign: 'center', fontWeight: '500' }}>
+                                Perfil 2021</Text>
+                            {/* <TouchableOpacity
+                                onPress={() => {
+                                    navigation.navigate('Home')
+                                }}
+                                style={styles.btnTransfer}>
+                                <Text style={{ color: '#ffff' }}>Terminar</Text>
+                            </TouchableOpacity> */}
+                            <Pressable onPress={() => {
+                                setToggleModel1(false)
+                                navigation.navigate('Home')
+                            }}
+                                style={styles.btnTransfer}>
+                                <Text style={{ color: '#ffff' }}>Terminar</Text>
+                            </Pressable>
+                        </View>
 
 
-                    </View>
-                </Content>
-            </Container>
-        </TouchableWithoutFeedback>
+                    </ModalContent>
+                </Modal>
+            </TouchableWithoutFeedback>
+        </>
 
     );
 }
 
 const styles = StyleSheet.create({
+    btnTransfer: {
+        backgroundColor: 'red',
+        width: '100%',
+        borderRadius: 5,
+        // width: '80%',
+        paddingVertical: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 40
+    },
+    bigLogo: {
+        height: 64,
+        width: 255,
+    },
+    CheckCircleOutline: {
+        height: 80,
+        width: 80,
+        marginTop: 30
+    },
+
 
     container: {
         flex: 1,
     },
-
+    nextBtnStyle: {
+        height: 50, bottom: 0, right: -58, backgroundColor: 'red', borderRadius: 5,
+        width: 375,
+        position: 'absolute',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        alignItems: 'center'
+    },
     test: {
         backgroundColor: 'rgb(216,216,216)',
 
@@ -132,7 +258,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 10
+        alignContent: 'center',
+        marginTop: -15,
     },
 
     TextContent: {

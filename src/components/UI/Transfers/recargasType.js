@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, } from 'react-native';
-import { clientType } from '../staticData'
+import { transferType } from '../staticData'
 import * as RecargasActions from '../../../store/actions/recargas';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
@@ -13,6 +13,7 @@ const renderText = () => {
 
     // useEffect(() => {
     //     const setDefaultBalnce= async()=>{
+
     //         const action = balanceActions.saveActiveBalance(data.SS)
     //         try{
     //             await dispatch(action)
@@ -20,8 +21,10 @@ const renderText = () => {
     //         catch{
     //             console.log("Falied Balnace")
     //         }
+
     //     }
     //     setDefaultBalnce();
+
     // }, []);
 
     const setStatus = async (index, data) => {
@@ -35,7 +38,7 @@ const renderText = () => {
         }
     }
 
-    return map(clientType, (d, v) => {
+    return map(transferType, (d, v) => {
         return (
             <TouchableOpacity key={v}
                 style={index == v ? styles.contentActive : styles.content}
@@ -90,11 +93,11 @@ const styles = StyleSheet.create({
     },
 
     Text: {
-        fontSize: 12,
+        fontSize: 13,
         textAlign: 'center',
     },
     TextActive: {
-        fontSize: 12,
+        fontSize: 13,
         textAlign: 'center',
         color: 'white',
     },

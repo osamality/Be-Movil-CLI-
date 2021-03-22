@@ -68,7 +68,6 @@ const Digital = ({ activeProvider,navigation }) =>  {
     <Content style={{flex:1}}>
    
       <View style={styles.Contentcontainer}>
-        <CustomTapsBalance/>
   
         <View style={styles.paymentContent}>
           {activeImage()}

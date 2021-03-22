@@ -598,8 +598,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = ({ balance }) => ({
     activeBalance: balance.activeBalance,
     balance: balance.balance
-
-
 })
 
 export default connect(mapStateToProps, null)(CustomTapsBalance)

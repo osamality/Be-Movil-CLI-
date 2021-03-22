@@ -32,7 +32,6 @@ const renderText = ()=>{
             <TouchableOpacity  key={v} 
              style={index==v? styles.contentActive:styles.content}
              onPress={()=> setStatus(v,d)}
-
             >
                 <Text  style={styles.Text}> {d.name} </Text>
             </TouchableOpacity >

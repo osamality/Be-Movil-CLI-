@@ -54,7 +54,7 @@ const activeImageInputs = (initialValues, activeProvider, type) => {
 }
 
 
-const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet, checked, setChecked) => {
+const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet, checked, setChecked, checked1, setChecked1, checked2, setChecked2, checked3, setChecked3) => {
 
   return (
 
@@ -109,14 +109,14 @@ const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet
             Mi Caja
         </Text>
         </View>
-        <View style={checked ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
+        <View style={checked1 ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
 
           <Checkbox.Android
             color={'white'}
             uncheckedColor={'grey'}
-            status={checked ? 'checked' : 'unchecked'}
+            status={checked1 ? 'checked' : 'unchecked'}
             onPress={() => {
-              setChecked(!checked);
+              setChecked1(!checked1);
             }}
           />
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: '500' }}>
@@ -130,28 +130,28 @@ const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet
 
       <View style={defaultStyle.checkBoxViewUp}>
         <Image source={arrowB} style={styles.Image2} />
-        <View style={checked ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
+        <View style={checked2 ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
 
           <Checkbox.Android
             color={'white'}
             uncheckedColor={'grey'}
-            status={checked ? 'checked' : 'unchecked'}
+            status={checked2 ? 'checked' : 'unchecked'}
             onPress={() => {
-              setChecked(!checked);
+              setChecked2(!checked2);
             }}
           />
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: '500' }}>
             Mi Caja
         </Text>
         </View>
-        <View style={checked ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
+        <View style={checked3 ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
 
           <Checkbox.Android
             color={'white'}
             uncheckedColor={'grey'}
-            status={checked ? 'checked' : 'unchecked'}
+            status={checked3 ? 'checked' : 'unchecked'}
             onPress={() => {
-              setChecked(!checked);
+              setChecked3(!checked3);
             }}
           />
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: '500' }}>
@@ -178,9 +178,11 @@ const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet
       <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
 
         <Button disabled={initialValues.phone !== '' && initialValues.amount !== '' ? false : true}
-          onPress={() => refRBSheet.current.open()}
+          onPress={() => {
+            refRBSheet.current.open()
+          }}
           style={initialValues.phone !== '' && initialValues.amount !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
-          <Text style={{ color: '#ffff' }}>Recargas</Text>
+          <Text style={{ color: '#ffff' }}>Continuar</Text>
         </Button>
       </View>
 
@@ -190,14 +192,14 @@ const renderInputs = (initialValues, setInitialVales, activeProvider, refRBSheet
 
 }
 
-const renderInputsPackage = (InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet, checked, setChecked) => {
+const renderInputsPackage = (InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet, checked, setChecked, checked1, setChecked1, checked2, setChecked2, checked3, setChecked3) => {
   return (
     <Form style={{ marginTop: 5 }}>
       <TextInput style={defaultStyle.InputText1Style}
         label="Cliente"
         value={InitialValesPackage.phone}
         mode='outlined'
-        keyboardType="numeric"
+        keyboardType="numeric" 
         onChangeText={text => setInitialValesPackage({ ...InitialValesPackage, phone: text })}
         underlineColor='transparent'
         underlineColorAndroid={'rgba(0,0,0,0)'}
@@ -228,14 +230,14 @@ const renderInputsPackage = (InitialValesPackage, setInitialValesPackage, active
             Mi Caja
         </Text>
         </View>
-        <View style={checked ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
+        <View style={checked1 ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
 
           <Checkbox.Android
             color={'white'}
             uncheckedColor={'grey'}
-            status={checked ? 'checked' : 'unchecked'}
+            status={checked1 ? 'checked' : 'unchecked'}
             onPress={() => {
-              setChecked(!checked);
+              setChecked1(!checked1);
             }}
           />
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: '500' }}>
@@ -249,28 +251,28 @@ const renderInputsPackage = (InitialValesPackage, setInitialValesPackage, active
 
       <View style={defaultStyle.checkBoxViewUp}>
         <Image source={arrowB} style={styles.Image2} />
-        <View style={checked ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
+        <View style={checked2 ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
 
           <Checkbox.Android
             color={'white'}
             uncheckedColor={'grey'}
-            status={checked ? 'checked' : 'unchecked'}
+            status={checked2 ? 'checked' : 'unchecked'}
             onPress={() => {
-              setChecked(!checked);
+              setChecked2(!checked2);
             }}
           />
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: '500' }}>
             Mi Caja
         </Text>
         </View>
-        <View style={checked ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
+        <View style={checked3 ? defaultStyle.checkBoxView : defaultStyle.checkBoxViewActive}>
 
           <Checkbox.Android
             color={'white'}
             uncheckedColor={'grey'}
-            status={checked ? 'checked' : 'unchecked'}
+            status={checked3 ? 'checked' : 'unchecked'}
             onPress={() => {
-              setChecked(!checked);
+              setChecked3(!checked3);
             }}
           />
           <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: '500' }}>
@@ -299,57 +301,12 @@ const renderInputsPackage = (InitialValesPackage, setInitialValesPackage, active
         <Button disabled={InitialValesPackage.phone !== '' && InitialValesPackage.amount !== '' ? false : true}
           onPress={() => refRBSheet.current.open()}
           style={InitialValesPackage.phone !== '' && InitialValesPackage.amount !== '' && activeProvider.name ? defaultStyle.buttonactive : defaultStyle.btn}>
-          <Text style={{ color: '#ffff' }}>Recargas</Text>
+          <Text style={{ color: '#ffff' }}>Continuar</Text>
         </Button>
       </View>
 
     </Form>
   )
-}
-
-const renderPackage = (activePackage, navigation, activeProvider) => {
-
-  if (isEmpty(activePackage)) {
-    return (
-      <TouchableOpacity
-        style={activeProvider.name ? styles.packages : styles.notactivePackages}
-        onPress={() => navigation.navigate('Package')}
-        disabled={activeProvider.name ? false : true}
-      >
-        <View style={styles.DownloadIcon}>
-          <Image source={arrowImage} style={styles.Image} />
-        </View>
-        <Text style={{ color: '#ffff' }}>
-          Selecciona tu Paquete
- </Text>
-        <Icon name="chevron-down" size={15} color="#ffff" />
-      </TouchableOpacity>
-    )
-  }
-  else {
-    return (
-      <TouchableOpacity
-        style={styles.packagesDone}
-        onPress={() => navigation.navigate('Package')}
-      >
-        {/* <View style={styles.DownloadIcon}>
-             <Image source={arrowImage} style={styles.Image}/>
-         </View> */}
-        <View style={{ marginHorizontal: 5 }}>
-          <Text style={{ color: 'rgb(235,6,42)', fontSize: 14, fontWeight: 'bold', marginVertical: 2 }}>{activePackage.name}</Text>
-          <Text style={{ textAlign: 'left', fontWeight: 'bold', fontSize: 12, marginVertical: 2 }}>{activePackage.price} COP</Text>
-          <Text style={{ textAlign: 'left', fontSize: 10, marginVertical: 2 }}>{activePackage.description}</Text>
-        </View>
-
-        <Icon name="chevron-down" size={15} color="black" />
-      </TouchableOpacity>
-      // <View>
-
-
-      // </View>
-    )
-
-  }
 }
 
 
@@ -366,6 +323,11 @@ const handelType = (RecargasActiveType,
 ) => {
   const [index, setindex] = useState(0)
   const [checked, setChecked] = useState(false);
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+
+
   const [toggleModel1, setToggleModel1] = useState(false);
   const [toggleModel2, setToggleModel2] = useState(false);
 
@@ -382,7 +344,7 @@ const handelType = (RecargasActiveType,
         </View>
         <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
         </View>
-        {renderInputs(initialValues, setInitialVales, activeProvider, refRBSheet, checked, setChecked)}
+        {renderInputs(initialValues, setInitialVales, activeProvider, refRBSheet, checked, setChecked, checked1, setChecked1, checked2, setChecked2, checked3, setChecked3)}
         <View
           style={{ backgroundColor: 'green' }}
         >
@@ -480,6 +442,7 @@ const handelType = (RecargasActiveType,
                   <Button
                     style={defaultStyle.accecptBtn}
                     onPress={() => {
+                      refRBSheet.current.close()
                       setToggleModel1(true)
                     }}
                   >
@@ -512,6 +475,7 @@ const handelType = (RecargasActiveType,
                   Perfil 2021</Text>
                 <TouchableOpacity
                   onPress={() => {
+
                     setToggleModel1(false)
                   }}
                   style={styles.btnTransfer}>
@@ -541,7 +505,7 @@ const handelType = (RecargasActiveType,
         </View>
         {/* {renderPackage(activePackage, navigation, activeProvider)} */}
 
-        {renderInputsPackage(InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet, checked, setChecked)}
+        {renderInputsPackage(InitialValesPackage, setInitialValesPackage, activeProvider, refRBSheet, checked, setChecked, checked1, setChecked1, checked2, setChecked2, checked3, setChecked3)}
         <View
           style={{ backgroundColor: 'green' }}
         >
@@ -610,7 +574,6 @@ const handelType = (RecargasActiveType,
                   <View style={defaultStyle.textTable1}>
                     <Text style={defaultStyle.txt}>Mi Caja</Text>
                     <Text style={defaultStyle.txt2}>Cambiar</Text>
-
                   </View>
                 </View>
                 <View style={defaultStyle.container}>
@@ -641,6 +604,7 @@ const handelType = (RecargasActiveType,
                   <Button
                     style={defaultStyle.accecptBtn}
                     onPress={() => {
+                      refRBSheet.current.close()
                       setToggleModel1(true)
                     }}
                   >

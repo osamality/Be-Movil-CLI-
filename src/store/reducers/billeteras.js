@@ -2,7 +2,7 @@ import {SET_ACTIVE_TYPE_RENDER ,CHANGE_TITLE, CLEAR_CACHING, SET_ACTIVE_PROVIDER
 const initialState = {
    
     activeType :"Deposito",
-    title:"Billetera Digital",
+    title:"Billeteras Digitales",
     activeProvider:{},
     activePackage:{},
     initialValuesDeposito :{

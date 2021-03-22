@@ -126,7 +126,7 @@ const Products = ({ activeProvider, navigation }) => {
                                 <TouchableOpacity style={styles.closeBtn} onPress={() => {
                                     setToggleModel(false)
                                 }}>
-                                    <Image style={{ marginLeft: 70 }} source={Close} />
+                                    <Image style={{ marginLeft: 85 }} source={Close} />
                                 </TouchableOpacity>
                             </View>
                         }>
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     },
     Modaltitle: {
         color: 'white',
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: '400'
     },
     bigLogo: {

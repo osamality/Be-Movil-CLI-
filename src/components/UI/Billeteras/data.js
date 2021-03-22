@@ -2,7 +2,7 @@ export const billeterasTypes=[
     {
         name:'Deposito',
         redux: 'Deposito',
-        title : 'Billetera Digital'
+        title : 'Billeteras Digitales'
     },
     {
         name:'Retiros',
