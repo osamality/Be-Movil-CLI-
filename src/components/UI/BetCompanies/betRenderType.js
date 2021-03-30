@@ -1,37 +1,36 @@
-import React,{useState,useEffect} from 'react'
-import { View, StyleSheet,Text, TouchableOpacity , } from 'react-native';
-import {betRenderType} from './data'
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet, Text, TouchableOpacity, } from 'react-native';
+import { betRenderType } from './data'
 import * as BetCompanies from '../../../store/actions/betCompanies';
 import { useDispatch } from 'react-redux';
-import {connect} from 'react-redux';
-import {map} from 'lodash'
-import {isEmpty} from 'lodash'
+import { connect } from 'react-redux';
+import { map } from 'lodash'
+import { isEmpty } from 'lodash'
 
-const renderText = ()=>{
-    const [index,setIndex]=useState(0);
+const renderText = () => {
+    const [index, setIndex] = useState(0);
     const dispatch = useDispatch();
 
 
-    const setStatus = async(index,data)=>{
+    const setStatus = async (index, data) => {
         console.log(data)
-       dispatch(BetCompanies.saveActiveRecargas(data.redux))
-       dispatch(BetCompanies.setActiveProvider({}))
-       dispatch(BetCompanies.setIninalValues({
-           "numeroDocumento":"",
-           "Monto":""
-       }))
+        dispatch(BetCompanies.saveActiveRecargas(data.redux))
+        dispatch(BetCompanies.setActiveProvider({}))
+        dispatch(BetCompanies.setIninalValues({
+            "numeroDocumento": "",
+            "Monto": ""
+        }))
 
         setIndex(index);
     }
 
-    return map(betRenderType,(d,v)=>{
+    return map(betRenderType, (d, v) => {
         return (
-            <TouchableOpacity  key={v} 
-             style={index==v? styles.contentActive:styles.content}
-             onPress={()=> setStatus(v,d)}
-
+            <TouchableOpacity key={v}
+                style={index == v ? styles.contentActive : styles.content}
+                onPress={() => setStatus(v, d)}
             >
-                <Text  style={styles.Text}> {d.name} </Text>
+                <Text style={index == v ? styles.TextActive : styles.Text}> {d.name} </Text>
             </TouchableOpacity >
 
         )
@@ -81,16 +80,16 @@ const styles = StyleSheet.create({
     },
 
     Text: {
-        fontSize: 12,
+        fontSize: 13,
         textAlign: 'center',
     },
     TextActive: {
-        fontSize: 12,
+        fontSize: 13,
         textAlign: 'center',
         color: 'white',
     },
-  });
+});
 
 
 
-export default  RecargasType
+export default RecargasType

@@ -6,6 +6,7 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import { useDispatch } from 'react-redux';
 import * as FacturasActions from '../../store/actions/Facturas';
 import { connect } from 'react-redux';
+import CustomTapsBalance from '../../components/UI/globle/customTapsBalance';
 
 const NormalInputs = ({ initialValues, activeBalance, allBalance, activeProvider }) => {
   console.log(initialValues)
@@ -62,7 +63,8 @@ const NormalInputs = ({ initialValues, activeBalance, allBalance, activeProvider
 
       />
 
-      <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
+
+      {/* <View style={{ justifyContent: 'space-around', flexDirection: 'row' }}>
 
         <Button disabled={initialValues.numero !== '' && initialValues.valor !== '' && initialValues.correo !== ''
           ? false : true}
@@ -71,7 +73,7 @@ const NormalInputs = ({ initialValues, activeBalance, allBalance, activeProvider
             activeProvider.name && initialValues.correo !== '' ? defaultStyle.buttonactive : defaultStyle.btn}>
           <Text style={{ color: '#ffff' }}>Cargar</Text>
         </Button>
-      </View>
+      </View> */}
       <View>
         <RBSheet
           ref={refRBSheet}

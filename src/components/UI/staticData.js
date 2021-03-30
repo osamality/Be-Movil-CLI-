@@ -26,6 +26,7 @@ import epm from '../../assets/Images/epm3.png'
 import component1441 from '../../assets/Images/component1441.png'
 import component1263 from '../../assets/Images/component1262.png'
 import component1253 from '../../assets/Images/component1253.png'
+import component381 from '../../assets/Images/component381.png'
 import component1273 from '../../assets/Images/component1273.png'
 import pego from '../../assets/Images/pego.png'
 
@@ -485,13 +486,14 @@ export const productsDiscription = {
         }
     ],
     "Directv": [
-        {
-            name: "Directv",
-            id: "3",
+        // {
+        //     name: "Directv",
+        //     id: "3",
 
-        },
+        // },
         {
             name: "Kit Directv",
+            icon: component381,
             id: "60",
 
         }

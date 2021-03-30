@@ -56,15 +56,13 @@ const TvScreen = ({ activeProvider, navigation, }) => {
             <View style={styles.paymentContent}>
               {activeImage()}
               <Text style={{ ...styles.paymentText, marginRight: 4, fontWeight: 'bold' }}>
-                Seleccionar TV :
-            </Text>
+                Seleccionar TV:
+              </Text>
               {
                 activeProvider?.name && <Text style={{ color: 'rgb(44,209,158)', fontWeight: 'bold' }}>
                   {activeProvider.name}
                 </Text>
               }
-
-
             </View>
             <View style={{ borderBottomWidth: 1, borderBottomColor: 'black', width: '90%', marginBottom: 15, marginTop: 10 }}>
             </View>

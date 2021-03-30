@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 
-export const HeaderComponent = ({ }) => {
+export const HeaderReportes = ({ }) => {
   const navigation = useNavigation()
   return (
 
@@ -24,7 +24,6 @@ export const HeaderComponent = ({ }) => {
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: 'rgb(226,59,85)'
-
       }}>
       <TouchableOpacity style={{ marginTop: '8%', marginLeft: '2%' }} onPress={() => navigation.navigate("Home")}>
         <Image source={arrowBack} style={{ tintColor: 'white', }} />
@@ -33,14 +32,14 @@ export const HeaderComponent = ({ }) => {
 
         style={{ color: 'white', marginTop: 34, fontSize: 20, marginLeft: '32%' }}
       >
-        Mis Usuarios
+        Reportes
       </Text>
-      <TouchableOpacity style={{ marginTop: 30, marginLeft: '19%' }} onPress={() => navigation.navigate("createUser")}>
+      {/* <TouchableOpacity style={{ marginTop: 30, marginLeft: '19%' }} onPress={() => navigation.navigate("createUser")}>
         <Icon name={'search'} color={'white'} size={16} />
       </TouchableOpacity>
       <TouchableOpacity style={{ marginTop: 30, marginLeft: '4%' }} onPress={() => navigation.navigate("createUser")}>
         <Image style={{ height: 18, width: 23 }} source={UserPlus} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       {/* <TouchableOpacity onPress={() => navigation.navigate("Setting")}>
         <Image style={styles.Logo1} source={menu} />
       </TouchableOpacity> */}
@@ -75,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HeaderComponent;
+export default HeaderReportes;
